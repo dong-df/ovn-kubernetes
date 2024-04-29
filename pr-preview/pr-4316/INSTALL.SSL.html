@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/style.css?v=9e6c62f21184b23c5bdbecd995abe5f149115b0f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>OVN-Kubernetes Homepage | test</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="OVN-Kubernetes Homepage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="test" />
+<meta property="og:description" content="test" />
+<link rel="canonical" href="http://www.ovn.org/ovn-kubernetes/INSTALL.SSL.html" />
+<meta property="og:url" content="http://www.ovn.org/ovn-kubernetes/INSTALL.SSL.html" />
+<meta property="og:site_name" content="OVN-Kubernetes Homepage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="OVN-Kubernetes Homepage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"test","headline":"OVN-Kubernetes Homepage","url":"http://www.ovn.org/ovn-kubernetes/INSTALL.SSL.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/ovn-kubernetes/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://www.ovn.org/ovn-kubernetes/">
+          <h1>OVN-Kubernetes Homepage</h1>
+        </a>
+        <h2>test</h2>
+        
+          <a href="https://github.com/ovn-org/ovn-kubernetes" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>This document explains the way one could use SSL for connectivity between OVN
+components.  The details in this documentation needs a minimum version of
+Open vSwitch 2.7.</p>
+
+<h2 id="generating-certificates">Generating certificates</h2>
+
+<p>Detailed explanation of how OVS utilites and daemons use SSL certificates is
+explained at <a href="http://docs.openvswitch.org/en/latest/howto/ssl">OVS.SSL</a>.  The following section summarizes it for
+ovn-kubernetes.</p>
+
+<h3 id="create-a-certificate-authority">Create a certificate authority.</h3>
+
+<p>On a secure machine (separate from your k8s cluster), where you have installed
+the ovs-pki utility (comes with OVS installations), create a certificate
+authority by running</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovs-pki init --force
+</code></pre></div></div>
+
+<p>The above command creates 2 certificate authorities.  But we are concerned only
+with one of them, i.e the “switch” certificate authority.  We will use this
+certificate authority to sign individual certificates of all the nodes.  We
+will then use the same certificate authority’s certificate to verify a node’s
+connections to the master.</p>
+
+<p>Copy this certificate to the master and each of the nodes. $CENTRAL_IP
+is the IP address of the master.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp /var/lib/openvswitch/pki/switchca/cacert.pem \
+    root@$CENTRAL_IP:/etc/openvswitch/.
+</code></pre></div></div>
+
+<h3 id="generate-signed-certificates-for-ovn-components-running-on-the-master">Generate signed certificates for OVN components running on the master.</h3>
+
+<h4 id="generate-signed-certificates-for-ovn-nb-database">Generate signed certificates for OVN NB Database</h4>
+<p>On the master, run the following commands.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /etc/openvswitch
+ovs-pki req ovnnb
+</code></pre></div></div>
+
+<p>The above command will generate a private key “ovnnb-privkey.pem”
+and a corresponding certificate request named “ovnnb-req.pem”. Copy over
+the ovnnb-req.pem to the aforementioned secure machine’s /var/lib/openvswitch/pki
+folder to sign it using the command below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovs-pki -b sign ovnnb
+</code></pre></div></div>
+
+<p>The above command will generate ovnnb-cert.pem. Copy over this file back
+to the master’s /etc/openvswitch. The ovnnb-privkey.pem and ovnnb-cert.pem
+will be used by the ovsdb-server that fronts the OVN NB database.</p>
+
+<p>Now run the following commands to ask ovsdb-server to use these
+certificates and also to open up SSL ports via which the database
+can be accessed.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovn-nbctl set-ssl /etc/openvswitch/ovnnb-privkey.pem \
+    /etc/openvswitch/ovnnb-cert.pem  /etc/openvswitch/cacert.pem
+
+ovn-nbctl set-connection pssl:6641
+</code></pre></div></div>
+
+<h4 id="generate-signed-certificates-for-ovn-sb-database">Generate signed certificates for OVN SB Database</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /etc/openvswitch
+ovs-pki req ovnsb
+</code></pre></div></div>
+
+<p>The above command will generate a private key “ovnsb-privkey.pem”
+and a corresponding certificate request named “ovnsb-req.pem”. Copy over
+the ovnsb-req.pem to the aforementioned secure machine’s /var/lib/openvswitch/pki
+to sign it using the command below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovs-pki -b sign ovnsb
+</code></pre></div></div>
+
+<p>The above command will generate ovnsb-cert.pem. Copy over this file back
+to the master’s /etc/openvswitch. The ovnsb-privkey.pem and ovnsb-cert.pem
+will be used by the ovsdb-server that fronts the OVN SB database.</p>
+
+<p>Now run the following commands to ask ovsdb-server to use these
+certificates  and also to open up SSL ports via which the database
+can be accessed.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovn-sbctl set-ssl /etc/openvswitch/ovnsb-privkey.pem \
+    /etc/openvswitch/ovnsb-cert.pem  /etc/openvswitch/cacert.pem
+
+ovn-sbctl set-connection pssl:6642
+</code></pre></div></div>
+
+<h4 id="generate-signed-certificates-for-ovn-northd">Generate signed certificates for OVN Northd</h4>
+
+<p>If you are running ovn-northd on the same host as the OVN NB and SB database servers, then
+there is no need to secure the communication between ovn-northd and OVN NB/SB daemons.
+ovn-northd will communicate using UNIX path.</p>
+
+<p>In case you still want to secure the communication, or the daemons are running on
+separate hosts, then follow the instructions on this page [OVN-NORTHD.SSL.md]</p>
+
+<h3 id="generate-certificates-for-the-nodes">Generate certificates for the nodes</h3>
+
+<p>On each node, create a certificate request.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /etc/openvswitch
+ovs-pki req ovncontroller
+</code></pre></div></div>
+
+<p>The above command will create a new private key for the node called
+ovncontroller-privkey.pem and a certificate request file called
+ovncontroller-req.pem.  Copy this certificate request file to the secure
+machine where you created the certificate authority and from the directory
+where the copied file exists, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovs-pki -b sign ovncontroller switch
+</code></pre></div></div>
+
+<p>The above will create the certificate for the node called
+“ovncontroller-cert.pem”. You should copy this certificate back to the
+node’s /etc/openvswitch directory.</p>
+
+<p>Additionally, the common name used for signing the certificates (<code class="language-plaintext highlighter-rouge">ovncontroller</code>)
+needs to be passed in for TLS server certificate verification using the 
+<code class="language-plaintext highlighter-rouge">-nb-cert-common-name</code> and the <code class="language-plaintext highlighter-rouge">-sb-cert-common-name</code> CLI options.</p>
+
+<h2 id="one-time-setup">One time setup.</h2>
+
+<p>As explained in <a href="README.md">README.md</a>, OVN architecture has a central component which
+stores your networking intent in a database.  You start this central component
+on the node where you intend to start your k8s central daemons by running:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/share/openvswitch/scripts/ovn-ctl start_northd
+</code></pre></div></div>
+
+<p>You should now restart the ovn-controller on each host with the following
+additional options.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/share/openvswitch/scripts/ovn-ctl \
+    --ovn-controller-ssl-key="/etc/openvswitch/ovncontroller-privkey.pem"  \
+    --ovn-controller-ssl-cert="/etc/openvswitch/ovncontroller-cert.pem"    \
+    --ovn-controller-ssl-ca-cert="/etc/openvswitch/cacert.pem" \
+    restart_controller
+</code></pre></div></div>
+
+<p>To make sure that ovn-controller restarts with the above options during system
+reboots, you should add the above options to your startup script’s defaults
+file.  For e.g. on Ubuntu, if you installed ovn-controller via the package
+‘ovn-host*.deb’, write the following to your /etc/default/ovn-host file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OVN_CTL_OPTS="--ovn-controller-ssl-key=/etc/openvswitch/ovncontroller-privkey.pem  --ovn-controller-ssl-cert=/etc/openvswitch/ovncontroller-cert.pem --ovn-controller-ssl-ca-cert=/etc/openvswitch/cacert.pem"
+</code></pre></div></div>
+<p>If you start the ovnkube utility on master with “–init-master”
+or with “–init-network-control-manager”,
+you should pass the SSL certificates to it. For e.g:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo ovnkube -k8s-kubeconfig kubeconfig.yaml -loglevel=4 \
+ -k8s-apiserver="http://$CENTRAL_IP:8080" \
+ -logfile="/var/log/ovn-kubernetes/ovnkube.log" \
+ -init-master="$NODE_NAME" -cluster-subnets=$CLUSTER_IP_SUBNET \
+ -k8s-service-cidr=$SERVICE_IP_SUBNET \
+ -nodeport \
+ -nb-address="ssl:$CENTRAL_IP:6641" \
+ -sb-address="ssl:$CENTRAL_IP:6642" \
+ -nb-client-privkey /etc/openvswitch/ovncontroller-privkey.pem \
+ -nb-client-cert /etc/openvswitch/ovncontroller-cert.pem \
+ -nb-client-cacert /etc/openvswitch/cacert.pem \
+ -nb-cert-common-name ovncontroller \
+ -sb-client-privkey /etc/openvswitch/ovncontroller-privkey.pem \
+ -sb-client-cert /etc/openvswitch/ovncontroller-cert.pem \
+ -sb-client-cacert /etc/openvswitch/cacert.pem \
+ -sb-cert-common-name ovncontroller
+</code></pre></div></div>
+
+<p>If you start the ovnkube utility with “–init-cluster-manager”,
+there is no need to pass the SSL certificates to it as it doesn’t
+connect to the OVN databases. For e.g:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo ovnkube -k8s-kubeconfig kubeconfig.yaml -loglevel=4 \
+ -k8s-apiserver="http://$CENTRAL_IP:8080" \
+ -logfile="/var/log/ovn-kubernetes/ovnkube-cluster-manager.log" \
+ -init-cluster-manager="$NODE_NAME" -cluster-subnets=$CLUSTER_IP_SUBNET \
+ -k8s-service-cidr=$SERVICE_IP_SUBNET
+</code></pre></div></div>
+
+<p>And when you start your ovnkube utility on nodes, you should pass the SSL
+certificates to it. For e.g:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo ovnkube -k8s-kubeconfig $HOME/kubeconfig.yaml -loglevel=4 \
+    -k8s-apiserver="http://$CENTRAL_IP:8080" \
+    -init-node="$NODE_NAME"  \
+    -nodeport \
+    -nb-address="ssl:$CENTRAL_IP:6641" \
+    -sb-address="ssl:$CENTRAL_IP:6642" -k8s-token=$TOKEN \
+    -nb-client-privkey /etc/openvswitch/ovncontroller-privkey.pem \
+    -nb-client-cert /etc/openvswitch/ovncontroller-cert.pem \
+    -nb-client-cacert /etc/openvswitch/cacert.pem \
+    -nb-cert-common-name ovncontroller \
+    -sb-client-privkey /etc/openvswitch/ovncontroller-privkey.pem \
+    -sb-client-cert /etc/openvswitch/ovncontroller-cert.pem \
+    -sb-client-cacert /etc/openvswitch/cacert.pem \
+    -sb-cert-common-name ovncontroller \
+    -init-gateways \
+    -k8s-service-cidr=$SERVICE_IP_SUBNET \
+    -cluster-subnets=$CLUSTER_IP_SUBNET
+</code></pre></div></div>
+
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/ovn-org/ovn-kubernetes">ovn-kubernetes</a> is maintained by <a href="https://github.com/ovn-org">ovn-org</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/style.css?v=9e6c62f21184b23c5bdbecd995abe5f149115b0f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>EgressIP | OVN-Kubernetes Homepage</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="EgressIP" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="test" />
+<meta property="og:description" content="test" />
+<link rel="canonical" href="http://www.ovn.org/ovn-kubernetes/egress-ip.html" />
+<meta property="og:url" content="http://www.ovn.org/ovn-kubernetes/egress-ip.html" />
+<meta property="og:site_name" content="OVN-Kubernetes Homepage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="EgressIP" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"test","headline":"EgressIP","url":"http://www.ovn.org/ovn-kubernetes/egress-ip.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/ovn-kubernetes/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://www.ovn.org/ovn-kubernetes/">
+          <h1>OVN-Kubernetes Homepage</h1>
+        </a>
+        <h2>test</h2>
+        
+          <a href="https://github.com/ovn-org/ovn-kubernetes" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1 id="egressip">EgressIP</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The Egress IP feature enables a cluster administrator to ensure that the traffic from one or more pods
+in one or more namespaces has a consistent source IP address for services outside the cluster network.<br />
+East-West traffic (including pod -&gt; node IP) is excluded from Egress IP.</p>
+
+<p>For more info, consider looking at the following links:</p>
+<ul>
+  <li><a href="https://github.com/ovn-org/ovn-kubernetes/blob/82f167a3920c8c3cd0687ceb3e7a5ba64372be69/go-controller/pkg/crd/egressip/v1/types.go#L47">Egress IP CRD</a></li>
+  <li><a href="https://docs.okd.io/latest/networking/ovn_kubernetes_network_provider/assigning-egress-ips-ovn.html">Assigning an egress IP address</a></li>
+  <li><a href="https://rcarrata.com/openshift/egress-ip-ovn/">Managing Egress IP in OpenShift 4 with OVN Kubernetes</a></li>
+</ul>
+
+<h2 id="example">Example</h2>
+
+<p>An example of EgressIP might look like this:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">k8s.ovn.org/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">EgressIP</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">egressip-prod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">egressIPs</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">172.18.0.33</span>
+    <span class="pi">-</span> <span class="s">172.18.0.44</span>
+  <span class="na">namespaceSelector</span><span class="pi">:</span>
+    <span class="na">matchExpressions</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">environment</span>
+        <span class="na">operator</span><span class="pi">:</span> <span class="s">NotIn</span>
+        <span class="na">values</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s">development</span>
+  <span class="na">podSelector</span><span class="pi">:</span>
+    <span class="na">matchLabels</span><span class="pi">:</span>
+      <span class="na">app</span><span class="pi">:</span> <span class="s">web</span>
+</code></pre></div></div>
+<p>It specifies to use <code class="language-plaintext highlighter-rouge">172.18.0.33</code> or <code class="language-plaintext highlighter-rouge">172.18.0.44</code> egressIP for pods that are labeled with <code class="language-plaintext highlighter-rouge">app: web</code> that run in a namespace without <code class="language-plaintext highlighter-rouge">environment: development</code> label.
+Both selectors use the <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">generic kubernetes label selectors</a>.</p>
+
+<h2 id="traffic-flows">Traffic flows</h2>
+<p>If the Egress IP(s) are hosted on the OVN primary network then the implementation is redirecting the POD traffic
+to an egress node where it is SNATed and sent out.</p>
+
+<p>Using the example EgressIP and a matching pod with <code class="language-plaintext highlighter-rouge">10.244.1.3</code> IP, the following logical router policies are configured in <code class="language-plaintext highlighter-rouge">ovn_cluster_router</code>:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Routing Policies
+  1004 inport <span class="o">==</span> <span class="s2">"rtos-ovn-control-plane"</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 172.18.0.4 /<span class="k">*</span> ovn-control-plane <span class="k">*</span>/                            reroute  10.244.0.2
+  1004 inport <span class="o">==</span> <span class="s2">"rtos-ovn-worker"</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 172.18.0.2 /<span class="k">*</span> ovn-worker <span class="k">*</span>/                                          reroute  10.244.1.2
+  1004 inport <span class="o">==</span> <span class="s2">"rtos-ovn-worker2"</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 172.18.0.3 /<span class="k">*</span> ovn-worker2 <span class="k">*</span>/                                        reroute  10.244.2.2
+
+   102 <span class="o">(</span>ip4.src <span class="o">==</span> <span class="nv">$a12749576804119081385</span> <span class="o">||</span> ip4.src <span class="o">==</span> <span class="nv">$a16335301576733828072</span><span class="o">)</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> <span class="nv">$a11079093880111560446</span>  allow    <span class="nv">pkt_mark</span><span class="o">=</span>1008
+   102 ip4.src <span class="o">==</span> 10.244.0.0/16 <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 10.244.0.0/16                                                           allow
+   102 ip4.src <span class="o">==</span> 10.244.0.0/16 <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 100.64.0.0/16                                                           allow
+
+   100 ip4.src <span class="o">==</span> 10.244.1.3                                                                                          reroute  100.64.0.3, 100.64.0.4
+</code></pre></div></div>
+<ul>
+  <li>Rules with <code class="language-plaintext highlighter-rouge">1004</code> priority are responsible for redirecting <code class="language-plaintext highlighter-rouge">pod -&gt; local host IP</code> traffic.</li>
+  <li>Rules with <code class="language-plaintext highlighter-rouge">102</code> priority are added by OVN-Kubernetes when EgressIP feature is enabled, they ensure that east-west traffic is not using egress IPs.</li>
+  <li>The rule with <code class="language-plaintext highlighter-rouge">100</code> priority is added for the pod matching <code class="language-plaintext highlighter-rouge">egressip-prod</code> EgressIP, and it redirects the traffic to one of the egress nodes (ECMP is used to balance the traffic between next hops).</li>
+</ul>
+
+<p>Once the redirected traffic reaches one of the egress nodes it gets SNATed in the gateway router:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovn-nbctl lr-nat-list GR_ovn-worker
+TYPE             GATEWAY_PORT          EXTERNAL_IP        EXTERNAL_PORT    LOGICAL_IP          EXTERNAL_MAC         LOGICAL_PORT
+...
+snat                                   172.18.0.33                         10.244.1.3
+ovn-nbctl lr-nat-list  GR_ovn-worker2
+TYPE             GATEWAY_PORT          EXTERNAL_IP        EXTERNAL_PORT    LOGICAL_IP          EXTERNAL_MAC         LOGICAL_PORT
+...
+snat                                   172.18.0.44                         10.244.1.3
+</code></pre></div></div>
+
+<p>Lets now imagine the Egress IP(s) mentioned previously, are not hosted by the OVN primary network and is hosted
+by a secondary host network which is assigned to a standard linux interface, a redirect to the egress-able node management port IP address:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Routing Policies
+  1004 inport <span class="o">==</span> <span class="s2">"rtos-ovn-control-plane"</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 172.18.0.4 /<span class="k">*</span> ovn-control-plane <span class="k">*</span>/                            reroute  10.244.0.2
+  1004 inport <span class="o">==</span> <span class="s2">"rtos-ovn-worker"</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 172.18.0.2 /<span class="k">*</span> ovn-worker <span class="k">*</span>/                                          reroute  10.244.1.2
+  1004 inport <span class="o">==</span> <span class="s2">"rtos-ovn-worker2"</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 172.18.0.3 /<span class="k">*</span> ovn-worker2 <span class="k">*</span>/                                        reroute  10.244.2.2
+
+   102 <span class="o">(</span>ip4.src <span class="o">==</span> <span class="nv">$a12749576804119081385</span> <span class="o">||</span> ip4.src <span class="o">==</span> <span class="nv">$a16335301576733828072</span><span class="o">)</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> <span class="nv">$a11079093880111560446</span>  allow    <span class="nv">pkt_mark</span><span class="o">=</span>1008
+   102 ip4.src <span class="o">==</span> 10.244.0.0/16 <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 10.244.0.0/16                                                           allow
+   102 ip4.src <span class="o">==</span> 10.244.0.0/16 <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> 100.64.0.0/16                                                           allow
+
+   100 ip4.src <span class="o">==</span> 10.244.1.3                                                                                          reroute  10.244.1.2, 10.244.2.2
+</code></pre></div></div>
+
+<p>IPTables will have the following chain in NAT table and also rules within that chain to source NAT to the correct IP address:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh-5.2# iptables-save 
+<span class="c"># Generated by iptables-save v1.8.7 on Tue Jul 25 13:09:39 2023</span>
+<span class="k">*</span>mangle
+:PREROUTING ACCEPT <span class="o">[</span>14087:9430205]
+:INPUT ACCEPT <span class="o">[</span>13923:9397241]
+:FORWARD ACCEPT <span class="o">[</span>0:0]
+:OUTPUT ACCEPT <span class="o">[</span>11270:1030982]
+...
+:KUBE-POSTROUTING - <span class="o">[</span>0:0]
+:OVN-KUBE-EGRESS-IP-Multi-NIC - <span class="o">[</span>0:0]
+:OVN-KUBE-EGRESS-SVC - <span class="o">[</span>0:0]
+...
+<span class="nt">-A</span> POSTROUTING <span class="nt">-j</span> OVN-KUBE-EGRESS-IP-MULTI-NIC
+<span class="nt">-A</span> POSTROUTING <span class="nt">-j</span> OVN-KUBE-EGRESS-SVC
+<span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> ovn-k8s-mp0 <span class="nt">-j</span> OVN-KUBE-SNAT-MGMTPORT
+<span class="nt">-A</span> POSTROUTING <span class="nt">-m</span> comment <span class="nt">--comment</span> <span class="s2">"kubernetes postrouting rules"</span> <span class="nt">-j</span> KUBE-POSTROUTING
+<span class="nt">-A</span> KUBE-MARK-DROP <span class="nt">-j</span> MARK <span class="nt">--set-xmark</span> 0x8000/0x8000
+<span class="nt">-A</span> KUBE-POSTROUTING <span class="nt">-m</span> comment <span class="nt">--comment</span> <span class="s2">"kubernetes service traffic requiring SNAT"</span> <span class="nt">-j</span> MASQUERADE <span class="nt">--random-fully</span>
+...
+<span class="nt">-A</span> OVN-KUBE-EGRESS-IP-MULTI-NIC <span class="nt">-s</span> 10.244.2.3/32 <span class="nt">-o</span> dummy <span class="nt">-j</span> SNAT <span class="nt">--to-source</span> 10.10.10.100
+...
+<span class="nt">-A</span> OVN-KUBE-EGRESS-SVC <span class="nt">-m</span> mark <span class="nt">--mark</span> 0x3f0 <span class="nt">-m</span> comment <span class="nt">--comment</span> DoNotSNAT <span class="nt">-j</span> RETURN
+<span class="nt">-A</span> OVN-KUBE-SNAT-MGMTPORT <span class="nt">-o</span> ovn-k8s-mp0 <span class="nt">-m</span> comment <span class="nt">--comment</span> <span class="s2">"OVN SNAT to Management Port"</span> <span class="nt">-j</span> SNAT <span class="nt">--to-source</span> 10.244.2.2
+COMMIT
+...
+</code></pre></div></div>
+
+<p>IPRoute2 rules will look like the following - note rule with priority <code class="language-plaintext highlighter-rouge">6000</code> and also the table <code class="language-plaintext highlighter-rouge">1111</code>:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh-5.2# ip rule
+0:	from all lookup <span class="nb">local
+</span>30:	from all fwmark 0x1745ec lookup 7
+6000:	from 10.244.2.3 lookup 1111
+32766:	from all lookup main
+32767:	from all lookup default
+</code></pre></div></div>
+
+<p>And the default route in the correct table <code class="language-plaintext highlighter-rouge">1111</code>:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh-5.2# ip route show table 1111
+default dev dummy
+</code></pre></div></div>
+
+<p>No NAT is required on the OVN primary network gateway router.
+OVN-Kubernetes (ovnkube-node) takes care of adding a rule to the rule table with src IP of the pod and routed towards a
+new routing table specifically created to route the traffic out the correct interface. IPTables rules are also altered and an entry
+is created within the chain <code class="language-plaintext highlighter-rouge">OVN-KUBE-EGRESS-IP-Multi-NIC</code> for each selected pod to allow SNAT to occur when
+egress-ing a particular interface. The routing table number <code class="language-plaintext highlighter-rouge">1111</code> is generated from the interface name.
+Routes within the main routing table who’s output interface share the same interface used for Egress IP are also cloned into the VRF 1111.</p>
+
+<h3 id="pod-to-node-ip-traffic">Pod to node IP traffic</h3>
+<p>When a cluster networked pod matched by an egress IP tries to connect to a non-local node IP it hits the following
+logical router policy in <code class="language-plaintext highlighter-rouge">ovn_cluster_router</code>:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># $&lt;all_eip_pod_ips&gt; - address-set of all pod IPs matched by any EgressIP</span>
+<span class="c"># $&lt;all_esvc_pod_ips&gt; - address-set of all pod IPs matched by any EgressService</span>
+<span class="c"># $&lt;all_node_ips&gt; - address-set of all node IPs in the cluster</span>
+102 <span class="o">(</span>ip4.src <span class="o">==</span> <span class="nv">$&lt;</span>all_eip_pod_ips&gt; <span class="o">||</span> ip4.src <span class="o">==</span> <span class="nv">$&lt;</span>all_esvc_pod_ips&gt;<span class="o">)</span> <span class="o">&amp;&amp;</span> ip4.dst <span class="o">==</span> <span class="nv">$&lt;</span>all_node_ips&gt;  allow    <span class="nv">pkt_mark</span><span class="o">=</span>1008
+</code></pre></div></div>
+<p>In addition to simply allowing the <code class="language-plaintext highlighter-rouge">pod -&gt; node IP</code> traffic so that EgressIP reroute policies 
+are not matched upon, it is also marked with the 1008 mark.<br />
+If a pod is hosted on an egressNode the traffic will first get SNATed to the egress IP, and then it will hit 
+following flow on breth0 that will SNAT the traffic to local node IP:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># output truncated, 0x3f0 == 1008</span>
+<span class="nv">priority</span><span class="o">=</span>105,pkt_mark<span class="o">=</span>0x3f0,ip,in_port<span class="o">=</span>2 <span class="nv">actions</span><span class="o">=</span>ct<span class="o">(</span>commit,zone<span class="o">=</span>64000,nat<span class="o">(</span><span class="nv">src</span><span class="o">=</span>&lt;NodeIP&gt;<span class="o">)</span>,exec<span class="o">(</span>load:0x1-&gt;NXM_NX_CT_MARK[]<span class="o">))</span>,output:1
+</code></pre></div></div>
+<p>This is required to make <code class="language-plaintext highlighter-rouge">pod -&gt; node IP</code> traffic behave the same regardless of where the pod is hosted.<br />
+Implementation details: https://github.com/ovn-org/ovn-kubernetes/commit/e2c981a42a28e6213d9daf3b4489c18dc2b84b19.</p>
+
+<p>For local gateway mode, in which an Egress IP is assigned to a non-primary interface, an IP rule is added to send packets
+to the main routing table at a priority higher than that of EgressIP IP rules, which are set to priority <code class="language-plaintext highlighter-rouge">6000</code>:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5999:	from all fwmark 0x3f0 lookup main
+</code></pre></div></div>
+<p>Note: <code class="language-plaintext highlighter-rouge">0x3f0</code> is <code class="language-plaintext highlighter-rouge">1008</code> in hexadecimal. Lower IP rule priority number indicates higher precedence versus higher IP rule priority number.</p>
+
+<p>This ensures all traffic to node IPs will not be selected by EgressIP IP rules.
+However, reply traffic will not have the mark <code class="language-plaintext highlighter-rouge">1008</code> and would be dropped by reverse path filtering, therefore we add
+an IPTable rule to the mangle table to save and restore the <code class="language-plaintext highlighter-rouge">1008</code> mark:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh-5.2# iptables <span class="nt">-t</span> mangle <span class="nt">-L</span>  PREROUTING
+Chain PREROUTING <span class="o">(</span>policy ACCEPT<span class="o">)</span>
+target     prot opt <span class="nb">source               </span>destination
+CONNMARK   all  <span class="nt">--</span>  anywhere             anywhere             mark match 0x3f0 CONNMARK save
+CONNMARK   all  <span class="nt">--</span>  anywhere             anywhere             mark match 0x0 CONNMARK restore
+</code></pre></div></div>
+
+<h3 id="dealing-with-non-snated-traffic">Dealing with non SNATed traffic</h3>
+<p>Egress IP is often configured on a node different from the one hosting the affected pods.<br />
+Due to the fact that ovn-controllers on different nodes apply the changes independently,
+there is a chance that some pod traffic will reach the egress node before it configures the SNAT rules.
+The following flows are added on breth0 to address this scenario:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Commit connections from local pods so they are not affected by the drop rule below, this is required for ICNIv2</span>
+<span class="nv">priority</span><span class="o">=</span>109,ip,in_port<span class="o">=</span>2,nw_src<span class="o">=</span>&lt;nodeSubnet&gt; <span class="nv">actions</span><span class="o">=</span>ct<span class="o">(</span>commit,zone<span class="o">=</span>64000,exec<span class="o">(</span>set_field:0x1-&gt;ct_mark<span class="o">))</span>,output:1
+
+<span class="c"># Drop non SNATed egress traffic coming from non-local pods</span>
+<span class="nv">priority</span><span class="o">=</span>104,ip,in_port<span class="o">=</span>2,nw_src<span class="o">=</span>&lt;clusterSubnet&gt; <span class="nv">actions</span><span class="o">=</span>drop
+
+<span class="c"># Commit connections coming from IPs not in cluster network</span>
+<span class="nv">priority</span><span class="o">=</span>100,ip,in_port<span class="o">=</span>2 <span class="nv">actions</span><span class="o">=</span>ct<span class="o">(</span>commit,zone<span class="o">=</span>64000,exec<span class="o">(</span>set_field:0x1-&gt;ct_mark<span class="o">))</span>,output:1
+</code></pre></div></div>
+
+<h2 id="special-considerations-for-egress-ips-hosted-by-standard-linux-interfaces">Special considerations for Egress IPs hosted by standard linux interfaces</h2>
+<p>If you wish to assign an Egress IP to a standard linux interface (non OVS type), then the following is required:</p>
+<ul>
+  <li>Link is up</li>
+  <li>IP address must have scope universe / global</li>
+  <li>Links and their addresses must not be removed during runtime after an egress IP is assigned to it. If you wish to remove the link, first
+remove the Egress IP and then remove the address / link.</li>
+  <li>IP forwarding must be enabled for the link</li>
+</ul>
+
+<h2 id="egress-nodes">Egress Nodes</h2>
+
+<p>In order to select which node(s) may be used as egress, the following label must be added to the <code class="language-plaintext highlighter-rouge">node</code> resource:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl label nodes &lt;node_name&gt; k8s.ovn.org/egress-assignable<span class="o">=</span><span class="s2">""</span>
+</code></pre></div></div>
+
+<h2 id="egress-ip-reachability">Egress IP reachability</h2>
+
+<p>Once a node has been labeled with <code class="language-plaintext highlighter-rouge">k8s.ovn.org/egress-assignable</code>, the EgressIP operator in the leader ovnkube-master pod will periodically check if that node is
+usable. EgressIPs assigned to a node that is no longer reachable will get revalidated and moved to another useable node.</p>
+
+<p>Egress nodes normally have multiple IP addresses. For sake of Egress IP reachability, <a href="https://github.com/ovn-org/ovn-kubernetes/pull/2495">the management</a> (aka internal SDN) addresses of the node are the ones used. In deployments of ovn-kubernetes this is known to be the <code class="language-plaintext highlighter-rouge">ovn-k8s-mp0</code> interface of a node.</p>
+
+<p>Even though the periodic checking of egress nodes is hard coded to trigger <a href="https://github.com/ovn-org/ovn-kubernetes/blob/82f167a3920c8c3cd0687ceb3e7a5ba64372be69/go-controller/pkg/ovn/egressip.go#L2206">every 5 seconds</a>, there are attributes that the user can set:</p>
+
+<ul>
+  <li>egressIPTotalTimeout</li>
+  <li>gRPC vs. DISCARD port</li>
+</ul>
+
+<h3 id="egressiptotaltimeout">egressIPTotalTimeout</h3>
+
+<p>This attribute specifies the maximum amount of time, in seconds, that the egressIP operator will wait until it declares the node unreachable. The default value is <a href="https://github.com/ovn-org/ovn-kubernetes/blob/82f167a3920c8c3cd0687ceb3e7a5ba64372be69/go-controller/pkg/config/config.go#L866">1 second</a>.</p>
+
+<p>This value can be set in the following ways:</p>
+<ul>
+  <li>ovnkube binary flag: <code class="language-plaintext highlighter-rouge">--egressip-reachability-total-timeout=&lt;TIMEOUT&gt;</code></li>
+  <li>inside config specified by <code class="language-plaintext highlighter-rouge">--config-file</code> flag:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ovnkubernetesfeature]
+egressip-reachability-total-timeout=123
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>Note:</strong> Using value <code class="language-plaintext highlighter-rouge">0</code> will skip reachability. Use this to assume that egress nodes are available.</p>
+
+<h3 id="grpc-vs-discard-port">gRPC vs. DISCARD port</h3>
+
+<p>Up until recently, the only method available for determining if an egress node was reachable relied on the <code class="language-plaintext highlighter-rouge">TCP port unreachable</code> icmp response from the probed node. The TCP port 9 (aka DISCARD) is the port used for that.</p>
+
+<p><a href="https://github.com/ovn-org/ovn-kubernetes/pull/3100">Later implementation</a> of ovn-kubernetes is capable of leveraging secure gRPC sessions in order to probe nodes. That requires the <code class="language-plaintext highlighter-rouge">ovnkube node</code> pods to be listening on a pre-specified TCP port, in addition to configuring the <code class="language-plaintext highlighter-rouge">ovnkube master</code> pod(s).</p>
+
+<p>This value can be set in the following ways:</p>
+<ul>
+  <li>ovnkube binary flag: <code class="language-plaintext highlighter-rouge">--egressip-node-healthcheck-port=&lt;TCP_PORT&gt;</code></li>
+  <li>inside config specified by <code class="language-plaintext highlighter-rouge">--config-file</code> flag:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ovnkubernetesfeature]
+egressip-node-healthcheck-port=9107
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>Note:</strong> If not specifying a value, or using <code class="language-plaintext highlighter-rouge">0</code> as the <code class="language-plaintext highlighter-rouge">egressip-node-healthcheck-port</code> will make Egress IP reachability probe the egress nodes using the DISCARD port method. Unlike egressip-reachability-total-timeout, it is important that both node and master pods of ovnkube get configured with the same value!</p>
+
+<h4 id="additional-details-on-the-implementation-of-the-grpc-probing">Additional details on the implementation of the gRPC probing:</h4>
+
+<ul>
+  <li>If available, the session uses the <a href="https://github.com/ovn-org/ovn-kubernetes/blob/82f167a3920c8c3cd0687ceb3e7a5ba64372be69/go-controller/pkg/ovn/healthcheck/egressip_healthcheck.go#L78">same TLS certs</a> used by ovnkube to connect to the northbound OVSDB server. Conversely, an insecure gRPC session is used when no certs are specified.</li>
+  <li>The <a href="https://github.com/ovn-org/ovn-kubernetes/blob/82f167a3920c8c3cd0687ceb3e7a5ba64372be69/go-controller/pkg/ovn/healthcheck/health.proto#L6">message used for probing</a> is the <a href="https://github.com/grpc/grpc/blob/master/src/proto/grpc/health/v1/health.proto">standard service health</a> specified in gRPC.</li>
+  <li><a href="https://github.com/ovn-org/ovn-kubernetes/blob/82f167a3920c8c3cd0687ceb3e7a5ba64372be69/go-controller/pkg/ovn/healthcheck/egressip_healthcheck.go#L193-L195">Special care was taken into consideration</a> to handle cases when the gRPC session bounced for normal reasons. EgressIP implementation will not declare a node unreachable under these circumstances.</li>
+</ul>
+
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/ovn-org/ovn-kubernetes">ovn-kubernetes</a> is maintained by <a href="https://github.com/ovn-org">ovn-org</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  </body>
+</html>

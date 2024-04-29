@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/style.css?v=9e6c62f21184b23c5bdbecd995abe5f149115b0f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ACLs | OVN-Kubernetes Homepage</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="ACLs" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="test" />
+<meta property="og:description" content="test" />
+<link rel="canonical" href="http://www.ovn.org/ovn-kubernetes/acls.html" />
+<meta property="og:url" content="http://www.ovn.org/ovn-kubernetes/acls.html" />
+<meta property="og:site_name" content="OVN-Kubernetes Homepage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ACLs" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"test","headline":"ACLs","url":"http://www.ovn.org/ovn-kubernetes/acls.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/ovn-kubernetes/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://www.ovn.org/ovn-kubernetes/">
+          <h1>OVN-Kubernetes Homepage</h1>
+        </a>
+        <h2>test</h2>
+        
+          <a href="https://github.com/ovn-org/ovn-kubernetes" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1 id="acls">ACLs</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>ovn-k uses ACLs to implement multiple features, this doc is intended to list all of them, explaining their IDs, 
+priorities, and dependencies.</p>
+
+<p>OVN has 3 independent sets of ACLs, based on direction and pipeline stage, which are applied in the following order:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">direction="from-lport"</code></li>
+  <li><code class="language-plaintext highlighter-rouge">direction="from-lport", options={"apply-after-lb": "true"}</code></li>
+  <li><code class="language-plaintext highlighter-rouge">direction="to-lport"</code></li>
+</ol>
+
+<p>The priorities between these stages are independent!</p>
+
+<p>OVN will apply the <code class="language-plaintext highlighter-rouge">from-lport</code> ACLs in two stages. ACLs without <code class="language-plaintext highlighter-rouge">apply-after-lb</code> set, will be applied before the 
+load balancer stage, and ACLs with this option set will be applied after the load balancer stage. <code class="language-plaintext highlighter-rouge">to-lport</code> are always 
+applied after the load balancer stage.</p>
+
+<p>For now, ovn-k doesn’t use <code class="language-plaintext highlighter-rouge">direction="from-lport"</code> ACLs, since most of the time we need to apply ACLs after loadbalancing.
+Here is the current order in which ACLs for different objects are applied (check the rest of the doc for details)</p>
+
+<h3 id="directionfrom-lport-optionsapply-after-lb-true"><code class="language-plaintext highlighter-rouge">direction="from-lport", options={"apply-after-lb": "true"}</code></h3>
+
+<ol>
+  <li>egress multicast, allow priority = <code class="language-plaintext highlighter-rouge">1012</code>,  deny priority = <code class="language-plaintext highlighter-rouge">1011</code></li>
+  <li>egress network policy, default deny priority = <code class="language-plaintext highlighter-rouge">1000</code>, allow priority = <code class="language-plaintext highlighter-rouge">1001</code></li>
+</ol>
+
+<h3 id="directionto-lport"><code class="language-plaintext highlighter-rouge">direction="to-lport"</code></h3>
+
+<ol>
+  <li>egress firewall, priorities = <code class="language-plaintext highlighter-rouge">2000</code>-<code class="language-plaintext highlighter-rouge">10000</code> (egress firewall is applied on this stage to be independently applied
+after egress network policy)</li>
+  <li>ingress multicast, allow priority = <code class="language-plaintext highlighter-rouge">1012</code>,  deny priority = <code class="language-plaintext highlighter-rouge">1011</code></li>
+  <li>ingress network policy, default deny priority = <code class="language-plaintext highlighter-rouge">1000</code>, allow priority = <code class="language-plaintext highlighter-rouge">1001</code></li>
+</ol>
+
+<h2 id="egress-firewall">Egress Firewall</h2>
+
+<p>Egress Firewall creates 1 ACL for every specified rule, with <code class="language-plaintext highlighter-rouge">ExternalIDs["k8s.ovn.org/owner-type"]=EgressFirewall</code>
+e.g. given object:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kind</span><span class="pi">:</span> <span class="s">EgressFirewall</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">k8s.ovn.org/v1</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">default</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">default</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">egress</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">Allow</span>
+      <span class="na">to</span><span class="pi">:</span>
+        <span class="na">dnsName</span><span class="pi">:</span> <span class="s">www.openvswitch.org</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">Allow</span>
+      <span class="na">to</span><span class="pi">:</span>
+        <span class="na">cidrSelector</span><span class="pi">:</span> <span class="s">1.2.3.0/24</span>
+      <span class="na">ports</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">protocol</span><span class="pi">:</span> <span class="s">UDP</span>
+          <span class="na">port</span><span class="pi">:</span> <span class="m">55</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">Deny</span>
+      <span class="na">to</span><span class="pi">:</span>
+        <span class="na">cidrSelector</span><span class="pi">:</span> <span class="s">0.0.0.0/0</span>
+</code></pre></div></div>
+
+<p>will create 3 ACLs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action              : allow
+direction           : to-lport
+external_ids        : {
+    "k8s.ovn.org/id"="default-network-controller:EgressFirewall:default:10000", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=EgressFirewall, 
+    rule-idx="0"
+}
+label               : 0
+log                 : false
+match               : "(ip4.dst == $a5272457940446250407) &amp;&amp; ip4.src == $a4322231855293774466"
+meter               : acl-logging
+name                : "EF:default:10000"
+options             : {}
+priority            : 10000
+severity            : []
+
+action              : allow
+direction           : to-lport
+external_ids        : {
+    "k8s.ovn.org/id"="default-network-controller:EgressFirewall:default:9999", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=EgressFirewall, 
+    rule-idx="1"
+}
+label               : 0
+log                 : false
+match               : "(ip4.dst == 1.2.3.0/24) &amp;&amp; ip4.src == $a4322231855293774466 &amp;&amp; ((udp &amp;&amp; ( udp.dst == 55 )))"
+meter               : acl-logging
+name                : "EF:default:9999"
+options             : {}
+priority            : 9999
+severity            : []
+
+action              : drop
+direction           : to-lport
+external_ids        : {
+    "k8s.ovn.org/id"="default-network-controller:EgressFirewall:default:9998", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=EgressFirewall, 
+    rule-idx="2"
+}
+label               : 0
+log                 : false
+match               : "(ip4.dst == 0.0.0.0/0 &amp;&amp; ip4.dst != 10.244.0.0/16) &amp;&amp; ip4.src == $a4322231855293774466"
+meter               : acl-logging
+name                : "EF:default:9998"
+options             : {}
+priority            : 9998
+severity            : []
+</code></pre></div></div>
+
+<p>Egress firewall should be applied after egress network policy independently, to make sure that connection that are
+allowed by network policy, but denied by egress firewall will be dropped.</p>
+
+<h2 id="multicast">Multicast</h2>
+
+<p>For more details about Multicast in ovn see <a href="/ovn-kubernetes/multicast.html">Multicast docs</a>
+Multicast creates 2 types of ACLs: global default ACLs with <code class="language-plaintext highlighter-rouge">ExternalIDs["k8s.ovn.org/owner-type"]=MulticastCluster</code>
+and per-namespace ACLs with <code class="language-plaintext highlighter-rouge">ExternalIDs["owner_object_type"]="MulticastNS"</code>.</p>
+
+<p>When multicast is enabled for ovn-k, you will find 4 default global ACLs:</p>
+<ul>
+  <li>2 ACLs (ingress/egress) dropping all multicast traffic - on all switches (via clusterPortGroup)</li>
+  <li>2 ACLs (ingress/egress) allowing all multicast traffic - on clusterRouterPortGroup
+(that allows multicast between pods that reside on different nodes, see
+https://github.com/ovn-org/ovn-kubernetes/commit/3864f2b6463392ae2d80c18d06bd46ec44e639f9 for more details)</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action              : allow
+direction           : from-lport
+external_ids        : {
+  direction=Egress, 
+  "k8s.ovn.org/id"="default-network-controller:MulticastCluster:AllowInterNode:Ingress", 
+  "k8s.ovn.org/owner-controller"=default-network-controller, 
+  "k8s.ovn.org/owner-type"=MulticastCluster, 
+  type=AllowInterNode
+}
+label               : 0
+log                 : false
+match               : "inport == @clusterRtrPortGroup &amp;&amp; (ip4.mcast || mldv1 || mldv2 || (ip6.dst[120..127] == 0xff &amp;&amp; ip6.dst[116] == 1))"
+meter               : acl-logging
+name                : []
+options             : {apply-after-lb="true"}
+priority            : 1012
+severity            : []
+
+action              : allow
+direction           : to-lport
+external_ids        : {
+  direction=Ingress, 
+  "k8s.ovn.org/id"="default-network-controller:MulticastCluster:AllowInterNode:Ingress", 
+  "k8s.ovn.org/owner-controller"=default-network-controller, 
+  "k8s.ovn.org/owner-type"=MulticastCluster, 
+  type=AllowInterNode
+}
+label               : 0
+log                 : false
+match               : "outport == @clusterRtrPortGroup &amp;&amp; (ip4.mcast || mldv1 || mldv2 || (ip6.dst[120..127] == 0xff &amp;&amp; ip6.dst[116] == 1))"
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1012
+severity            : []
+
+action              : drop
+direction           : from-lport
+external_ids        : {
+  direction=Egress, 
+  "k8s.ovn.org/id"="default-network-controller:MulticastCluster:DefaultDeny:Egress", 
+  "k8s.ovn.org/owner-controller"=default-network-controller, 
+  "k8s.ovn.org/owner-type"=MulticastCluster, 
+  type=DefaultDeny
+}
+label               : 0
+log                 : false
+match               : "(ip4.mcast || mldv1 || mldv2 || (ip6.dst[120..127] == 0xff &amp;&amp; ip6.dst[116] == 1))"
+meter               : acl-logging
+name                : []
+options             : {apply-after-lb="true"}
+priority            : 1011
+severity            : []
+
+action              : drop
+direction           : to-lport
+external_ids        : {
+  direction=Ingress, 
+  "k8s.ovn.org/id"="default-network-controller:MulticastCluster:DefaultDeny:Egress", 
+  "k8s.ovn.org/owner-controller"=default-network-controller, 
+  "k8s.ovn.org/owner-type"=MulticastCluster, 
+  type=DefaultDeny
+}
+label               : 0
+log                 : false
+match               : "(ip4.mcast || mldv1 || mldv2 || (ip6.dst[120..127] == 0xff &amp;&amp; ip6.dst[116] == 1))"
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1011
+severity            : []
+
+</code></pre></div></div>
+
+<p>For every namespace with enabled multicast, there are 2 more ACLs, e.g. for default namespace:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action              : allow
+direction           : to-lport
+external_ids        : {
+    "k8s.ovn.org/id"="default-network-controller:MulticastNS:default:Allow_Ingress", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=MulticastNS, 
+    direction=Ingress
+}
+label               : 0
+log                 : false
+match               : "outport == @a16982411286042166782 &amp;&amp; (igmp || (ip4.src == $a4322231855293774466 &amp;&amp; ip4.mcast))"
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1012
+severity            : []
+
+action              : allow
+direction           : from-lport
+external_ids        : {
+    "k8s.ovn.org/id"="default-network-controller:MulticastNS:default:Allow_Egress", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=MulticastNS, 
+    tdirection=Egress
+}
+label               : 0
+log                 : false
+match               : "inport == @a16982411286042166782 &amp;&amp; ip4.mcast"
+meter               : acl-logging
+name                : []
+options             : {apply-after-lb="true"}
+priority            : 1012
+severity            : []
+</code></pre></div></div>
+
+<h2 id="network-policy">Network Policy</h2>
+
+<p>Every node has 1 ACL to allow traffic from that node’s management port IP with <code class="language-plaintext highlighter-rouge">ExternalIDs["k8s.ovn.org/owner-type"]=NetpolNode</code>, like</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action              : allow-related
+direction           : to-lport
+external_ids        : {
+    ip="10.244.2.2", 
+    "k8s.ovn.org/id"="default-network-controller:NetpolNode:ovn-worker:10.244.2.2", 
+    "k8s.ovn.org/name"=ovn-worker, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetpolNode
+}
+label               : 0
+log                 : false
+match               : "ip4.src==10.244.2.2"
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1001
+severity            : []
+
+</code></pre></div></div>
+
+<p>There are also 2 Default Allow ACLs for the hairpinned traffic (pod-&gt;svc-&gt;same pod) with <code class="language-plaintext highlighter-rouge">ExternalIDs["k8s.ovn.org/owner-type"]=NetpolDefault</code>,
+which match on the special V4OVNServiceHairpinMasqueradeIP and V6OVNServiceHairpinMasqueradeIP addresses.
+These IPs are assigned as src IP to the hairpinned packets.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action              : allow-related
+direction           : to-lport
+external_ids        : {
+    direction=Ingress, 
+    "k8s.ovn.org/id"="default-network-controller:NetpolDefault:allow-hairpinning:Ingress", 
+    "k8s.ovn.org/name"=allow-hairpinning, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetpolDefault
+}
+label               : 0
+log                 : false
+match               : "ip4.src == 169.254.169.5"
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1001
+severity            : []
+
+action              : allow-related
+direction           : from-lport
+external_ids        : {
+    direction=Egress, 
+    "k8s.ovn.org/id"="default-network-controller:NetpolDefault:allow-hairpinning:Egress", 
+    "k8s.ovn.org/name"=allow-hairpinning, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetpolDefault
+}
+label               : 0
+log                 : false
+match               : "ip4.src == 169.254.169.5"
+meter               : acl-logging
+name                : []
+options             : {apply-after-lb="true"}
+priority            : 1001
+severity            : []
+</code></pre></div></div>
+
+<p>Network Policy creates default deny ACLs for every namespace that has at least 1 network policy with 
+<code class="language-plaintext highlighter-rouge">ExternalIDs["k8s.ovn.org/owner-type"]=NetpolNamespace</code>.
+There are 2 ACL types (<code class="language-plaintext highlighter-rouge">defaultDeny</code> and <code class="language-plaintext highlighter-rouge">arpAllow</code>) for every policy direction (Ingress/Egress) e.g. for <code class="language-plaintext highlighter-rouge">default</code> namespace,</p>
+
+<p>Egress:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action              : allow
+direction           : from-lport
+external_ids        : {
+    direction=Egress, 
+    "k8s.ovn.org/id"="default-network-controller:NetpolNamespace:default:Egress:arpAllow", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetpolNamespace, 
+    type=arpAllow
+}
+label               : 0
+log                 : false
+match               : "inport == @a16982411286042166782_egressDefaultDeny &amp;&amp; (arp || nd)"
+meter               : acl-logging
+name                : "NP:default:Egress"
+options             : {apply-after-lb="true"}
+priority            : 1001
+severity            : []
+
+action              : drop
+direction           : from-lport
+external_ids        : {
+    direction=Egress, 
+    "k8s.ovn.org/id"="default-network-controller:NetpolNamespace:default:Egress:defaultDeny", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetpolNamespace, 
+    type=defaultDeny
+}
+label               : 0
+log                 : false
+match               : "inport == @a16982411286042166782_egressDefaultDeny"
+meter               : acl-logging
+name                : "NP:default:Egress"
+options             : {apply-after-lb="true"}
+priority            : 1000
+severity            : []
+</code></pre></div></div>
+
+<p>Ingress:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_uuid               : a6ffa9d4-e811-4aaf-9505-87cc0b2f442a
+action              : allow
+direction           : to-lport
+external_ids        : {
+    direction=Ingress, 
+    "k8s.ovn.org/id"="default-network-controller:NetpolNamespace:default:Ingress:arpAllow", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetpolNamespace, 
+    type=arpAllow
+}
+label               : 0
+log                 : false
+match               : "outport == @a16982411286042166782_ingressDefaultDeny &amp;&amp; (arp || nd)"
+meter               : acl-logging
+name                : "NP:default:Ingress"
+options             : {}
+priority            : 1001
+severity            : []
+
+action              : drop
+direction           : to-lport
+external_ids        : {
+    direction=Ingress, 
+    "k8s.ovn.org/id"="default-network-controller:NetpolNamespace:default:Ingress:defaultDeny", 
+    "k8s.ovn.org/name"=default, 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetpolNamespace, 
+    type=defaultDeny
+}
+label               : 0
+log                 : false
+match               : "outport == @a16982411286042166782_ingressDefaultDeny"
+meter               : acl-logging
+name                : "NP:default:Ingress"
+options             : {}
+priority            : 1000
+severity            : []
+
+</code></pre></div></div>
+
+<p>There are also ACLs owned by every network policy object with <code class="language-plaintext highlighter-rouge">ExternalIDs["k8s.ovn.org/owner-type"]=NetworkPolicy</code>, e.g.
+for the following object</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+ name: test-policy
+ namespace: default
+spec:
+ podSelector: {}
+ policyTypes:
+ - Ingress
+ - Egress
+ ingress:
+ - from:
+   - namespaceSelector:
+       matchLabels:
+         kubernetes.io/metadata.name: default
+     podSelector:
+       matchLabels:
+         app: demo
+ egress:
+  - to:
+    - ipBlock:
+        cidr: 10.244.1.5/32
+</code></pre></div></div>
+
+<p>2 ACLs will be created:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>action              : allow-related
+direction           : from-lport
+external_ids        : {
+    direction=egress, 
+    gress-index="0", 
+    ip-block-index="0", 
+    "k8s.ovn.org/id"="default-network-controller:NetworkPolicy:default:test-policy:egress:0:-1:0", 
+    "k8s.ovn.org/name"="default:test-policy", 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetworkPolicy, 
+    port-policy-index="-1"
+}
+label               : 0
+log                 : false
+match               : "ip4.dst == 10.244.1.5/32 &amp;&amp; inport == @a2653181086423119552"
+meter               : acl-logging
+name                : "NP:default:test-policy:egress:0:-1:0"
+options             : {apply-after-lb="true"}
+priority            : 1001
+severity            : []
+
+action              : allow-related
+direction           : to-lport
+external_ids        : {
+    direction=ingress, 
+    gress-index="0", 
+    ip-block-index="-1", 
+    "k8s.ovn.org/id"="default-network-controller:NetworkPolicy:default:test-policy:ingress:0:-1:-1", 
+    "k8s.ovn.org/name"="default:test-policy", 
+    "k8s.ovn.org/owner-controller"=default-network-controller, 
+    "k8s.ovn.org/owner-type"=NetworkPolicy, 
+    port-policy-index="-1"
+}
+label               : 0
+log                 : false
+match               : "(ip4.src == {$a3733136965153973077} || (ip4.src == 169.254.169.5 &amp;&amp; ip4.dst == {$a3733136965153973077})) &amp;&amp; outport == @a2653181086423119552"
+meter               : acl-logging
+name                : "NP:default:test-policy:ingress:0:-1:-1"
+options             : {}
+priority            : 1001
+severity            : []
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">"k8s.ovn.org/name"</code> is the <code class="language-plaintext highlighter-rouge">&lt;namespace&gt;:&lt;name&gt;</code> of network policy object, <code class="language-plaintext highlighter-rouge">gress-index</code> is the index of gress policy in
+the <code class="language-plaintext highlighter-rouge">NetworkPolicy.Spec.[In/E]gress</code>, check <code class="language-plaintext highlighter-rouge">gress_policy.go:getNetpolACLDbIDs</code> for more details on the rest of the fields.</p>
+
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/ovn-org/ovn-kubernetes">ovn-kubernetes</a> is maintained by <a href="https://github.com/ovn-org">ovn-org</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  </body>
+</html>

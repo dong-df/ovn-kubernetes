@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/style.css?v=9e6c62f21184b23c5bdbecd995abe5f149115b0f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Initial setup issues. | OVN-Kubernetes Homepage</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Initial setup issues." />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="test" />
+<meta property="og:description" content="test" />
+<link rel="canonical" href="http://www.ovn.org/ovn-kubernetes/debugging.html" />
+<meta property="og:url" content="http://www.ovn.org/ovn-kubernetes/debugging.html" />
+<meta property="og:site_name" content="OVN-Kubernetes Homepage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Initial setup issues." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"test","headline":"Initial setup issues.","url":"http://www.ovn.org/ovn-kubernetes/debugging.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/ovn-kubernetes/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://www.ovn.org/ovn-kubernetes/">
+          <h1>OVN-Kubernetes Homepage</h1>
+        </a>
+        <h2>test</h2>
+        
+          <a href="https://github.com/ovn-org/ovn-kubernetes" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2 id="initial-setup-issues">Initial setup issues.</h2>
+
+<h3 id="each-host-should-have-unique-system-ids">Each host should have unique system-ids.</h3>
+
+<p>In a OVN cluster, each host should have a unique system-id.  This value
+is set in external-ids:system-id of the Open_vSwitch table of each host’s
+Open_vSwitch database.  You can fetch its value with:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovs-vsctl get Open_vSwitch . external-ids:system-id
+</code></pre></div></div>
+
+<p>This is automatically set by OVS startup scripts (that come with packages).
+But if you installed OVS from source, and don’t use a startup script,
+this will be empty.  If you clone your VM, then you may endup with
+same system-id for all your VMs - which is a problem.</p>
+
+<h3 id="all-nodes-should-register-with-ovn-sb-database">All nodes should register with OVN SB database.</h3>
+
+<p>On the master, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ovn-sbctl list chassis
+</code></pre></div></div>
+
+<p>You should see as many records as the number of nodes in your cluster.  The
+“name” column in each record represents the system-id of each host and they
+should all be unique.</p>
+
+<h2 id="hosts-should-have-unique-node-names">Hosts should have unique node names.</h2>
+
+<p>When you run ‘ovnkube -init-node’, ‘ovnkube -init-master’,
+‘ovnkube -init-network-control-manager’ or ‘ovnkube -init-cluster-manager’
+commands, it will ask for node names.  This should all be unique.
+This should also be the same as used by “kubelet” on each node.
+So the names you see when you run the below command should be the same
+ones that you supply to ovnkube:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get nodes
+</code></pre></div></div>
+
+<h3 id="check-the-presence-of-geneve-or-stt-kernel-module">Check the presence of “geneve” or “stt” kernel module.</h3>
+
+<p>If you cannot ping between pods in 2 nodes, make sure to check whether
+you have the OVS kernel modules correctly installed by running:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsmod | grep openvswitch
+lsmod | grep geneve  # Or "stt" if your encap type was chosen to be "stt".
+</code></pre></div></div>
+
+<p>If you do not see the kernel module, modprobe them</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>modprobe openvswitch
+modprobe vport-geneve  # or vport-stt for "stt".
+</code></pre></div></div>
+
+<h3 id="sanity-check-cross-host-ping">Sanity check cross host ping.</h3>
+
+<p>Since on each host, a OVS internal device named “k8s-$NODENAME” is created
+with the second IP address in the subnet assigned for that node, you should be
+able to check cross host connectivity by pinging these internal devices across
+hosts.</p>
+
+<h3 id="firewall-blocking-overlay-networks">Firewall blocking overlay networks</h3>
+
+<p>If your host has a firewall blocking incoming connections as a default policy,
+you should open up ports to allow overlay networks.  If you use “geneve” as the
+encapsulation type, you should open up UDP port 6081.  If you use “stt” as the
+encapsulation type, you should open up TCP port 7471.</p>
+
+<p>You can use the following command to achieve it via iptables.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># To open up Geneve port.
+/usr/share/openvswitch/scripts/ovs-ctl --protocol=udp \
+        --dport=6081 enable-protocol
+
+# To open up STT port.
+/usr/share/openvswitch/scripts/ovs-ctl --protocol=tcp \
+        --dport=7471 enable-protocol
+</code></pre></div></div>
+
+<h3 id="check-ovn-northds-log-file">Check ovn-northd’s log file.</h3>
+
+<p>On the master, look at /var/log/openvswitch/ovn-northd.log to see
+for any errors with the setup of the OVN central node.</p>
+
+<h2 id="runtime-issues">Runtime issues</h2>
+
+<h3 id="check-the-watchers-log-file">Check the watcher’s log file.</h3>
+
+<p>On the master, check whether ovnkube is running by:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ps -ef | grep ovnkube
+</code></pre></div></div>
+
+<p>Check the watcher’s log file at “/var/log/ovn-kubernetes/ovnkube.log”
+to see whether it is creating logical ports whenever a pod is created and
+for any obvious errors.</p>
+
+<h3 id="check-the-ovn-cni-log-file">Check the OVN CNI log file.</h3>
+
+<p>When you create a pod and it gets scheduled on a particular host, the
+OVN CNI plugin on that host, tries to access the pod’s information from
+the K8s api server.  Specifically, it tries to get the IP address and
+mac address for that pod.  This information is logged in the OVN CNI log
+file on each node if you have specified a log file via
+“/etc/openvswitch/ovn_k8s.conf”. You can read how to provide a logfile
+by reading ‘man ovn_k8s.conf.5’.</p>
+
+<h3 id="check-the-kubelets-log-file">Check the kubelet’s log file.</h3>
+
+<p>If there were any issues with downloading upstream CNI plugins, then
+kubelet will complain about them in its log file.</p>
+
+<h3 id="check-ovn-controllers-log-file">Check ovn-controller’s log file.</h3>
+
+<p>If you suspect issues on only one of the host, look at the log file of
+ovn-controller at /var/log/openvswitch/ovn-controller.log to see any
+obvious error messages.</p>
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/ovn-org/ovn-kubernetes">ovn-kubernetes</a> is maintained by <a href="https://github.com/ovn-org">ovn-org</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  </body>
+</html>

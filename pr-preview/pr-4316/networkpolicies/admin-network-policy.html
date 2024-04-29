@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/style.css?v=9e6c62f21184b23c5bdbecd995abe5f149115b0f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/ovn-kubernetes/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AdminNetworkPolicy | OVN-Kubernetes Homepage</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="AdminNetworkPolicy" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="test" />
+<meta property="og:description" content="test" />
+<link rel="canonical" href="http://www.ovn.org/ovn-kubernetes/networkpolicies/admin-network-policy.html" />
+<meta property="og:url" content="http://www.ovn.org/ovn-kubernetes/networkpolicies/admin-network-policy.html" />
+<meta property="og:site_name" content="OVN-Kubernetes Homepage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AdminNetworkPolicy" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"test","headline":"AdminNetworkPolicy","url":"http://www.ovn.org/ovn-kubernetes/networkpolicies/admin-network-policy.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/ovn-kubernetes/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://www.ovn.org/ovn-kubernetes/">
+          <h1>OVN-Kubernetes Homepage</h1>
+        </a>
+        <h2>test</h2>
+        
+          <a href="https://github.com/ovn-org/ovn-kubernetes" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1 id="adminnetworkpolicy">AdminNetworkPolicy</h1>
+
+<p>Kubernetes AdminNetworkPolicy documentation: https://network-policy-api.sigs.k8s.io/</p>
+
+<p>Kubernetes AdminNetworkPolicy API reference: https://github.com/kubernetes-sigs/network-policy-api/blob/429a9e6ae89d411f89d5a16aba38a5d920c969ee/apis/v1alpha1/adminnetworkpolicy_types.go</p>
+
+<p>NOTE: This documentation focuses on OVNK’s implementation of ANP and is more for developers than for users.</p>
+
+<p>NetworkPolicy API was designed mainly for namespace owners or application developers. They are thus namespace scoped. NetworkPolicy API is not suitable for administrators/network-administrators/security-operators of the cluster because of two main reasons:</p>
+
+<ul>
+  <li>They are not cluster-scoped and hence its hard to define a network of policies that spawns across namespaces</li>
+  <li>They cannot be created before the namespace is created (kapi server expects the namespace to be created first); thus they cannot satisfy the requirements where admins may want policies in the cluster to be in place before the workloads are even created.</li>
+  <li>The design of NetworkPolicy API is implicit which means the deny is already set in place when we create a policy and then we are expected to do an allowList of rules in the policy. Network administrators prefer to have the power of defining what exactly to deny and allow instead of this implicit model.</li>
+</ul>
+
+<p>Sample API:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: policy.networking.k8s.io/v1alpha1
+kind: AdminNetworkPolicy
+metadata:
+  name: pass-example
+spec:
+  priority: 10
+  subject:
+    namespaces:
+      matchLabels:
+          conformance-house: gryffindor
+  ingress:
+  - name: "deny-all-ingress-from-slytherin"
+    action: "Deny"
+    from:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+  egress:
+  - name: "deny-all-egress-to-slytherin"
+    action: "Deny"
+    to:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+</code></pre></div></div>
+
+<p><strong>OVN-Implementation:</strong></p>
+
+<ul>
+  <li>Each AdminNetworkPolicy CRD will have a <code class="language-plaintext highlighter-rouge">.spec.priority</code> field. The lower the number the higher the precedence. Thus 0 is the highest priority and 1000 (the largest number supported by upstream sig-network-policy-api) is the lowest priority. However the number of admin policies in a cluster are usually expected to be of a maximum of say 30-50 and not more than that based on use cases for which this API was defined for. OVNK plugin will support 100 policies max in a cluster. If anyone creates more than 100, it will not work properly. Thus supported priority values in OVNK are from 0 to 99.</li>
+  <li>Each AdminNetworkPolicy CRD can have upto 100 ingress rules and 100 egress rules, thus 200 rules in total. The ordering of each rule is important. If the rule is at the top of the list then it has the highest precedence and if the rule is at the bottom it has the lowest prededence. Each rule translates to one ACL.</li>
+  <li>Since we can have upto 100 policies and each one can have upto 100 gress rules (100*100), we have blocked out the range: 30,000 - 20,000 priority range for the OVN nbdb.ACL table in the <code class="language-plaintext highlighter-rouge">Tier1</code> block for ANP’s implementation.</li>
+  <li>Each AdminNetworkPolicy CRD will have a subject on which the policy is applied on - this is translated to one PortGroup on which the ACLs of each rules are attached on.</li>
+  <li>Each gress rule can have upto 100 peers. Each rule will also create an nbdb.AddressSet which will contain the IPs of all the pods that are selected by the peer selector across all the peers of that given rule.</li>
+</ul>
+
+<p>The PortGroup for the above AdminNetworkPolicy is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_uuid               : a10e3675-5260-4e28-9462-b705b9dac862
+acls                : [120082fa-5a70-4c72-9211-529766078278, 2e0f811f-e0db-41ad-b12b-4a0cf1c621ae]
+external_ids        : {AdminNetworkPolicy=pass-example}
+name                : a3052488126344707991
+ports               : [a22a4c3a-bb65-4b22-8bc1-13e1e8899a7b, c7e4ffe3-73df-4db5-a3bc-a9649394d549]
+</code></pre></div></div>
+
+<p>The ACLs for the above AdminNetworkPolicy are:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_uuid               : 2e0f811f-e0db-41ad-b12b-4a0cf1c621ae
+action              : drop
+direction           : to-lport
+external_ids        : {direction=ANPIngress, "k8s.ovn.org/id"="admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPIngress:29000", "k8s.ovn.org/name"=pass-example, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=AdminNetworkPolicy, priority="29000"}
+label               : 0
+log                 : false
+match               : "((ip4.src == $a10282262890368313763)) &amp;&amp; (outport == @a3052488126344707991)"
+meter               : acl-logging
+name                : pass-example_ANPIngress_29000
+options             : {}
+priority            : 29000
+severity            : debug
+tier                : 1
+===
+_uuid               : 120082fa-5a70-4c72-9211-529766078278
+action              : drop
+direction           : from-lport
+external_ids        : {direction=ANPEgress, "k8s.ovn.org/id"="admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPEgress:29000", "k8s.ovn.org/name"=pass-example, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=AdminNetworkPolicy, priority="29000"}
+label               : 0
+log                 : false
+match               : "((ip4.dst == $a16426961577074298037)) &amp;&amp; (inport == @a3052488126344707991)"
+meter               : acl-logging
+name                : pass-example_ANPEgress_29000
+options             : {apply-after-lb="true"}
+priority            : 29000
+severity            : debug
+tier                : 1
+</code></pre></div></div>
+
+<p>The Address-Sets for the above AdminNetworkPolicy are:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_uuid               : df47aab4-ab2c-4530-bb08-2a90476af9a7
+addresses           : ["10.244.0.5", "10.244.1.6"]
+external_ids        : {direction=ANPIngress, ip-family=v4, "k8s.ovn.org/id"="admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPIngress:29000:v4", "k8s.ovn.org/name"=pass-example, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=AdminNetworkPolicy, priority="29000"}
+name                : a10282262890368313763
+===
+_uuid               : d797804a-9401-446e-8295-1f2eebcfa80b
+addresses           : ["10.244.0.5", "10.244.1.6"]
+external_ids        : {direction=ANPEgress, ip-family=v4, "k8s.ovn.org/id"="admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPEgress:29000:v4", "k8s.ovn.org/name"=pass-example, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=AdminNetworkPolicy, priority="29000"}
+name                : a16426961577074298037
+</code></pre></div></div>
+
+<p>NOTE: Since priority is 10, it is 29000 in the ACL world. If we had a second rule, that rule would get 28999 as its priority. There are no default deny policies for a given ANP unlike NP.</p>
+
+<p><strong><em>Pass Action:</em></strong></p>
+
+<p>In addition to setting <code class="language-plaintext highlighter-rouge">Deny</code> and <code class="language-plaintext highlighter-rouge">Allow</code> actions on ANP API rules, one can also use the <code class="language-plaintext highlighter-rouge">Pass</code> action for a rule. What this means is ANP controller defers the decision of packets that match the pass action rule to either the NetworkPolicy OR to the BaselineAdminNetworkPolicy defined in the cluster (if either of them match the same set of pods, then they will take effect and if not, the result will be an <code class="language-plaintext highlighter-rouge">Allow</code>). Order of precedence: AdminNetworkPolicy (Tier1) &gt; NetworkPolicy(Tier2) &gt; BaselineAdminNetworkPolicy (Tier3).</p>
+
+<p>Sample Pass ACTION API:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: policy.networking.k8s.io/v1alpha1
+kind: AdminNetworkPolicy
+metadata:
+  name: pass-example
+spec:
+  priority: 10
+  subject:
+    namespaces:
+      matchLabels:
+          conformance-house: gryffindor
+  ingress:
+  - name: "pass-all-ingress-from-slytherin"
+    action: "Pass"
+    from:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+  egress:
+  - name: "pass-all-egress-to-slytherin"
+    action: "Pass"
+    to:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+</code></pre></div></div>
+
+<p>Corresponding ACLs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_uuid               : 2e0f811f-e0db-41ad-b12b-4a0cf1c621ae
+action              : pass
+direction           : to-lport
+external_ids        : {direction=ANPIngress, "k8s.ovn.org/id"="admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPIngress:29000", "k8s.ovn.org/name"=pass-example, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=AdminNetworkPolicy, priority="29000"}
+label               : 0
+log                 : false
+match               : "((ip4.src == $a10282262890368313763)) &amp;&amp; (outport == @a3052488126344707991)"
+meter               : acl-logging
+name                : pass-example_ANPIngress_29000
+options             : {}
+priority            : 29000
+severity            : debug
+tier                : 1
+===
+_uuid               : 120082fa-5a70-4c72-9211-529766078278
+action              : pass
+direction           : from-lport
+external_ids        : {direction=ANPEgress, "k8s.ovn.org/id"="admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPEgress:29000", "k8s.ovn.org/name"=pass-example, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=AdminNetworkPolicy, priority="29000"}
+label               : 0
+log                 : false
+match               : "((ip4.dst == $a16426961577074298037)) &amp;&amp; (inport == @a3052488126344707991)"
+meter               : acl-logging
+name                : pass-example_ANPEgress_29000
+options             : {apply-after-lb="true"}
+priority            : 29000
+severity            : debug
+tier                : 1
+</code></pre></div></div>
+
+<p>If we now define a networkpolicy that matches the same set of subjects as our pass-example admin-network-policy, that network-policy will take effect. This is how administrators can delegate a decision making to the namespace owners in a cluster.</p>
+
+<h1 id="baselineadminnetworkpolicy">BaselineAdminNetworkPolicy</h1>
+
+<p>Kubernetes AdminNetworkPolicy API reference: https://github.com/kubernetes-sigs/network-policy-api/blob/429a9e6ae89d411f89d5a16aba38a5d920c969ee/apis/v1alpha1/baseline_adminnetworkpolicy_types.go</p>
+
+<p>Since we can delegate decisions from administrators to namespace owners, what if namespace owners don’t have policies in place for the same set of subjects? Admins in such cases might want to keep a default set of guardrails in the cluster. Thus we allow one BANP to be created in the cluster with the name <code class="language-plaintext highlighter-rouge">default</code>. The rules in <code class="language-plaintext highlighter-rouge">default</code> BANP are created in Tier3.</p>
+
+<p>Sample API:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: policy.networking.k8s.io/v1alpha1
+kind: BaselineAdminNetworkPolicy
+metadata:
+  name: default
+spec:
+  subject:
+    namespaces:
+      matchLabels:
+          conformance-house: gryffindor
+  ingress:
+  - name: "deny-all-ingress-from-slytherin"
+    action: "Deny"
+    from:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+  egress:
+  - name: "deny-all-egress-to-slytherin"
+    action: "Deny"
+    to:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+</code></pre></div></div>
+
+<ul>
+  <li>BANP doesn’t have any priority field, since we can have only one in the cluster</li>
+  <li>We keep nbdb.ACL’s priority range 1750 - 1649 range reserved for BANP rules in the cluster.</li>
+  <li>Rest of the implementation details for ANP is applicable to BANP as well.</li>
+</ul>
+
+<p>Corresponding ACLs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_uuid               : 436b5a0f-9616-42b5-865d-489ec1d42666
+action              : drop
+direction           : to-lport
+external_ids        : {direction=BANPIngress, "k8s.ovn.org/id"="admin-network-policy-controller:BaselineAdminNetworkPolicy:default:BANPIngress:1750", "k8s.ovn.org/name"=default, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=BaselineAdminNetworkPolicy, priority="1750"}
+label               : 0
+log                 : false
+match               : "((ip4.src == $a2535546904205657311)) &amp;&amp; (outport == @a16982411286042166782)"
+meter               : acl-logging
+name                : default_BANPIngress_1750
+options             : {}
+priority            : 1750
+severity            : debug
+tier                : 3
+===
+_uuid               : d42cb240-fac1-4429-a1bc-02efddda69cf
+action              : drop
+direction           : from-lport
+external_ids        : {direction=BANPEgress, "k8s.ovn.org/id"="admin-network-policy-controller:BaselineAdminNetworkPolicy:default:BANPEgress:1750", "k8s.ovn.org/name"=default, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=BaselineAdminNetworkPolicy, priority="1750"}
+label               : 0
+log                 : false
+match               : "((ip4.dst == $a6430502402203365)) &amp;&amp; (inport == @a16982411286042166782)"
+meter               : acl-logging
+name                : default_BANPEgress_1750
+options             : {apply-after-lb="true"}
+priority            : 1750
+severity            : debug
+tier                : 3
+</code></pre></div></div>
+
+<p>The Address-Set for the above BaselineAdminNetworkPolicy is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_uuid               : a3ac7d6b-9185-4099-84f8-92d28460b4c3
+addresses           : ["10.244.0.5", "10.244.1.6"]
+external_ids        : {direction=BANPIngress, ip-family=v4, "k8s.ovn.org/id"="admin-network-policy-controller:BaselineAdminNetworkPolicy:default:BANPIngress:1750:v4", "k8s.ovn.org/name"=default, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=BaselineAdminNetworkPolicy, priority="1750"}
+name                : a2535546904205657311
+===
+_uuid               : b3e08332-e6bb-4f4e-bbc4-c36f717f149a
+addresses           : ["10.244.0.5", "10.244.1.6"]
+external_ids        : {direction=BANPEgress, ip-family=v4, "k8s.ovn.org/id"="admin-network-policy-controller:BaselineAdminNetworkPolicy:default:BANPEgress:1750:v4", "k8s.ovn.org/name"=default, "k8s.ovn.org/owner-controller"=admin-network-policy-controller, "k8s.ovn.org/owner-type"=BaselineAdminNetworkPolicy, priority="1750"}
+name                : a6430502402203365
+</code></pre></div></div>
+
+<p>The PortGroup for the above AdminNetworkPolicy is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_uuid               : 9ec16567-6f51-49fb-aedb-40c477ad470d
+acls                : [436b5a0f-9616-42b5-865d-489ec1d42666, d42cb240-fac1-4429-a1bc-02efddda69cf]
+external_ids        : {BaselineAdminNetworkPolicy=default}
+name                : a16982411286042166782
+ports               : [a22a4c3a-bb65-4b22-8bc1-13e1e8899a7b, c7e4ffe3-73df-4db5-a3bc-a9649394d549]
+</code></pre></div></div>
+
+<h1 id="todo">TODO</h1>
+
+<p>This section tracks the remaining work (some of these items are work-in-progress already and will be merged in future PRs) that are future items and outside the scope of the initial PR (https://github.com/ovn-org/ovn-kubernetes/pull/3659)</p>
+
+<ul>
+  <li>Adding Northbound Support for ANP: https://github.com/kubernetes-sigs/network-policy-api/pull/117</li>
+  <li>Adding support for sameLabels/notSameLabels: https://github.com/kubernetes-sigs/network-policy-api/pull/123</li>
+  <li>Adding support for Named Ports: https://github.com/ovn-org/ovn-kubernetes/pull/3641 (Once the final design here is done will rebase)</li>
+  <li>Adding support for Logging: (PR in progress locally, did not push till these main changes land)
+    <ul>
+      <li>Change to using ovn.acl package for bulding ACLs instead of libovsdb.ACL package: per comment https://github.com/ovn-org/ovn-kubernetes/pull/3659#discussion_r1257988920 if needed (although tssurya thinks using the libovsdbops function causes lesser abstracted and more straightforwardness)</li>
+    </ul>
+  </li>
+  <li>Scale improvements (We will only have max 100 ANP’s in a cluster, so we could get away by not doing any scale changes; depends on how pod/namespace add/updates perform.)
+    <ul>
+      <li>Reducing ACLs on L4 (Max ACL Count: 100x200 = 20K without ports) - with ports this can go upto 100x200x100 = 200K ACLs: https://github.com/ovn-org/ovn-kubernetes/pull/3582</li>
+      <li>Investigating better locking (if needed after scale runs)</li>
+      <li>Adding support for sharing address-sets with namespaces (depends on use cases as ANPs
+are created before namespaces most of times and the adiquate support on the namespace
+controller side needs to be added) - similar to what’s done for NPs</li>
+      <li>Adding support for sharing port-groups (depends on use cases as ANPs span
+across namespaces maybe we can combine per namespace ones with an || expression
+but need to see if its worth the effort): https://github.com/ovn-org/ovn-kubernetes/pull/2740</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="constraints">Constraints</h1>
+
+<ul>
+  <li>The v1alpha1 CRDs upstream support upto 1000 priorities (<code class="language-plaintext highlighter-rouge">.Spec.Priority</code>) but OVNK only allows users to have maximum 100 ANPs in a cluster.
+This means you can create an ANP with priority between 0 and 99 - we do not support creating ANPs with higher priorities in OVNK.
+Since each ANP can have 100 ingress and egress rules, administrators must be able to express relations using 30-50 policies max from our assumptions.
+Changing this to support beyond 200 will need OVN RFEs</li>
+  <li>It is for the best if two ANPs are not created with the same priority. The outcome is nondeterministic and this is a case we do not support. So ensure
+your policies have unique priorities</li>
+</ul>
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/ovn-org/ovn-kubernetes">ovn-kubernetes</a> is maintained by <a href="https://github.com/ovn-org">ovn-org</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  </body>
+</html>
