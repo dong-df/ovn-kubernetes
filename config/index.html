@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/config/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Config variables - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#config-variables" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Config variables
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2188,6 +2179,92 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config values
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      [default] section
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      [logging] section
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cni-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      [cni] section
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      [kubernetes] section
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ovnnorth-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      [ovnnorth] section
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ovnsouth-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      [ovnsouth] section
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2272,123 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="config-variables">Config variables<a class="headerlink" href="#config-variables" title="Permanent link">&para;</a></h1>
+<h2 id="initial-setup">Initial setup<a class="headerlink" href="#initial-setup" title="Permanent link">&para;</a></h2>
+<p>If you want to override the default values for some config options, then the
+file available in this repo (etc/ovn_k8s.conf) must be copied to the following
+locations:</p>
+<ul>
+<li>
+<p>on Linux:
+<div class="highlight"><pre><span></span><code>/etc/openvswitch/ovn_k8s.conf
+</code></pre></div>
+The following command copies the config file if it is run from inside the repo:
+<div class="highlight"><pre><span></span><code>cp etc/ovn_k8s.conf /etc/openvswitch/ovn_k8s.conf
+</code></pre></div></p>
+</li>
+<li>
+<p>on Windows:
+<div class="highlight"><pre><span></span><code>C:\etc\ovn_k8s.conf
+</code></pre></div>
+The following PowerShell command copies the config file if is run from inside
+the repo:
+<div class="highlight"><pre><span></span><code>Copy-Item &quot;.\etc\ovn_k8s.conf&quot; -Destination (New-Item &quot;C:\etc&quot; -Type container -Force)
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="config-values">Config values<a class="headerlink" href="#config-values" title="Permanent link">&para;</a></h2>
+<p>The config file contains common configuration options shared between the various
+ovn-kubernetes programs (ovnkube, ovn-k8s-cni-overlay, etc).  All configuration
+file options can also be specified as command-line arguments which override
+config file options; see the -help output of each program for more details.</p>
+<h3 id="default-section">[default] section<a class="headerlink" href="#default-section" title="Permanent link">&para;</a></h3>
+<p>The following config option represents the MTU value which should be used
+for the overlay networks.
+<div class="highlight"><pre><span></span><code>mtu=1400
+</code></pre></div></p>
+<p>The following option affects only the gateway nodes. This value is used to
+track connections that are initiated from the pods so that the reverse
+connections go back to the pods. This represents the conntrack zone used
+for the conntrack flow rules.
+<div class="highlight"><pre><span></span><code>conntrack-zone=64000
+</code></pre></div></p>
+<p>The following option only affects ovn-controller. This is the maximum number
+of milliseconds of idle time on connection to the server before sending an
+inactivity probe message.  As a client connects to the server over TCP, it
+may take a while for the kernel to figure out if the connection is
+broken.  But the client can overcome this by periodically sending probes over
+the TCP connection to make sure that the connection is up.  On the flip side,
+when there are hundreds of nodes, the server can get bogged down by client
+probe messages.</p>
+<p>The default value is set as 100000ms. But can be changed with this config
+option</p>
+<p>inactivity-probe=600000</p>
+<h3 id="logging-section">[logging] section<a class="headerlink" href="#logging-section" title="Permanent link">&para;</a></h3>
+<p>The following config values control what verbosity level logging is written at
+and to what file (if any).
+<div class="highlight"><pre><span></span><code>loglevel=5
+logfile=/var/log/ovnkube.log
+</code></pre></div></p>
+<h3 id="cni-section">[cni] section<a class="headerlink" href="#cni-section" title="Permanent link">&para;</a></h3>
+<p>The following config values are used for the CNI plugin.
+<div class="highlight"><pre><span></span><code>conf-dir=/etc/cni/net.d
+plugin=ovn-k8s-cni-overlay
+</code></pre></div></p>
+<h3 id="kubernetes-section">[kubernetes] section<a class="headerlink" href="#kubernetes-section" title="Permanent link">&para;</a></h3>
+<p>Kubernetes API options are stored in the following section.
+<div class="highlight"><pre><span></span><code>apiserver=https://1.2.3.4:6443
+token=TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gQ3JhcyBhdCB1bHRyaWNpZXMgZWxpdC4gVXQgc2l0IGFtZXQgdm9sdXRwYXQgbnVuYy4K
+cacert=/etc/kubernetes/ca.crt
+</code></pre></div></p>
+<h3 id="ovnnorth-section">[ovnnorth] section<a class="headerlink" href="#ovnnorth-section" title="Permanent link">&para;</a></h3>
+<p>This section contains the address and (if the 'ssl' method is used) certificates
+needed to use the OVN northbound database API. Only the the ovn-kubernetes
+master needs to specify the 'server' options.
+<div class="highlight"><pre><span></span><code>address=ssl:1.2.3.4:6641
+client-privkey=/path/to/private.key
+client-cert=/path/to/client.crt
+client-cacert=/path/to/client-ca.crt
+server-privkey=/path/to/private.key
+server-cert=/path/to/server.crt
+server-cacert=/path/to/server-ca.crt
+</code></pre></div></p>
+<h3 id="ovnsouth-section">[ovnsouth] section<a class="headerlink" href="#ovnsouth-section" title="Permanent link">&para;</a></h3>
+<p>This section contains the address and (if the 'ssl' method is used) certificates
+needed to use the OVN southbound database API. Only the the ovn-kubernetes
+master needs to specify the 'server' options.
+<div class="highlight"><pre><span></span><code>address=ssl:1.2.3.4:6642
+client-privkey=/path/to/private.key
+client-cert=/path/to/client.crt
+client-cacert=/path/to/client-ca.crt
+server-privkey=/path/to/private.key
+server-cert=/path/to/server.crt
+server-cacert=/path/to/server-ca.crt
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

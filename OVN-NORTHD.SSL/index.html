@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/OVN-NORTHD.SSL/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>OVN NORTHD.SSL - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#generate-signed-certificates-for-ovn-northd" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              OVN NORTHD.SSL
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2185,8 +2176,23 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generate-signed-certificates-for-ovn-northd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate signed certificates for OVN Northd
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2195,16 +2201,62 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+  <h1>OVN NORTHD.SSL</h1>
+
+<p>If the ovn-northd instance is not running on the same node as OVN NB
+and OVN SB database, then you will need to follow the steps below to
+secure the communication between ovn-northd and NB/SB databases.</p>
+<h2 id="generate-signed-certificates-for-ovn-northd">Generate signed certificates for OVN Northd<a class="headerlink" href="#generate-signed-certificates-for-ovn-northd" title="Permanent link">&para;</a></h2>
+<p>On the node running ovn-northd daemon, run the following commands.
+<div class="highlight"><pre><span></span><code>cd /etc/openvswitch
+ovs-pki req ovnnorthd
+</code></pre></div></p>
+<p>The above command will generate a private key "ovnnorthd-privkey.pem"
+and a corresponding certificate request named "ovnnorthd-req.pem". Copy over
+the ovnnorthd-req.pem to the secure machine's (where you have installed the
+ovs-pki utility) /var/lib/openvswitch/pki folder to sign it using the
+command below.</p>
+<div class="highlight"><pre><span></span><code>ovs-pki -b sign ovnnorthd
+</code></pre></div>
+<p>The above command will generate ovnnorthd-cert.pem. Copy over this file back
+to the ovn-northd node's /etc/openvswitch foler. The ovnnorthd-privkey.pem and
+ovnnorthd-cert.pem will be used by the ovn-northd to communicate with OVN NB 
+and SB database.</p>
+<p>Now run the following command to ask ovn-northd to use these
+certificates.</p>
+<div class="highlight"><pre><span></span><code>cat &gt; /etc/openvswitch/ovn-northd-db-params.conf &lt;&lt; EOF
+--ovnnb-db=ssl:$CENTRAL_IP:6641 --ovnsb-db=ssl:$CENTRAL_IP:6642 \
+-p /etc/openvswitch/ovnnorthd-privkey.pem -c /etc/openvswitch/ovnnorthd-cert.pem \
+-C /etc/openvswitch/cacert.pem
+EOF
+
+/usr/share/openvswitch/scripts/ovn-ctl restart_northd
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

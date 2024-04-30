@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/debugging/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Debugging - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#initial-setup-issues" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Debugging
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2185,8 +2176,149 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initial-setup-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial setup issues.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial setup issues.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#each-host-should-have-unique-system-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Each host should have unique system-ids.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-nodes-should-register-with-ovn-sb-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      All nodes should register with OVN SB database.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosts-should-have-unique-node-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hosts should have unique node names.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hosts should have unique node names.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-presence-of-geneve-or-stt-kernel-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the presence of "geneve" or "stt" kernel module.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanity-check-cross-host-ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sanity check cross host ping.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall-blocking-overlay-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall blocking overlay networks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-ovn-northds-log-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check ovn-northd's log file.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runtime issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-watchers-log-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the watcher's log file.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-ovn-cni-log-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the OVN CNI log file.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-kubelets-log-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the kubelet's log file.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-ovn-controllers-log-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check ovn-controller's log file.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2195,16 +2327,115 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+  <h1>Debugging</h1>
+
+<h2 id="initial-setup-issues">Initial setup issues.<a class="headerlink" href="#initial-setup-issues" title="Permanent link">&para;</a></h2>
+<h3 id="each-host-should-have-unique-system-ids">Each host should have unique system-ids.<a class="headerlink" href="#each-host-should-have-unique-system-ids" title="Permanent link">&para;</a></h3>
+<p>In a OVN cluster, each host should have a unique system-id.  This value
+is set in external-ids:system-id of the Open_vSwitch table of each host's
+Open_vSwitch database.  You can fetch its value with:</p>
+<div class="highlight"><pre><span></span><code>ovs-vsctl get Open_vSwitch . external-ids:system-id
+</code></pre></div>
+<p>This is automatically set by OVS startup scripts (that come with packages).
+But if you installed OVS from source, and don't use a startup script,
+this will be empty.  If you clone your VM, then you may endup with
+same system-id for all your VMs - which is a problem.</p>
+<h3 id="all-nodes-should-register-with-ovn-sb-database">All nodes should register with OVN SB database.<a class="headerlink" href="#all-nodes-should-register-with-ovn-sb-database" title="Permanent link">&para;</a></h3>
+<p>On the master, run:</p>
+<div class="highlight"><pre><span></span><code>ovn-sbctl list chassis
+</code></pre></div>
+<p>You should see as many records as the number of nodes in your cluster.  The
+"name" column in each record represents the system-id of each host and they
+should all be unique.</p>
+<h2 id="hosts-should-have-unique-node-names">Hosts should have unique node names.<a class="headerlink" href="#hosts-should-have-unique-node-names" title="Permanent link">&para;</a></h2>
+<p>When you run 'ovnkube -init-node', 'ovnkube -init-master',
+'ovnkube -init-network-control-manager' or 'ovnkube -init-cluster-manager'
+commands, it will ask for node names.  This should all be unique.
+This should also be the same as used by "kubelet" on each node.
+So the names you see when you run the below command should be the same
+ones that you supply to ovnkube:</p>
+<div class="highlight"><pre><span></span><code>kubectl get nodes
+</code></pre></div>
+<h3 id="check-the-presence-of-geneve-or-stt-kernel-module">Check the presence of "geneve" or "stt" kernel module.<a class="headerlink" href="#check-the-presence-of-geneve-or-stt-kernel-module" title="Permanent link">&para;</a></h3>
+<p>If you cannot ping between pods in 2 nodes, make sure to check whether
+you have the OVS kernel modules correctly installed by running:</p>
+<div class="highlight"><pre><span></span><code>lsmod | grep openvswitch
+lsmod | grep geneve  # Or &quot;stt&quot; if your encap type was chosen to be &quot;stt&quot;.
+</code></pre></div>
+<p>If you do not see the kernel module, modprobe them</p>
+<div class="highlight"><pre><span></span><code>modprobe openvswitch
+modprobe vport-geneve  # or vport-stt for &quot;stt&quot;.
+</code></pre></div>
+<h3 id="sanity-check-cross-host-ping">Sanity check cross host ping.<a class="headerlink" href="#sanity-check-cross-host-ping" title="Permanent link">&para;</a></h3>
+<p>Since on each host, a OVS internal device named "k8s-$NODENAME" is created
+with the second IP address in the subnet assigned for that node, you should be
+able to check cross host connectivity by pinging these internal devices across
+hosts.</p>
+<h3 id="firewall-blocking-overlay-networks">Firewall blocking overlay networks<a class="headerlink" href="#firewall-blocking-overlay-networks" title="Permanent link">&para;</a></h3>
+<p>If your host has a firewall blocking incoming connections as a default policy,
+you should open up ports to allow overlay networks.  If you use "geneve" as the
+encapsulation type, you should open up UDP port 6081.  If you use "stt" as the
+encapsulation type, you should open up TCP port 7471.</p>
+<p>You can use the following command to achieve it via iptables.</p>
+<div class="highlight"><pre><span></span><code># To open up Geneve port.
+/usr/share/openvswitch/scripts/ovs-ctl --protocol=udp \
+        --dport=6081 enable-protocol
+
+# To open up STT port.
+/usr/share/openvswitch/scripts/ovs-ctl --protocol=tcp \
+        --dport=7471 enable-protocol
+</code></pre></div>
+<h3 id="check-ovn-northds-log-file">Check ovn-northd's log file.<a class="headerlink" href="#check-ovn-northds-log-file" title="Permanent link">&para;</a></h3>
+<p>On the master, look at /var/log/openvswitch/ovn-northd.log to see
+for any errors with the setup of the OVN central node.</p>
+<h2 id="runtime-issues">Runtime issues<a class="headerlink" href="#runtime-issues" title="Permanent link">&para;</a></h2>
+<h3 id="check-the-watchers-log-file">Check the watcher's log file.<a class="headerlink" href="#check-the-watchers-log-file" title="Permanent link">&para;</a></h3>
+<p>On the master, check whether ovnkube is running by:</p>
+<div class="highlight"><pre><span></span><code>ps -ef | grep ovnkube
+</code></pre></div>
+<p>Check the watcher's log file at "/var/log/ovn-kubernetes/ovnkube.log"
+to see whether it is creating logical ports whenever a pod is created and
+for any obvious errors.</p>
+<h3 id="check-the-ovn-cni-log-file">Check the OVN CNI log file.<a class="headerlink" href="#check-the-ovn-cni-log-file" title="Permanent link">&para;</a></h3>
+<p>When you create a pod and it gets scheduled on a particular host, the
+OVN CNI plugin on that host, tries to access the pod's information from
+the K8s api server.  Specifically, it tries to get the IP address and
+mac address for that pod.  This information is logged in the OVN CNI log
+file on each node if you have specified a log file via
+"/etc/openvswitch/ovn_k8s.conf". You can read how to provide a logfile
+by reading 'man ovn_k8s.conf.5'.</p>
+<h3 id="check-the-kubelets-log-file">Check the kubelet's log file.<a class="headerlink" href="#check-the-kubelets-log-file" title="Permanent link">&para;</a></h3>
+<p>If there were any issues with downloading upstream CNI plugins, then
+kubelet will complain about them in its log file.</p>
+<h3 id="check-ovn-controllers-log-file">Check ovn-controller's log file.<a class="headerlink" href="#check-ovn-controllers-log-file" title="Permanent link">&para;</a></h3>
+<p>If you suspect issues on only one of the host, look at the log file of
+ovn-controller at /var/log/openvswitch/ovn-controller.log to see any
+obvious error messages.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

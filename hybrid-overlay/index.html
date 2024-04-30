@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/hybrid-overlay/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Hybrid Overlay - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#hybrid-overlay" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Hybrid Overlay
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2188,6 +2179,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2212,48 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="hybrid-overlay">Hybrid Overlay<a class="headerlink" href="#hybrid-overlay" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>The hybrid overlay feature creates VXLAN tunnels to nodes in the cluster
+that have been excluded from the ovn-kubernetes overlay using the
+<code>no-hostsubnet-nodes</code> config option.</p>
+<p>These tunnels allow pods on ovn-kubernetes nodes to communicate directly with
+other pods on nodes that do not run ovn-kubernetes.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<p>The feature can be enabled at runtime, but requires that the VXLAN UDP port (4789)
+be accessible on every node in the cluster. The cluster administrator is
+responsible for ensuring this port is open on all nodes.</p>
+<p>Hybrid overlay uses the third IP address on every node's logical switch as the
+gateway for traffic to hybrid overlay nodes. If the feature is enabled after
+the cluster has been installed, and a pod on the node is using the address,
+that pod will no longer work correctly until it has been killed and restarted.
+This is not handled automatically.</p>
+<p>It is recommended the hybrid overlay feature be enabled at cluster install time.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

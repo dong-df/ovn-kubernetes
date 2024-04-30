@@ -8,26 +8,24 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
-      
-      
-        <link rel="prev" href="..">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/networkpolicies/network-policy/">
       
       
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>NetworkPolicy - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#networkpolicy" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +88,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              NetworkPolicy
             
           </span>
         </div>
@@ -210,7 +208,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -229,7 +227,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../design/architecture.md" class="md-tabs__link">
+        <a href="../../design/architecture.md" class="md-tabs__link">
           
   
     
@@ -249,7 +247,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -269,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING.md" class="md-tabs__link">
+        <a href="../../governance/CONTRIBUTING.md" class="md-tabs__link">
           
   
     
@@ -295,7 +293,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip.md" class="md-tabs__link">
+        <a href="../../features/cluster-egress-controls/egress-ip.md" class="md-tabs__link">
           
   
     
@@ -318,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging.md" class="md-tabs__link">
+        <a href="../../troubleshooting/debugging.md" class="md-tabs__link">
           
   
     
@@ -338,7 +336,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics.md" class="md-tabs__link">
+        <a href="../../observability/metrics.md" class="md-tabs__link">
           
   
     
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +397,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture.md" class="md-nav__link">
+      <a href="../../design/architecture.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology.md" class="md-nav__link">
+      <a href="../../design/topology.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../../design/gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../../design/traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../../design/pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../../design/service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy.md" class="md-nav__link">
+      <a href="../../design/service-traffic-policy.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow.md" class="md-nav__link">
+      <a href="../../design/host-to-node-port-hairpin-trafficflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress.md" class="md-nav__link">
+      <a href="../../design/external-ip-and-loadbalancer-ingress.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../../design/ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/live-migration.md" class="md-nav__link">
+      <a href="../../design/live-migration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING.md" class="md-nav__link">
+      <a href="../../governance/CONTRIBUTING.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING.md" class="md-nav__link">
+      <a href="../../governance/REVIEWING.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer.md" class="md-nav__link">
+      <a href="../../developer-guide/developer.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci.md" class="md-nav__link">
+      <a href="../../ci/ci.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1385,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-ip.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-service.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-qos.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy.md" class="md-nav__link">
+      <a href="../../features/network-security-controls/network-policy.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy.md" class="md-nav__link">
+      <a href="../../features/network-security-controls/admin-network-policy.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall.md" class="md-nav__link">
+      <a href="../../features/network-security-controls/egress-firewall.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity.md" class="md-nav__link">
+      <a href="../../features/infrastructure-security-controls/node-identity.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing.md" class="md-nav__link">
+      <a href="../../features/multi-homing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast.md" class="md-nav__link">
+      <a href="../../features/multicast.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration.md" class="md-nav__link">
+      <a href="../../features/live-migration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay.md" class="md-nav__link">
+      <a href="../../features/hybrid-overlay.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +1839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/ovs_offload.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +1942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging.md" class="md-nav__link">
+      <a href="../../troubleshooting/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace.md" class="md-nav__link">
+      <a href="../../troubleshooting/ovnkube-trace.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +1984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics.md" class="md-nav__link">
+      <a href="../../observability/metrics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2138,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2195,16 +2186,319 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="networkpolicy">NetworkPolicy<a class="headerlink" href="#networkpolicy" title="Permanent link">&para;</a></h1>
+<p>Kubernetes NetworkPolicy documentation: https://kubernetes.io/docs/concepts/services-networking/network-policies</p>
+<p>Kubernetes NetworkPolicy API reference: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#networkpolicy-v1-networking-k8s-io</p>
+<p>By default the network traffic from and to K8s pods is not restricted in any way. Using NetworkPolicy is a way to enforce network isolation of selected pods. When a pod is selected by a NetworkPolicy allowed traffic is specified by the <code>Ingress</code> and <code>Egress</code> sections.  </p>
+<p>Each NetworkPolicy object consists of four sections:</p>
+<ol>
+<li><code>podSelector</code>: a label selector that determines which pods the NetworkPolicy applies to</li>
+<li><code>policyTypes</code>: determines which policy types are included, if none are selected then <code>Ingress</code> will always be set and <code>Egress</code> will be set if any <code>Egress</code> rules are applied </li>
+<li><code>Ingress rules</code>: determines the sources that pods selected by the ingress rule can receive traffic from </li>
+<li><code>Egress rules</code>: determines the sinks that pods selected by the egress rule can send trafic to </li>
+</ol>
+<h1 id="networkpolicy-features">NetworkPolicy features<a class="headerlink" href="#networkpolicy-features" title="Permanent link">&para;</a></h1>
+<p>These are described in order and are additive </p>
+<h2 id="unicast-default-deny"><strong>Unicast default-deny</strong><a class="headerlink" href="#unicast-default-deny" title="Permanent link">&para;</a></h2>
+<p>When a pod is selected by one or more NetworkPolicies, the <code>policyTypes</code> is set to both <code>Ingress</code> and <code>Egress</code>, and if no rules are specified it becomes isolated and all unicast ingress and egress traffic is blocked for pods in the same namespce as the NetworkPolicy. </p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+</code></pre></div>
+<p>If only ingress traffic to all pods in a namespace needs to be blocked the following can be used </p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+</code></pre></div>
+<p>And finally if only Egress traffic from all pods in a Namespace needs to be blocked </p>
+<p><div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+</code></pre></div>
+<strong>OVN-Implementation:</strong></p>
+<p>Every new NetworkPolicy creates a port group named <code>FOO_bar</code> where <code>FOO</code> is the policy's Namespace and <code>bar</code> is the policy's name.  All pods that the policy's <code>podSelector</code> selects are added to the port group.</p>
+<p>Additionally, two global deny PortGroups are also used, specifially: <code>IngressDefaultDeny</code> and <code>EgressDefaultDeny</code>.  Any pod selected by a NetworkPolicy in any Namespace is added to these PortGroups.</p>
+<p>subset of <code>ovn-nbctl find port-group</code>
+<div class="highlight"><pre><span></span><code>    _uuid               : 1deeac49-e87e-4e05-9324-beb8ef0dcef4
+    acls                : [3f864884-cdb7-44be-a60e-e4f743afc9d0, f174fcf1-a7c2-496d-9b96-136aaccc014f]
+    external_ids        : {name=ingressDefaultDeny}
+    name                : ingressDefaultDeny
+    ports               : [ce1bc4e5-0309-463f-9fd1-80f6e487e2d4]
+
+    _uuid               : 5249b7a2-36bf-4246-98ea-13d5c5e17c68
+    acls                : [36ed4154-71ab-4b8f-8119-5c4cc92708d9, c6663e29-99d0-4410-a2ff-f694a896a035]
+    external_ids        : {name=egressDefaultDeny}
+    name                : egressDefaultDeny
+    ports               : []
+</code></pre></div></p>
+<p>Two ACLs (four total) are added to each PortGroup:</p>
+<ol>
+<li>a drop policy with <code>priority=1000</code> and <code>direction=to-lport</code></li>
+</ol>
+<p>subset of <code>ovn-nbctl find ACL</code> 
+<div class="highlight"><pre><span></span><code>   _uuid               : f174fcf1-a7c2-496d-9b96-136aaccc014f
+    action              : drop
+    direction           : to-lport
+    external_ids        : {default-deny-policy-type=Ingress}
+    log                 : false
+    match               : &quot;outport == @ingressDefaultDeny&quot;
+    meter               : []
+    name                : []
+    priority            : 1000
+    severity            : []
+</code></pre></div></p>
+<ol>
+<li>an allow policy for ARP traffic with <code>priority=1001</code>, <code>direction=to-lport</code>, and <code>match=arp</code></li>
+</ol>
+<p>subset of <code>ovn-nbctl find ACL</code> 
+<div class="highlight"><pre><span></span><code>_uuid               : 3f864884-cdb7-44be-a60e-e4f743afc9d0
+action              : allow
+direction           : to-lport
+external_ids        : {default-deny-policy-type=Ingress}
+log                 : false
+match               : &quot;outport == @ingressDefaultDeny &amp;&amp; arp&quot;
+meter               : []
+name                : []
+priority            : 1001
+severity            : []
+</code></pre></div></p>
+<h2 id="applying-the-network-policy-to-specific-pods-using-specpodselector"><strong>Applying the network policy to specific pods using <code>spec.podSelector</code></strong><a class="headerlink" href="#applying-the-network-policy-to-specific-pods-using-specpodselector" title="Permanent link">&para;</a></h2>
+<p>In some cases only certain pods in a Namespace may need to be selected by a NetworkPolicy. To handle this feature the <code>spec.podSelector</code> field can be used as follows </p>
+<p>The <code>spec.podSelector</code> is a label selector, which can be either a list of labels (<code>app=nginx</code>) or a match expression. Only pods in the same Namespace as the NetworkPolicy can be selected by it. The end result is a list of zero or more pods to which this NetworkPolicy's <code>Ingress</code> and <code>Egress</code> sections will be applied.</p>
+<p>For example, to block all traffic to and from a pod labeled with <code>app=demo</code> the following can be used </p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+spec:
+  podSelector:
+    matchLabels:
+          app: demo
+  policyTypes:
+  - Ingress
+  - Egress
+</code></pre></div>
+<h2 id="applying-ingress-and-egress-rules-using-specingress-and-specegress"><strong>Applying Ingress and Egress Rules using <code>spec.Ingress</code> and <code>spec.Egress</code></strong><a class="headerlink" href="#applying-ingress-and-egress-rules-using-specingress-and-specegress" title="Permanent link">&para;</a></h2>
+<p>In some cases we need to explicilty define what sources and sinks a pod is allowed to communicate with, to handle this feature the <code>spec.Ingress</code> and <code>spec.Egress</code> fields of a NeworkPolicy can be used </p>
+<p>These sections contain a list of ingress or egress "peers" (the <code>from</code> section for <code>ingress</code> and the <code>to</code> section for <code>egress</code>) and a list of IP ports/protocols (the <code>ports</code> section) to or from which traffic should be allowed. Each list element of each section is logically OR-ed with other elements.</p>
+<p>Each <code>from</code>/<code>to</code> section can contain the following selectors </p>
+<ol>
+<li><code>namespaceSelector</code>: a label selector matching all pods in zero or more Namespaces</li>
+<li><code>podSelector</code>: a label selector matching zero or more pods in the same Namespace as the NetworkPolicy</li>
+<li><code>namespaceSelector</code> and <code>podSelector</code>: when both are present in an element, selects only pods matching the <code>podSelector</code> from Namespaces matching the <code>namespaceSelector</code></li>
+<li><code>ipBlock</code>: an IP network in CIDR notation that can be either internal or external, with optional exceptions</li>
+</ol>
+<h3 id="specingress"><code>spec.ingress</code><a class="headerlink" href="#specingress" title="Permanent link">&para;</a></h3>
+<p>Rules defined in <code>spec.Ingress</code> can match on two main sections, 1.<code>spec.Ingress.from</code> and 2.<code>spec.Ingress.ports</code></p>
+<ol>
+<li>
+<p><code>spec.Ingress.from</code> </p>
+<p>Specifies FROM what sources a network policy will allow traffic </p>
+<p>It contains three selectors which are described further below </p>
+<ul>
+<li>
+<p><code>spec.Ingress.from.ipBlock</code> </p>
+<p>The ip addresses from which to allow traffic, contains fields <code>spec.Ingress.from.ipBlock.cidr</code> to specify which ip address are allowed and 
+<code>spec.Ingress.from.ipBlock.except</code> to specifiy which address's are not allowed </p>
+</li>
+<li>
+<p><code>spec.Ingress.from.namespaceSelector</code> </p>
+<p>The Namespaces from which to allow traffic, uses matchLabels to select much like the <a href="#**Applying-the-network-policy-to-specific-pods-using-spec.podSelector**"><code>spec.Podselector</code> field</a></p>
+</li>
+<li>
+<p><code>spec.Ingress.from.podSelector</code> </p>
+<p>The pods from which to allow traffic, matches the same as described <a href="#**Applying-the-network-policy-to-specific-pods-using-spec.podSelector**">above</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>spec.Ingress.ports</code></p>
+<p>The ports that the <code>Ingress</code> rule matches on, contains fields <code>spec.Ingress.ports.port</code> which can be either numerical or named, if set all port names and numbers will be matched, and <code>spec.Ingress.ports.protocol</code> matches to the protocol of the provided port </p>
+</li>
+</ol>
+<h3 id="specegress"><code>spec.egress</code><a class="headerlink" href="#specegress" title="Permanent link">&para;</a></h3>
+<p>Rules defined in <code>spec.Egress</code> can match on two main sections, 1.<code>spec.Egress.to</code> and 2.<code>spec.Egress.ports</code></p>
+<ol>
+<li>
+<p><code>spec.Egress.to</code> </p>
+<p>specifies TO what destinations a network policy will allow a pod to send traffic </p>
+<p>It contains three selectors which are described further below </p>
+<ul>
+<li>
+<p><code>spec.Egress.to.ipBlock</code> </p>
+<p>The ip addresses which a pod can send traffic to, contains fields <code>spec.Egress.from.ipBlock.cidr</code> to specify which ip address are allowed and 
+<code>spec.Egress.from.ipBlock.except</code> to specifiy which address's are not allowed</p>
+</li>
+<li>
+<p><code>spec.Egress.to.namespaceSelector</code> </p>
+<p>The Namespaces allowed to receive traffic, uses matchLabels to select much like the <a href="#**Applying-the-network-policy-to-specific-pods-using-spec.podSelector**"><code>spec.Podselector</code> field</a></p>
+</li>
+<li>
+<p><code>spec.Egress.to.podSelector</code> </p>
+<p>The pods allowed to receive traffic, uses matchLabels to select much like described <a href="#**Applying-the-network-policy-to-specific-pods-using-spec.podSelector**"><code>spec.Podselector</code> field</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>spec.Egress.ports</code></p>
+<p>The ports that the <code>Egress</code> rule matches on, contains fields <code>spec.Egress.ports.port</code> which can be either numerical or named, if set all port names and numbers will be matched, and <code>spec.Egress.ports.protocol</code> matches to the protocol of the provided port </p>
+</li>
+</ol>
+<h3 id="specingress-and-specegress-ovn-implementation"><code>spec.ingress</code> and <code>spec.egress</code> OVN implementation<a class="headerlink" href="#specingress-and-specegress-ovn-implementation" title="Permanent link">&para;</a></h3>
+<p>Each Namespace creates an AddressSet to which the IPs of all pods in that Namespace are added. This is used in NetworkPolicy <code>Ingress</code> and <code>Egress</code> sections to implement the Namespace selector.</p>
+<p>Each element in the <code>from</code> or <code>to</code> list results in an AddressSet containing the IP addresses of all peer pods(i.e all pods touched by this policy) As pods are created, updated, or deleted each AddressSet is updated to add the new pod if it matches the selectors, or to remove the pod if it used to match selectors but no longer does. Namespace label changes may also result in AddressSet updates to add or remove pods if the Namespace now matches or no longer matches the <code>namespaceSelector</code>.</p>
+<p>If an <code>ipBlock</code> is specified, an ACL with the label <code>ipblock_cidr="false"</code> is added to the policy's PortGroup with <code>priority=1001</code> that allows traffic to or from the list of CIDRs in the <code>ipBlock</code>, any exceptions are added as <code>drop</code> ACLs to the policy's PortGroup with <code>priority=1010</code>.</p>
+<p><strong>Examples:</strong> </p>
+<p>Given two pods in Namespace <code>default</code> called  <code>client1</code> and <code>client2</code> , and one pod in Mamespace <code>demo</code>, called <code>server</code> lets make a network policy that allows ingress traffic to the server from <code>client1</code> but bocks traffic from <code>client2</code> </p>
+<p>Notice the pod <code>client1</code> and Namespace <code>default</code> are labeled with <code>app=demo</code></p>
+<div class="highlight"><pre><span></span><code>[astoycos@localhost demo]$ kubectl get pods -o wide --show-labels --all-namespaces
+NAMESPACE            NAME                                        READY   STATUS    RESTARTS   AGE     IP           NODE                NOMINATED NODE   READINESS GATES   LABELS
+default              client1                                     1/1     Running   0          5m5s    10.244.2.5   ovn-worker          &lt;none&gt;           &lt;none&gt;            app=demo
+default              client2                                     1/1     Running   0          4m59s   10.244.1.4   ovn-worker2         &lt;none&gt;           &lt;none&gt;            &lt;none&gt;
+demo                 server                                      1/1     Running   0          42s     10.244.2.6   ovn-worker          &lt;none&gt;           &lt;none&gt;            &lt;none&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[astoycos@localhost demo]$ kubectl get namespace --show-labels
+NAME                 STATUS   AGE   LABELS
+default              Active   94m   ns=default
+demo                 Active   66m   &lt;none&gt;
+</code></pre></div>
+<p>Before applying the following network policy both pods <code>client1</code> and <code>client2</code> can reach the <code>server</code> pod</p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-client
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          ns: default
+      podSelector:
+        matchLabels:
+          app: demo
+</code></pre></div>
+<p>after applying this Network policy in Namespace <code>demo</code> (<code>oc create -n demo -f policy.yaml</code>) only the pod <code>client1</code> can reach the <code>server</code> pod </p>
+<p>NOTE: in the above definition there is only a single <code>from</code> element allowing connections from Pods labeled <code>app=demo</code> in Namespaces with the label <code>app=demo</code></p>
+<p>if the from section was applied as follows </p>
+<p><div class="highlight"><pre><span></span><code>- from:
+    - namespaceSelector:
+        matchLabels:
+          ns: demo
+    - podSelector:
+        matchLabels:
+          app: demo
+</code></pre></div>
+  Then there would be two elements in the <code>from</code> array which allows connections from Pods labeled <code>app=demo</code> <strong>OR</strong> and Pod from Namespaces with the label <code>app=demo</code></p>
+<p>Now let's have a look at some of the OVN resources that are created along with this Network Policy </p>
+<p>For all worker nodes we can see the UUIDs of the logical ports corresponding to the pods <code>client1</code>, <code>client2</code>, and <code>server</code> </p>
+<p><strong>ovn-worker</strong></p>
+<p><div class="highlight"><pre><span></span><code>[root@ovn-control-plane ~]# ovn-nbctl lsp-list ovn-worker
+edb290cf-b250-4699-b102-7acbb6300dc9 (default_client1)
+c754a19d-1e8c-4415-99b9-66fdcdaed196 (demo_server)
+24c789a2-fc4b-42a5-bb16-5b1c19490b50 (k8s-ovn-worker)
+484b2004-a5c1-447c-b857-eb8e524a73f3 (kube-system_coredns-f9fd979d6-qp6xd)
+45163af0-08c2-4d42-9fc7-7b0ddc935bd8 (local-path-storage_local-path-provisioner-78776bfc44-lgzdf)
+0bb378f1-4e89-46a8-a455-7a891f64c7c8 (stor-ovn-worker)
+</code></pre></div>
+  <strong>ovn-worker2</strong></p>
+<div class="highlight"><pre><span></span><code>[root@ovn-control-plane ~]# ovn-nbctl lsp-list ovn-worker2
+d5030b96-1163-4ed0-90f8-41b3831d2a0b (default_client2)
+4da8fb64-0a43-4d76-a7ba-18941c078862 (k8s-ovn-worker2)
+37f58eeb-8c1a-437b-8b21-bcc1337b2e3f (kube-system_coredns-f9fd979d6-628xd)
+65019041-51b2-4599-913d-7f01c8eaa394 (stor-ovn-worker2)
+</code></pre></div>
+<p><strong>Port Groups</strong> </p>
+<div class="highlight"><pre><span></span><code>[root@ovn-control-plane ~]# ovn-nbctl find port-group
+_uuid               : 2b74086c-9986-4f4d-8c97-3388625230e9
+acls                : []
+external_ids        : {name=clusterPortGroup}
+name                : clusterPortGroup
+ports               : [24c789a2-fc4b-42a5-bb16-5b1c19490b50, 4da8fb64-0a43-4d76-a7ba-18941c078862, e556e329-d624-473a-8827-f022c17a8f60]
+
+_uuid               : a132ecce-dbca-4989-87f7-96e2f0b62a2c
+acls                : [b4e57f83-8b8f-4b37-b5e5-1f82704c49c4]
+external_ids        : {name=demo_allow-from-client}
+name                : a13757631697825269621
+ports               : [c754a19d-1e8c-4415-99b9-66fdcdaed196]
+
+_uuid               : a32d9dda-d7fb-4ae8-b6a9-3af17d62aa7f
+acls                : [510d797c-6302-4171-8a08-eeaab67063f4, f9079cce-29aa-4d1b-b36b-ca39933ad4e6]
+external_ids        : {name=ingressDefaultDeny}
+name                : ingressDefaultDeny
+ports               : [c754a19d-1e8c-4415-99b9-66fdcdaed196]
+
+_uuid               : 896a80ff-46f7-4837-a105-7b52cee0c625
+acls                : [660b10ea-0f2e-49cb-b620-ca4218e87ac6, 9bb634ff-cb69-44b6-a64d-09147cf337b5]
+external_ids        : {name=egressDefaultDeny}
+name                : egressDefaultDeny
+ports               : []
+</code></pre></div>
+<p>Notice that the port corresponding to the pod <code>server</code> is included in the <code>ingressDefaultDeny</code> port group </p>
+<p>To bypass the ingress default deny and allow traffic from pod <code>client1</code> in Namespace <code>demo</code> as specificed in the network policy, an address set is created containing the ip address for the pod <code>client1</code>  </p>
+<p>subset of <code>ovn-nbctl find address_set</code> 
+  <div class="highlight"><pre><span></span><code>_uuid               : 7dc68ee9-9628-4a6a-83f0-a92bfa0970c6
+addresses           : [&quot;10.244.2.5&quot;]
+external_ids        : {name=demo.allow-from-client.ingress.0_v4}
+name                : a14783882619065065142
+</code></pre></div></p>
+<p>Finally we can see the ingress ACL that allows traffic to the <code>server</code> pod by allowing <code>ip4.src</code> traffic <strong>FROM</strong> the address's in the address set <code>a14783882619065065142</code> <strong>TO</strong> the port group <code>@a13757631697825269621</code> which contains the port <code>c754a19d-1e8c-4415-99b9-66fdcdaed196</code> (corresponding to the <code>server</code>'s logical port)</p>
+<p>subset of <code>ovn-nbctl find ACL</code>
+  <div class="highlight"><pre><span></span><code>_uuid               : b4e57f83-8b8f-4b37-b5e5-1f82704c49c4
+action              : allow-related
+direction           : to-lport
+external_ids        : {Ingress_num=&quot;0&quot;, ipblock_cidr=&quot;false&quot;, l4Match=None, namespace=demo, policy=allow-from-client, policy_type=Ingress}
+log                 : false
+match               : &quot;ip4.src == {$a14783882619065065142} &amp;&amp; outport == @a13757631697825269621&quot;
+meter               : []
+name                : []
+priority            : 1001
+severity            : []
+</code></pre></div></p>
+<p>TODO: Add more examples(good for first PRs), specifically replicate above scenario by matching on the pod's network(<code>ip_block</code>) rather than the pod itself </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2529,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/node-identity/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>OVN-Kubernetes Node Identity - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#ovn-kubernetes-node-identity" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              OVN-Kubernetes Node Identity
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2188,6 +2179,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-node-client-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Per-node client certificates
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validating-admission-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validating Admission Webhook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2230,95 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="ovn-kubernetes-node-identity">OVN-Kubernetes Node Identity<a class="headerlink" href="#ovn-kubernetes-node-identity" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>The OVN-Kubernetes node identity feature introduces a per-node client certificate for ovnkube-node pods,
+together with a <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook">validating admission webhook</a>, 
+enabling granular permission enforcement specific to ovn-kubernetes.
+Previously, all <code>ovnkube-node</code> pods shared a common service account, 
+with their API permissions managed only through Kubernetes <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/">RBAC</a> rules.\
+The goal of this feature is to limit <code>ovnkube-node</code> permissions to the minimum required for networking management on a specific Kubernetes node.
+We will mimic the <a href="https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/">approach used by kubelet</a> in which every node has a unique identity, 
+and its API write requests are verified using a <a href="https://github.com/kubernetes/kubernetes/blob/9e0569f2ed3934060fabe51be4e15232bbea3877/plugin/pkg/admission/noderestriction/admission.go">NodeRestriction</a> validating admission webhook.</p>
+<h2 id="per-node-client-certificates">Per-node client certificates<a class="headerlink" href="#per-node-client-certificates" title="Permanent link">&para;</a></h2>
+<p>This process mimics the <a href="https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/#bootstrap-initialization">bootstrap initialization</a> in kubelet.
+When the <code>ovnkube-node</code> starts for the first time, it uses the host's <code>kubeconfig</code> to create a <a href="https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/">CertificateSigningRequest</a>
+that requests a client certificate for the <code>system:ovn-node:&lt;nodeName&gt;</code> user in the <code>system:ovn-nodes</code> group.
+This request is then signed by the <a href="https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers">kubernetes.io/kube-apiserver-client</a> signer.</p>
+<p>For the certificate to be signed, it must first be approved.
+The newly introduced <code>OVNKubeCSRController</code> component approves or denies <code>CertificateSigningRequests</code> created for users with the <code>system:ovn-node</code> prefix.
+The <code>OVNKubeCSRController</code> performs several checks to validate the requested certificate, including:
+- Ensuring that the node name extracted from the request matches the node name of the user that sent it.
+- Verifying that the group is set to <code>system:ovn-nodes</code>.
+- Checking that the certificate expiration does not exceed the maximum allowed duration.</p>
+<p>Once the certificate is approved and signed, <code>ovnkube-node</code> uses it to communicate with the API server and request a new certificate upon expiration.
+The RBAC rules are consistent across all <code>ovnkube-node</code> pods, we use the <code>system:ovn-nodes</code> group as the subject for Role/ClusterRole bindings to avoid duplication:
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRoleBinding</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ovnkube-node</span>
+<span class="nt">roleRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ovnkube-node</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
+<span class="w">    </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
+<span class="nt">subjects</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Group</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:ovn-nodes</span>
+<span class="w">      </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span>
+</code></pre></div>
+Note: By default, the generated certificates have a brief lifetime set (10min).
+This is intentional as it helps ensure that the certificate rotation works seamlessly, but it might be adjusted in production environments.</p>
+<h2 id="validating-admission-webhook">Validating Admission Webhook<a class="headerlink" href="#validating-admission-webhook" title="Permanent link">&para;</a></h2>
+<p>The feature introduces a validating webhook for updates to <code>pod/status</code> (Interconnect only) and <code>node/status</code>.\
+The <code>ovnkube-node</code> pod exclusively updates the status on both resources, so it is sufficient to verify only update requests.\
+The webhooks include the following checks for each <code>ovnkube-node</code> pod:
+- Modifying annotations on pods hosted on its own node.
+- Modifying annotations on its own node.
+- Modifying only allowed annotations.
+- Not modifying anything other than annotations.</p>
+<p>The allowed annotations list contains both common and feature specific values:
+ - By default, the webhook will verify a set of common node annotations used in all deployments.
+ - When <code>enable-interconnect</code> parameter is provided the webhook will validate additional pod/node annotations set by the ovnkube-node component in interconnect environments.
+ - When <code>enable-hybrid-overlay</code> parameter is provided the webhook will validate additional node annotations set by the ovnkube-node component in interconnect environments.</p>
+<p>The specific annotation values can be found in <code>go-controller/pkg/ovnwebhook/nodeadmission.go</code> and <code>go-controller/pkg/ovnwebhook/podadmission.go</code> files.</p>
+<p>Some of the allowed annotations have additional checks; for instance, the IP addresses in <a href="https://github.com/ovn-org/ovn-kubernetes/blob/5d56a53df520a085e629cdc71be092afed9c3f0f/go-controller/pkg/util/pod_annotation.go#L20-L51">k8s.ovn.org/pod-networks</a>
+must match the node's <a href="https://github.com/ovn-org/ovn-kubernetes/blob/5d56a53df520a085e629cdc71be092afed9c3f0f/go-controller/pkg/util/subnet_annotations.go#L15-L39">k8s.ovn.org/node-subnets</a> networks.</p>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<p>In Kind,
+the feature is enabled by default and can be disabled with <code>--disable-ovnkube-identity</code> when creating the cluster.\
+By default,
+the webhook listens on the nodes <code>localhost</code> address so there has to be an instance running on the control-plane node:
+<div class="highlight"><pre><span></span><code>kubectl get pod -lname=ovnkube-identity -n ovn-kubernetes  -o wide
+NAME                                READY   STATUS    RESTARTS   AGE   IP           NODE                NOMINATED NODE   READINESS GATES
+ovnkube-identity-57f9778d99-llfqz   1/1     Running   0          30m   172.18.0.3   ovn-control-plane   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
+This approach allows us to collocate the webhook with the API server for better response times
+and avoid relying on cluster networking.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

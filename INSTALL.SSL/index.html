@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/INSTALL.SSL/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>INSTALL.SSL - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#generating-certificates" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              INSTALL.SSL
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2185,8 +2176,98 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generating-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating certificates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-certificate-authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a certificate authority.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-signed-certificates-for-ovn-components-running-on-the-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate signed certificates for OVN components running on the master.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Generate signed certificates for OVN components running on the master.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-signed-certificates-for-ovn-nb-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate signed certificates for OVN NB Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-signed-certificates-for-ovn-sb-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate signed certificates for OVN SB Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-signed-certificates-for-ovn-northd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate signed certificates for OVN Northd
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-certificates-for-the-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate certificates for the nodes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-time-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      One time setup.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2195,16 +2276,193 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+  <h1>INSTALL.SSL</h1>
+
+<p>This document explains the way one could use SSL for connectivity between OVN
+components.  The details in this documentation needs a minimum version of
+Open vSwitch 2.7.</p>
+<h2 id="generating-certificates">Generating certificates<a class="headerlink" href="#generating-certificates" title="Permanent link">&para;</a></h2>
+<p>Detailed explanation of how OVS utilites and daemons use SSL certificates is
+explained at <a href="http://docs.openvswitch.org/en/latest/howto/ssl">OVS.SSL</a>.  The following section summarizes it for
+ovn-kubernetes.</p>
+<h3 id="create-a-certificate-authority">Create a certificate authority.<a class="headerlink" href="#create-a-certificate-authority" title="Permanent link">&para;</a></h3>
+<p>On a secure machine (separate from your k8s cluster), where you have installed
+the ovs-pki utility (comes with OVS installations), create a certificate
+authority by running</p>
+<div class="highlight"><pre><span></span><code>ovs-pki init --force
+</code></pre></div>
+<p>The above command creates 2 certificate authorities.  But we are concerned only
+with one of them, i.e the "switch" certificate authority.  We will use this
+certificate authority to sign individual certificates of all the nodes.  We
+will then use the same certificate authority's certificate to verify a node's
+connections to the master.</p>
+<p>Copy this certificate to the master and each of the nodes. $CENTRAL_IP
+is the IP address of the master.</p>
+<div class="highlight"><pre><span></span><code>scp /var/lib/openvswitch/pki/switchca/cacert.pem \
+    root@$CENTRAL_IP:/etc/openvswitch/.
+</code></pre></div>
+<h3 id="generate-signed-certificates-for-ovn-components-running-on-the-master">Generate signed certificates for OVN components running on the master.<a class="headerlink" href="#generate-signed-certificates-for-ovn-components-running-on-the-master" title="Permanent link">&para;</a></h3>
+<h4 id="generate-signed-certificates-for-ovn-nb-database">Generate signed certificates for OVN NB Database<a class="headerlink" href="#generate-signed-certificates-for-ovn-nb-database" title="Permanent link">&para;</a></h4>
+<p>On the master, run the following commands.</p>
+<div class="highlight"><pre><span></span><code>cd /etc/openvswitch
+ovs-pki req ovnnb
+</code></pre></div>
+<p>The above command will generate a private key "ovnnb-privkey.pem"
+and a corresponding certificate request named "ovnnb-req.pem". Copy over
+the ovnnb-req.pem to the aforementioned secure machine's /var/lib/openvswitch/pki
+folder to sign it using the command below.</p>
+<div class="highlight"><pre><span></span><code>ovs-pki -b sign ovnnb
+</code></pre></div>
+<p>The above command will generate ovnnb-cert.pem. Copy over this file back
+to the master's /etc/openvswitch. The ovnnb-privkey.pem and ovnnb-cert.pem
+will be used by the ovsdb-server that fronts the OVN NB database.</p>
+<p>Now run the following commands to ask ovsdb-server to use these
+certificates and also to open up SSL ports via which the database
+can be accessed.</p>
+<div class="highlight"><pre><span></span><code>ovn-nbctl set-ssl /etc/openvswitch/ovnnb-privkey.pem \
+    /etc/openvswitch/ovnnb-cert.pem  /etc/openvswitch/cacert.pem
+
+ovn-nbctl set-connection pssl:6641
+</code></pre></div>
+<h4 id="generate-signed-certificates-for-ovn-sb-database">Generate signed certificates for OVN SB Database<a class="headerlink" href="#generate-signed-certificates-for-ovn-sb-database" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>cd /etc/openvswitch
+ovs-pki req ovnsb
+</code></pre></div>
+<p>The above command will generate a private key "ovnsb-privkey.pem"
+and a corresponding certificate request named "ovnsb-req.pem". Copy over
+the ovnsb-req.pem to the aforementioned secure machine's /var/lib/openvswitch/pki
+to sign it using the command below.</p>
+<div class="highlight"><pre><span></span><code>ovs-pki -b sign ovnsb
+</code></pre></div>
+<p>The above command will generate ovnsb-cert.pem. Copy over this file back
+to the master's /etc/openvswitch. The ovnsb-privkey.pem and ovnsb-cert.pem
+will be used by the ovsdb-server that fronts the OVN SB database.</p>
+<p>Now run the following commands to ask ovsdb-server to use these
+certificates  and also to open up SSL ports via which the database
+can be accessed.</p>
+<div class="highlight"><pre><span></span><code>ovn-sbctl set-ssl /etc/openvswitch/ovnsb-privkey.pem \
+    /etc/openvswitch/ovnsb-cert.pem  /etc/openvswitch/cacert.pem
+
+ovn-sbctl set-connection pssl:6642
+</code></pre></div>
+<h4 id="generate-signed-certificates-for-ovn-northd">Generate signed certificates for OVN Northd<a class="headerlink" href="#generate-signed-certificates-for-ovn-northd" title="Permanent link">&para;</a></h4>
+<p>If you are running ovn-northd on the same host as the OVN NB and SB database servers, then
+there is no need to secure the communication between ovn-northd and OVN NB/SB daemons.
+ovn-northd will communicate using UNIX path.</p>
+<p>In case you still want to secure the communication, or the daemons are running on
+separate hosts, then follow the instructions on this page [OVN-NORTHD.SSL.md]</p>
+<h3 id="generate-certificates-for-the-nodes">Generate certificates for the nodes<a class="headerlink" href="#generate-certificates-for-the-nodes" title="Permanent link">&para;</a></h3>
+<p>On each node, create a certificate request.</p>
+<div class="highlight"><pre><span></span><code>cd /etc/openvswitch
+ovs-pki req ovncontroller
+</code></pre></div>
+<p>The above command will create a new private key for the node called
+ovncontroller-privkey.pem and a certificate request file called
+ovncontroller-req.pem.  Copy this certificate request file to the secure
+machine where you created the certificate authority and from the directory
+where the copied file exists, run:</p>
+<div class="highlight"><pre><span></span><code>ovs-pki -b sign ovncontroller switch
+</code></pre></div>
+<p>The above will create the certificate for the node called
+"ovncontroller-cert.pem". You should copy this certificate back to the
+node's /etc/openvswitch directory.</p>
+<p>Additionally, the common name used for signing the certificates (<code>ovncontroller</code>)
+needs to be passed in for TLS server certificate verification using the 
+<code>-nb-cert-common-name</code> and the <code>-sb-cert-common-name</code> CLI options.</p>
+<h2 id="one-time-setup">One time setup.<a class="headerlink" href="#one-time-setup" title="Permanent link">&para;</a></h2>
+<p>As explained in <a href="README.md">README.md</a>, OVN architecture has a central component which
+stores your networking intent in a database.  You start this central component
+on the node where you intend to start your k8s central daemons by running:</p>
+<div class="highlight"><pre><span></span><code>/usr/share/openvswitch/scripts/ovn-ctl start_northd
+</code></pre></div>
+<p>You should now restart the ovn-controller on each host with the following
+additional options.</p>
+<div class="highlight"><pre><span></span><code>/usr/share/openvswitch/scripts/ovn-ctl \
+    --ovn-controller-ssl-key=&quot;/etc/openvswitch/ovncontroller-privkey.pem&quot;  \
+    --ovn-controller-ssl-cert=&quot;/etc/openvswitch/ovncontroller-cert.pem&quot;    \
+    --ovn-controller-ssl-ca-cert=&quot;/etc/openvswitch/cacert.pem&quot; \
+    restart_controller
+</code></pre></div>
+<p>To make sure that ovn-controller restarts with the above options during system
+reboots, you should add the above options to your startup script's defaults
+file.  For e.g. on Ubuntu, if you installed ovn-controller via the package
+'ovn-host*.deb', write the following to your /etc/default/ovn-host file</p>
+<p><div class="highlight"><pre><span></span><code>OVN_CTL_OPTS=&quot;--ovn-controller-ssl-key=/etc/openvswitch/ovncontroller-privkey.pem  --ovn-controller-ssl-cert=/etc/openvswitch/ovncontroller-cert.pem --ovn-controller-ssl-ca-cert=/etc/openvswitch/cacert.pem&quot;
+</code></pre></div>
+If you start the ovnkube utility on master with "--init-master"
+or with "--init-network-control-manager",
+you should pass the SSL certificates to it. For e.g:</p>
+<div class="highlight"><pre><span></span><code>sudo ovnkube -k8s-kubeconfig kubeconfig.yaml -loglevel=4 \
+ -k8s-apiserver=&quot;http://$CENTRAL_IP:8080&quot; \
+ -logfile=&quot;/var/log/ovn-kubernetes/ovnkube.log&quot; \
+ -init-master=&quot;$NODE_NAME&quot; -cluster-subnets=$CLUSTER_IP_SUBNET \
+ -k8s-service-cidr=$SERVICE_IP_SUBNET \
+ -nodeport \
+ -nb-address=&quot;ssl:$CENTRAL_IP:6641&quot; \
+ -sb-address=&quot;ssl:$CENTRAL_IP:6642&quot; \
+ -nb-client-privkey /etc/openvswitch/ovncontroller-privkey.pem \
+ -nb-client-cert /etc/openvswitch/ovncontroller-cert.pem \
+ -nb-client-cacert /etc/openvswitch/cacert.pem \
+ -nb-cert-common-name ovncontroller \
+ -sb-client-privkey /etc/openvswitch/ovncontroller-privkey.pem \
+ -sb-client-cert /etc/openvswitch/ovncontroller-cert.pem \
+ -sb-client-cacert /etc/openvswitch/cacert.pem \
+ -sb-cert-common-name ovncontroller
+</code></pre></div>
+<p>If you start the ovnkube utility with "--init-cluster-manager",
+there is no need to pass the SSL certificates to it as it doesn't
+connect to the OVN databases. For e.g:</p>
+<div class="highlight"><pre><span></span><code>sudo ovnkube -k8s-kubeconfig kubeconfig.yaml -loglevel=4 \
+ -k8s-apiserver=&quot;http://$CENTRAL_IP:8080&quot; \
+ -logfile=&quot;/var/log/ovn-kubernetes/ovnkube-cluster-manager.log&quot; \
+ -init-cluster-manager=&quot;$NODE_NAME&quot; -cluster-subnets=$CLUSTER_IP_SUBNET \
+ -k8s-service-cidr=$SERVICE_IP_SUBNET
+</code></pre></div>
+<p>And when you start your ovnkube utility on nodes, you should pass the SSL
+certificates to it. For e.g:</p>
+<div class="highlight"><pre><span></span><code>sudo ovnkube -k8s-kubeconfig $HOME/kubeconfig.yaml -loglevel=4 \
+    -k8s-apiserver=&quot;http://$CENTRAL_IP:8080&quot; \
+    -init-node=&quot;$NODE_NAME&quot;  \
+    -nodeport \
+    -nb-address=&quot;ssl:$CENTRAL_IP:6641&quot; \
+    -sb-address=&quot;ssl:$CENTRAL_IP:6642&quot; -k8s-token=$TOKEN \
+    -nb-client-privkey /etc/openvswitch/ovncontroller-privkey.pem \
+    -nb-client-cert /etc/openvswitch/ovncontroller-cert.pem \
+    -nb-client-cacert /etc/openvswitch/cacert.pem \
+    -nb-cert-common-name ovncontroller \
+    -sb-client-privkey /etc/openvswitch/ovncontroller-privkey.pem \
+    -sb-client-cert /etc/openvswitch/ovncontroller-cert.pem \
+    -sb-client-cacert /etc/openvswitch/cacert.pem \
+    -sb-cert-common-name ovncontroller \
+    -init-gateways \
+    -k8s-service-cidr=$SERVICE_IP_SUBNET \
+    -cluster-subnets=$CLUSTER_IP_SUBNET
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

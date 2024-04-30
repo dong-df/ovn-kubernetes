@@ -8,26 +8,24 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
-      
-      
-        <link rel="prev" href="..">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/design/shared_gw_dgp/">
       
       
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Enable Node-Local Services Access in Shared Gateway Mode - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#enable-node-local-services-access-in-shared-gateway-mode" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +88,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Enable Node-Local Services Access in Shared Gateway Mode
             
           </span>
         </div>
@@ -210,7 +208,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -229,7 +227,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../design/architecture.md" class="md-tabs__link">
+        <a href="../architecture.md" class="md-tabs__link">
           
   
     
@@ -249,7 +247,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -269,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING.md" class="md-tabs__link">
+        <a href="../../governance/CONTRIBUTING.md" class="md-tabs__link">
           
   
     
@@ -295,7 +293,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip.md" class="md-tabs__link">
+        <a href="../../features/cluster-egress-controls/egress-ip.md" class="md-tabs__link">
           
   
     
@@ -318,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging.md" class="md-tabs__link">
+        <a href="../../troubleshooting/debugging.md" class="md-tabs__link">
           
   
     
@@ -338,7 +336,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics.md" class="md-tabs__link">
+        <a href="../../observability/metrics.md" class="md-tabs__link">
           
   
     
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +397,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture.md" class="md-nav__link">
+      <a href="../architecture.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology.md" class="md-nav__link">
+      <a href="../topology.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy.md" class="md-nav__link">
+      <a href="../service-traffic-policy.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow.md" class="md-nav__link">
+      <a href="../host-to-node-port-hairpin-trafficflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress.md" class="md-nav__link">
+      <a href="../external-ip-and-loadbalancer-ingress.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/live-migration.md" class="md-nav__link">
+      <a href="../live-migration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING.md" class="md-nav__link">
+      <a href="../../governance/CONTRIBUTING.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING.md" class="md-nav__link">
+      <a href="../../governance/REVIEWING.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer.md" class="md-nav__link">
+      <a href="../../developer-guide/developer.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci.md" class="md-nav__link">
+      <a href="../../ci/ci.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1385,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-ip.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-service.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-qos.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy.md" class="md-nav__link">
+      <a href="../../features/network-security-controls/network-policy.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy.md" class="md-nav__link">
+      <a href="../../features/network-security-controls/admin-network-policy.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall.md" class="md-nav__link">
+      <a href="../../features/network-security-controls/egress-firewall.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity.md" class="md-nav__link">
+      <a href="../../features/infrastructure-security-controls/node-identity.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing.md" class="md-nav__link">
+      <a href="../../features/multi-homing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast.md" class="md-nav__link">
+      <a href="../../features/multicast.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration.md" class="md-nav__link">
+      <a href="../../features/live-migration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay.md" class="md-nav__link">
+      <a href="../../features/hybrid-overlay.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +1839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/ovs_offload.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +1942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging.md" class="md-nav__link">
+      <a href="../../troubleshooting/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace.md" class="md-nav__link">
+      <a href="../../troubleshooting/ovnkube-trace.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +1984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics.md" class="md-nav__link">
+      <a href="../../observability/metrics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2138,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,6 +2179,167 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-ovn-logical-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current OVN Logical Topology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current OVN Logical Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-between-overlay-network-pod-and-nodes-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Between Overlay-Network Pod and Node’s IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-between-overlay-network-pod-and-cluster-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Between Overlay-Network Pod and Cluster IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-between-host-network-pod-and-cluster-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Between Host-Network Pod and Cluster IP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-ovn-logical-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      New OVN Logical Topology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New OVN Logical Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ovn-features-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN Features Used
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OVN Features Used">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ovns-support-for-policy-based-routing-pbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN’s Support for Policy Based Routing (PBR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ovns-support-for-1-to-1-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN’s Support for 1-to-1 NAT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packet-processing-with-distributed-gateway-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet processing with distributed gateway port
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ovn-logical-topology-with-distributed-gateway-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN Logical topology with distributed gateway port
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-between-overlay-network-pod-and-nodes-ip_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Between Overlay-Network Pod and Node’s IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-between-overlay-network-pod-and-cluster-ip_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Between Overlay-Network Pod and Cluster IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-between-host-network-pod-and-cluster-ip_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traffic Between Host-Network Pod and Cluster IP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2347,422 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="enable-node-local-services-access-in-shared-gateway-mode">Enable Node-Local Services Access in Shared Gateway Mode<a class="headerlink" href="#enable-node-local-services-access-in-shared-gateway-mode" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This document captures a proposal for adding a section to the current OVN Logical Topology to
+support pods (both on overlay network and host network) to communicate with the services on
+the node it is on. Before we jump on to the new topology, we are going to look at the current
+topology and understand how it provides that access (or not) today. Next, we understand 
+some of the OVN features on top of which the changes to the current topology is built on.
+Finally, we are going to look at the new OVN Logical topology.</p>
+<p><strong>NOTE:</strong> This change is required only for the shared gateway mode. In this mode, we share the
+IP address of the node to SNAT the traffic going out of the OVN Logical network to the
+physical network. The OVN Gateway router does this SNATing. When a packet with destination
+IP set to the Node IP arrives on the <code>ingress</code> pipeline of the Gateway Router, it expects
+the packet to be one of these things:</p>
+<ol>
+<li>a packet for NodePort service and it DNATs it to one of the backend IPs</li>
+<li>a reply packet for an already established (or in the process of) connection</li>
+</ol>
+<p>If it sees a packet from the OVN logical topology towards the Node IP, then it gets dropped
+since it doesn’t fit (1) or (2) above. </p>
+<h2 id="current-ovn-logical-topology">Current OVN Logical Topology<a class="headerlink" href="#current-ovn-logical-topology" title="Permanent link">&para;</a></h2>
+<p>The following diagram captures the OVN logical topology for a two-node k8s cluster.</p>
+<p><img alt="picture alt" src="../current_ovn_topology.svg" title="Current OVN Logical Topology" /></p>
+<p>All the pods in a given node are connected to a node specific logical switch named after
+node’s hostname. The east-west traffic between pods on a node with all pods on all nodes,
+without NAT, is provided by the distributed logical router named ovn_cluster_router. The
+north-south traffic between the pod and the external network is provided by the gateway
+logical router connected to the external logical switch. The outbound traffic is SNATed
+on the gateway logical router and then sent out to the underlay physical network.  The
+node-specific external gateway logical router is connected to the distributed logical
+router by a node-specific join logical switch.</p>
+<p>Since the focus of this document is the pod to node-local service traffic, let us deep dive
+into it. From that point of view, there are three flows that we care about and the following
+diagram captures those three traffic flows.</p>
+<p><img alt="picture alt" src="../current_ovn_topology_traffic.svg" title="Current OVN Logical Topology Traffic Flows" /></p>
+<p>The Logical Static Routes on the ovn_cluster_router is as shown below and will help us in
+understanding the next set of sections.
+<div class="highlight"><pre><span></span><code># ovn-nbctl lr-route-list ovn_cluster_router
+IPv4 Routes
+               10.8.51.51                192.168.1.2 dst-ip
+               10.8.51.53                192.168.2.2 dst-ip
+           192.168.1.0/24                100.64.0.4 src-ip
+           192.168.2.0/24                100.64.0.3 src-ip
+</code></pre></div></p>
+<h3 id="traffic-between-overlay-network-pod-and-nodes-ip">Traffic Between Overlay-Network Pod and Node’s IP<a class="headerlink" href="#traffic-between-overlay-network-pod-and-nodes-ip" title="Permanent link">&para;</a></h3>
+<p>This refers to the traffic flow (1) in the diagram above. Consider a Pod running on the overlay
+network and that is scraping the metrics off of the kubelet running on the node. The following
+table captures the packet trace for the “TCP SYN” packet originating at the pod. </p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>SrcIP:Port</th>
+<th>dstIP:Port</th>
+<th>comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node2</td>
+<td>192.168.2.4:9991</td>
+<td>10.8.51.53:10250</td>
+<td></td>
+</tr>
+<tr>
+<td>ovn_cluster_router</td>
+<td>192.168.2.4:9991</td>
+<td>10.8.51.53:10250</td>
+<td>A static route here sets the nexthop to 192.168.2.2 and forwards the packet to the management port</td>
+</tr>
+<tr>
+<td>ovn-k8s-mp0</td>
+<td>192.168.2.4:9991</td>
+<td>10.8.51.53:10250</td>
+<td>Packet is received by the dest</td>
+</tr>
+</tbody>
+</table>
+<p>The reverse path is symmetrical and re-traces all the physical/logical network elements in the
+original path. All the connection-tracking states will be popped/matched and appropriate actions
+will be applied and the reply packet will reach the pod.</p>
+<h3 id="traffic-between-overlay-network-pod-and-cluster-ip">Traffic Between Overlay-Network Pod and Cluster IP<a class="headerlink" href="#traffic-between-overlay-network-pod-and-cluster-ip" title="Permanent link">&para;</a></h3>
+<p>This refers to the traffic flow (2) in the diagram above. Consider a pod running on the K8s API
+server and wants to connect to the kubernetes service cluster IP (say, 10.96.0.1). The backend
+IP for this is the local node itself. The following table captures the packet trace for the
+“TCP SYN” packet originating at the pod.</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>SrcIP:Port</th>
+<th>dstIP:Port</th>
+<th>comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node1</td>
+<td>192.168.1.4:9991</td>
+<td>10.96.0.1:443</td>
+<td>A LB DNAT rule here DNAT’s the VIP of 10.96.0.1:443 to 10.8.51.51:6443</td>
+</tr>
+<tr>
+<td>ovn_cluster_router</td>
+<td>192.168.1.4:9991</td>
+<td>10.8.51.51:6443</td>
+<td>A static route here sets the nexthop to 100.64.0.3 and forwards the packet to node’s local gateway router</td>
+</tr>
+<tr>
+<td>ovn-k8s-mp0</td>
+<td>192.168.1.4:9991</td>
+<td>10.8.51.51:10250</td>
+<td>Packet is received by the dest</td>
+</tr>
+</tbody>
+</table>
+<p>The reverse path is symmetrical and re-traces all the physical/logical network elements in
+the original path. In fact, this flow is similar to the 1st flow after the DNAT occurs.</p>
+<h3 id="traffic-between-host-network-pod-and-cluster-ip">Traffic Between Host-Network Pod and Cluster IP<a class="headerlink" href="#traffic-between-host-network-pod-and-cluster-ip" title="Permanent link">&para;</a></h3>
+<p>This refers to the traffic flow (3) in the diagram above. Consider a host network pod, say
+Multus,  running on the K8s API server and wants to connect to the kubernetes service cluster
+IP (say, 10.96.0.1) to get network attachment information. The backend IP for this is the
+local node itself. The following table captures the packet trace for the “TCP SYN” packet
+originating on the node. Depending on the application, it is possible that the source IP
+address could be the node’s IP or the management port’s IP address.</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>SrcIP:Port</th>
+<th>dstIP:Port</th>
+<th>comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ovn-k8s-mp0</td>
+<td>10.8.51.51:9991 or 192.168.1.2:9991</td>
+<td>10.96.0.1:443</td>
+<td>An iptable SNAT rule on the host translates all the packets entering the management port with management port’s IP address</td>
+</tr>
+<tr>
+<td>node1</td>
+<td>192.168.1.2:9991</td>
+<td>10.96.0.1:443</td>
+<td>A LB DNAT rule here DNAT’s the VIP of 10.96.0.1:443 to 10.8.51.51:6443</td>
+</tr>
+<tr>
+<td>ovn_cluster_router</td>
+<td>192.168.1.2:9991</td>
+<td>10.8.51.51:6443</td>
+<td>A static route here sets the nexthop to 100.64.0.3 and forwards the packet to node’s local gateway router</td>
+</tr>
+<tr>
+<td>ovn-k8s-mp0</td>
+<td>192.168.1.2:9991</td>
+<td>10.8.51.51:10250</td>
+<td>Packet is received by the dest</td>
+</tr>
+<tr>
+<td>Reply packet from the host (Gets dropped)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>loopback</td>
+<td>10.8.51.51:10250</td>
+<td>192.168.1.2:9991</td>
+<td>Packet drop (see below)</td>
+</tr>
+</tbody>
+</table>
+<p>The reply packet from the host gets dropped on the floor on the host. Both of the IP addresses
+10.8.51.51 and 192.168.1.2 are on the directly attached interface in the host network
+namespace. So, the host stack tries to short-circuit the packet within the host and the TCP
+state machine cannot match the sent ACK  because it comes in as (src:10.8.51.51,
+ dst 192.168.1.2) whilst the SYN was sent as (src:192.168.1.2, dst:10.96.0.1).</p>
+<p>We have tried connection marking using iptable rules in <code>mangle table</code> and using Linux Policy
+Based Routing (via ip rule) to make such packets to lookup a different routing table, but
+nothing works. It only complicates the OVN K8s control plane.</p>
+<p>We are striving hard to ensure that the OVN K8s Control Plane is completely confined to the
+OVN feature set. Having to rely on both OVN features and iptables/iprules on the host stack
+complicates the control plane and makes it harder to debug and reason about.</p>
+<h2 id="new-ovn-logical-topology">New OVN Logical Topology<a class="headerlink" href="#new-ovn-logical-topology" title="Permanent link">&para;</a></h2>
+<p>As it is clear from the previous section that the static routes on the distributed router
+that steers traffic to local node services through management port only works for
+two-out-of-three flows mentioned in the aforementioned sections. The new topology provides a
+clean path for all the three flows and this is achieved with the help of a distributed gateway
+port, policy based routing policies, and 1-to-1 NAT. </p>
+<h3 id="ovn-features-used">OVN Features Used<a class="headerlink" href="#ovn-features-used" title="Permanent link">&para;</a></h3>
+<p>Before we dive into the new logical topology, it is important to understand the following
+three concepts (please see the diagram below on how these three things tie together)</p>
+<p><img alt="picture alt" src="../ovn_features.svg" title="OVN Features" /></p>
+<h4 id="ovns-support-for-policy-based-routing-pbr">OVN’s Support for Policy Based Routing (PBR)<a class="headerlink" href="#ovns-support-for-policy-based-routing-pbr" title="Permanent link">&para;</a></h4>
+<p>PBR provides a way to configure reroute policies on the logical router. These policies are
+captured in a policy-routing table in the router's ingress pipeline. This table itself is
+present after the IP routing table and therefore can override routing decisions and provide
+a different next-hop. The new topology leverages this feature to steer the traffic from pods
+on nodes to node-local services in certain ways.</p>
+<h4 id="ovns-support-for-1-to-1-nat">OVN’s Support for 1-to-1 NAT<a class="headerlink" href="#ovns-support-for-1-to-1-nat" title="Permanent link">&para;</a></h4>
+<p>One can configure one-to-one NAT for a logical port so that all the packets from the logical
+port heading out of logical topology will be SNATed to this exclusive IP, called external_ip,
+set aside for it. Since the external_ip is dedicated to the logical_port, the NATing can
+occur on the chassis where the logical port is bound. The new topology leverages this
+feature on every node.</p>
+<h4 id="packet-processing-with-distributed-gateway-port">Packet processing with distributed gateway port<a class="headerlink" href="#packet-processing-with-distributed-gateway-port" title="Permanent link">&para;</a></h4>
+<p>We create a distributed gateway port (DGP)  on a distributed router by adding a logical router
+port to it and connecting that port to a logical switch that has a localnet port (pathway to
+underlay). For the DGP, we also need to specify the chassis on which this port must be bound.
+The packets flowing through the DGP are either processed centrally on the bound chassis or are
+processed on the local chassis. For this reason, a DGP comes as two ports -- 
+chassis-redirect-DGP (cr-DGP) and DGP. If the packet needs to be centrally processed, then it
+is sent to cr-DGP which then forwards the packet to the bound gateway chassis through a
+geneve tunnel. On the other hand, if the packet needs to be locally processed then it is sent
+to the DGP that exists on the local chassis (and every chassis since its distributed).</p>
+<p>Flows requiring central processing:
+- If the packets from the logical switches behind the distributed router want to exit out of
+the logical topology and if there is no one-to-one NAT mapping for the said traffic flow,
+then the packets are redirected to cr-DGP.
+- ARP resolution of the nexthop physical gateway occurs on the bound chassis through the local
+net port</p>
+<p>Flows that can be locally processed:
+- If there is a matching one-to-one NAT rule for an outbound network traffic, then it is sent
+to DGP that is locally present on the chassis.</p>
+<h3 id="ovn-logical-topology-with-distributed-gateway-port">OVN Logical topology with distributed gateway port<a class="headerlink" href="#ovn-logical-topology-with-distributed-gateway-port" title="Permanent link">&para;</a></h3>
+<p>The following diagram captures the new logical topology with the distributed gateway port created
+on the distributed router, ovn_cluster_router</p>
+<p><img alt="picture alt" src="../ovn_new_topology.svg" title="OVN New Topology" /></p>
+<p>There is no change to the
+path taken by the east-west traffic between the pods on all the nodes and 
+path taken by the north-south traffic from the pods on a node to external network 
+from the current topology.</p>
+<p>However, the traffic between the pods on a node to node-local services changes and they now go through the distributed gateway port on the node itself. Note that there is no centralized processing whatsoever in this topology. So, we don’t need to handle HA for DGP and there is no need to run BFD between all the chassises and the HA gateway chassises.</p>
+<p>The following diagram captures the three traffic flows in the new logical topology</p>
+<p><img alt="picture alt" src="../ovn_new_topology_traffic.svg" title="OVN New Topology" /></p>
+<p>The following Logical Static Routes, Logical Policies, and NAT rules on the distributed router helps us understand the next set of sections.
+<div class="highlight"><pre><span></span><code>$ ovn-nbctl lr-route-list ovn_cluster_router
+IPv4 Routes
+            192.168.1.0/24                100.64.1.1 src-ip
+            192.168.2.0/24                100.64.0.1 src-ip
+$ ovn-nbctl lr-policy-list ovn_cluster_router
+Routing Policies
+      1005 ip4.src == 192.168.1.2 &amp;&amp; ip4.dst == 10.8.51.51         reroute        169.254.0.1
+      1005 ip4.src == 192.168.2.2 &amp;&amp; ip4.dst == 10.8.51.53         reroute        169.254.0.1
+      1004 inport == &quot;rtos-k8s-node1&quot; &amp;&amp; ip4.dst == 10.8.51.51   reroute        192.168.1.2
+      1004 inport == &quot;rtos-k8s-node2&quot; &amp;&amp; ip4.dst == 10.8.51.53   reroute        192.168.2.2
+$ ovn-nbctl lr-nat-list ovn_cluster_router
+TYPE                  EXTERNAL_IP   LOGICAL_IP      EXTERNAL_MAC     LOGICAL_PORT
+dnat_and_snat    169.254.0.3       192.168.1.2         c6:c6:d9:06:9f:a1      k8s-k8s-node1
+dnat_and_snat    169.254.0.4       192.168.2.2          6e:52:2d:6e:91:16    k8s-k8s-node2
+</code></pre></div></p>
+<h3 id="traffic-between-overlay-network-pod-and-nodes-ip_1">Traffic Between Overlay-Network Pod and Node’s IP<a class="headerlink" href="#traffic-between-overlay-network-pod-and-nodes-ip_1" title="Permanent link">&para;</a></h3>
+<p>This refers to the traffic flow (1) in the diagram above. Consider a Pod running on the
+overlay network and that is scraping the metrics off of the kubelet running on the node.
+The following table captures the packet trace for the “TCP SYN” packet originating at the
+pod.</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>SrcIP:Port</th>
+<th>dstIP:Port</th>
+<th>comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node2</td>
+<td>192.168.2.4:9991</td>
+<td>10.8.51.53:10250</td>
+<td></td>
+</tr>
+<tr>
+<td>ovn_cluster_router</td>
+<td>192.168.2.4:9991</td>
+<td>10.8.51.53:10250</td>
+<td>A logical policy rule of priority 1004 will set the nexthop to the management port IP (192.168.2.2) and forwards the packet to ovn-k8s-mp0</td>
+</tr>
+<tr>
+<td>ovn-k8s-mp0</td>
+<td>192.168.2.4:9991</td>
+<td>10.8.51.53:10250</td>
+<td>Packet is received by the dest</td>
+</tr>
+</tbody>
+</table>
+<p>The reverse path is symmetrical and re-traces all the physical/logical network elements in
+the original path.  In the new topology, there is no NATing for this traffic at all. It is
+just re-routed to through different nexthop. The PBR rule used is:
+<div class="highlight"><pre><span></span><code>1004 inport == &quot;rtos-k8s-node2&quot; &amp;&amp; ip4.dst == 10.8.51.53 /* k8s-node2 */  reroute  192.168.2.2
+</code></pre></div></p>
+<h3 id="traffic-between-overlay-network-pod-and-cluster-ip_1">Traffic Between Overlay-Network Pod and Cluster IP<a class="headerlink" href="#traffic-between-overlay-network-pod-and-cluster-ip_1" title="Permanent link">&para;</a></h3>
+<p>This refers to the traffic flow (2) in the diagram above. Consider a pod running on the K8s
+API server and wants to connect to the kubernetes service cluster IP (say, 10.96.0.1). The
+backend IP for this is the local node itself. The following table captures the packet trace for the “TCP SYN” packet originating at the pod.</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>SrcIP:Port</th>
+<th>dstIP:Port</th>
+<th>comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node1</td>
+<td>192.168.1.4:9991/10.96.0.1:443/A LB DNAT rule here DNAT’s the VIP of 10.96.0.1:443 to 10.8.51.51:6443</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ovn_cluster_router</td>
+<td>192.168.1.4:9991</td>
+<td>10.8.51.51:6443</td>
+<td>A logical policy rule of priority 1004 will set the nexthop to the management port IP and forwards the packet to ovn-k8s-mp0</td>
+</tr>
+<tr>
+<td>ovn-k8s-mp0</td>
+<td>192.168.1.4:9991</td>
+<td>10.8.51.51:6443</td>
+<td>Packet is received by the dest</td>
+</tr>
+</tbody>
+</table>
+<p>The reverse path is symmetrical and re-traces all the physical/logical network elements in 
+the original path. In fact, this flow is similar to the 1st flow after the DNAT occurs. It 
+hits the same PBR rule and gets forwarded to the management port.</p>
+<h3 id="traffic-between-host-network-pod-and-cluster-ip_1">Traffic Between Host-Network Pod and Cluster IP<a class="headerlink" href="#traffic-between-host-network-pod-and-cluster-ip_1" title="Permanent link">&para;</a></h3>
+<p>This refers to the traffic flow (3) in the diagram above. Consider a host network pod, say
+Multus,  running on the K8s API server and wants to connect to the kubernetes service cluster
+ P (say, 10.96.0.1) to get network attachment information. The backend IP for this is the
+ local node itself. The following table captures the packet trace for the “TCP SYN” packet
+ originating on the node. Depending on the application, it is possible that the source IP
+ address could be the node’s IP or the management port’s IP address.</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>SrcIP:Port</th>
+<th>dstIP:Port</th>
+<th>comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ovn-k8s-mp0</td>
+<td>10.8.51.51:9991 or 192.168.1.2:9991</td>
+<td>10.96.0.1:443</td>
+<td>An iptable SNAT rule on the host translates all the packets entering the management port with its IP address</td>
+</tr>
+<tr>
+<td>node1</td>
+<td>192.168.1.2:9991</td>
+<td>10.96.0.1:443</td>
+<td>A LB DNAT rule here DNAT’s the VIP of 10.96.0.1:443 to 10.8.51.51:6443</td>
+</tr>
+<tr>
+<td>ovn_cluster_router</td>
+<td>192.168.1.2:9991</td>
+<td>10.8.51.51:6443</td>
+<td>A logical policy rule of priority 1005 will set the nexthop to 169.254.0.1 which is outside of the logical topology and on the host. So, the packet now needs to exit out and that IP is reachable through DGP.</td>
+</tr>
+<tr>
+<td>rtos-node_local_switch</td>
+<td>192.168.1.2:9991</td>
+<td>10.8.51.51:6443</td>
+<td>A dnat_and_snat rule (1-to-1 NATing) gets matched and the packet is SNATed with that IP and this happens on the local node/chassis/hypervisor.</td>
+</tr>
+<tr>
+<td>node_local_switch</td>
+<td>169.254.0.4:9991</td>
+<td>10.8.51.51:6443</td>
+<td>Forwards the packet to br-local OVS bridge on the host</td>
+</tr>
+<tr>
+<td>ovn-k8s-gw0</td>
+<td>169.254.0.4:9991</td>
+<td>10.8.51.51:6443</td>
+<td>Packet is received by the dest</td>
+</tr>
+</tbody>
+</table>
+<p>The reverse path is symmetrical and re-traces all the physical/logical network elements in
+the original path. All the connection-tracking states will be popped/matched and appropriate
+actions will be applied and will reach the pod. The PBR rule used is:
+<div class="highlight"><pre><span></span><code>1005 ip4.src == 192.168.1..2 &amp;&amp; ip4.dst == 10.8.51.51 /* k8s-node1 */   reroute     169.254.0.1
+</code></pre></div></p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>The google doc version of the same is here:
+https://docs.google.com/document/d/1DfbcAezbZD4Ipswz6UOn30S6B6f6eoiLkTCVmTa43Vk/edit?usp=sharing</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2793,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

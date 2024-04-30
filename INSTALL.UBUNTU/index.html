@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/INSTALL.UBUNTU/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Installing OVS and OVN on Ubuntu - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#installing-ovs-and-ovn-on-ubuntu" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Installing OVS and OVN on Ubuntu
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2188,6 +2179,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-ovs-and-ovn-from-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing OVS and OVN from packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-ovs-and-ovn-from-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing OVS and OVN from sources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2212,83 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="installing-ovs-and-ovn-on-ubuntu">Installing OVS and OVN on Ubuntu<a class="headerlink" href="#installing-ovs-and-ovn-on-ubuntu" title="Permanent link">&para;</a></h1>
+<h2 id="installing-ovs-and-ovn-from-packages">Installing OVS and OVN from packages<a class="headerlink" href="#installing-ovs-and-ovn-from-packages" title="Permanent link">&para;</a></h2>
+<p>To install OVS bits on all nodes, run:</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install python-six openssl -y
+
+sudo apt-get install openvswitch-switch openvswitch-common -y
+</code></pre></div>
+<p>On the master, where you intend to start OVN's central components,
+run:</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install ovn-central ovn-common ovn-host -y
+</code></pre></div>
+<p>On the agent nodes, run:</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install ovn-host ovn-common -y
+</code></pre></div>
+<h2 id="installing-ovs-and-ovn-from-sources">Installing OVS and OVN from sources<a class="headerlink" href="#installing-ovs-and-ovn-from-sources" title="Permanent link">&para;</a></h2>
+<p>Install a few pre-requisite packages.</p>
+<div class="highlight"><pre><span></span><code>apt-get update
+apt-get install -y build-essential fakeroot debhelper \
+                    autoconf automake libssl-dev \
+                    openssl python-all \
+                    python-setuptools \
+                    python-six \
+                    libtool git dh-autoreconf \
+                    linux-headers-$(uname -r)
+</code></pre></div>
+<p>Clone the OVS repo.</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/openvswitch/ovs.git
+cd ovs
+</code></pre></div>
+<p>Configure and compile the sources</p>
+<div class="highlight"><pre><span></span><code>./boot.sh
+./configure --prefix=/usr --localstatedir=/var  --sysconfdir=/etc --enable-ssl --with-linux=/lib/modules/`uname -r`/build
+make -j3
+</code></pre></div>
+<p>Install the executables</p>
+<div class="highlight"><pre><span></span><code>make install
+make modules_install
+</code></pre></div>
+<p>Create a depmod.d file to use OVS kernel modules from this repo instead of
+upstream linux.</p>
+<div class="highlight"><pre><span></span><code>cat &gt; /etc/depmod.d/openvswitch.conf &lt;&lt; EOF
+override openvswitch * extra
+override vport-geneve * extra
+override vport-stt * extra
+override vport-* * extra
+EOF
+</code></pre></div>
+<p>Copy a startup script and start OVS</p>
+<div class="highlight"><pre><span></span><code>depmod -a
+cp debian/openvswitch-switch.init /etc/init.d/openvswitch-switch
+/etc/init.d/openvswitch-switch force-reload-kmod
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

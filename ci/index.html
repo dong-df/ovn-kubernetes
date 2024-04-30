@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/ci/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>CI Tests - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#ci-tests" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              CI Tests
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -1211,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci.md" class="md-nav__link">
+      <a href="ci.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2188,6 +2179,188 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-ci-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the CI Test Suite
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the CI Test Suite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shard-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shard tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control-plane tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control-plane tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node-ip-migration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node IP migration tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-ci-integration-through-github-actions-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Github CI integration through Github Actions Matrix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-ci-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running CI Locally
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running CI Locally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-and-build-kubernetes-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download and Build Kubernetes Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download and Build Kubernetes Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-and-build-kubernetes-components-e2e-tests-ginkgo-kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download and Build Kubernetes Components (E2E Tests, ginkgo, kubectl):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Export environment variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      KIND
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-a-suite-of-shards-or-control-plane-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a suite of shards or control-plane tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-single-e2e-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a single E2E test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-control-plane-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a control-plane test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPv6 tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2368,320 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="ci-tests">CI Tests<a class="headerlink" href="#ci-tests" title="Permanent link">&para;</a></h1>
+<p>For CI, OVN-Kubernetes runs the
+<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-testing/e2e-tests.md">Kubernetes E2E tests</a>
+and some <a href="https://github.com/ovn-org/ovn-kubernetes/tree/master/test/e2e">locally defined</a> tests. 
+<a href="https://help.github.com/en/actions">GitHub Actions</a>
+are used to run a subset of the Kubernetes E2E tests on each pull request. The
+local workflow that controls the test run is located in
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/.github/workflows/test.yml">ovn-kubernetes/.github/workflows/test.yml</a>.</p>
+<p>The following tasks are performed:
+- Build OVN-Kubernetes
+- Check out the Kubernetes source tree and compiles some dependencies
+- Install KIND
+- Run a matrix of End-To-End Tests using KIND</p>
+<p>The following sections should help you understand (and if needed modify) the set of tests that run and how to run these tests locally.</p>
+<h2 id="understanding-the-ci-test-suite">Understanding the CI Test Suite<a class="headerlink" href="#understanding-the-ci-test-suite" title="Permanent link">&para;</a></h2>
+<p>The tests are broken into 2 categories, <code>shard</code> tests which execute tests from the Kubernetes E2E test suite and the <code>control-plane</code> tests which run locally defined tests.</p>
+<h3 id="shard-tests">Shard tests<a class="headerlink" href="#shard-tests" title="Permanent link">&para;</a></h3>
+<p>The shard tests are broken into a set of shards, which is just a grouping of tests,
+and each shard is run in a separate job in parallel. Shards execute the <code>shard-%</code> target in 
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/test/Makefile">ovn-kubernetes/test/Makefile</a>.
+The set of shards may change in the future. Below is an example of the shards at time of this writing:
+- shard-network
+  - All E2E tests that match <code>[sig-network]</code>
+- shard-conformance
+  - All E2E tests that match <code>[Conformance]|[sig-network]</code>
+- shard-test
+  - Single E2E test that matches the name of the test specified with a regex. 
+  - When selecting the <code>shard-test</code> target, you focus on a specific test by appending <code>WHAT=&lt;test name&gt;</code> to the make command.
+  - See bottom of this document for an example.</p>
+<p>Shards use the <a href="https://kubernetes.io/blog/2019/03/22/kubernetes-end-to-end-testing-for-everyone/">E2E framework</a>. By selecting a specific shard, you modify ginkgo's <code>--focus</code> parameter.</p>
+<p>The regex expression for determining which E2E test is run in which shard, as
+well as the list of skipped tests is defined in
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/test/scripts/e2e-kind.sh">ovn-kubernetes/test/scripts/e2e-kind.sh</a>.</p>
+<h3 id="control-plane-tests">Control-plane tests<a class="headerlink" href="#control-plane-tests" title="Permanent link">&para;</a></h3>
+<p>In addition to the <code>shard-%</code> tests, there is also a <code>control-plane</code> target in 
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/test/Makefile">ovn-kubernetes/test/Makefile</a>.
+Below is a description of this target:
+- control-plane
+  - All locally defined tests by default.
+  - You can focus on a specific test by appending <code>WHAT=&lt;test name&gt;</code> to the make command.
+  - See bottom of this document for an example.</p>
+<p>All local tests are run by <code>make control-plane</code>. The local tests are controlled in
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/test/scripts/e2e-cp.sh">ovn-kubernetes/test/scripts/e2e-cp.sh</a>
+and the actual tests are defined in the directory
+<a href="https://github.com/ovn-org/ovn-kubernetes/tree/master/test/e2e">ovn-kubernetes/test/e2e/</a>.</p>
+<h4 id="node-ip-migration-tests">Node IP migration tests<a class="headerlink" href="#node-ip-migration-tests" title="Permanent link">&para;</a></h4>
+<p>The node IP migration tests are part of the control-plane tests but due to their impact they cannot be run concurrently
+with other tests and they are disabled when running <code>make control-plane</code>.
+Instead, they must explicitly be requested with <code>make -C test control-plane WHAT="Node IP address migration"</code>.</p>
+<h3 id="github-ci-integration-through-github-actions-matrix">Github CI integration through Github Actions Matrix<a class="headerlink" href="#github-ci-integration-through-github-actions-matrix" title="Permanent link">&para;</a></h3>
+<p>Each of these shards and control-plane tests can then be run in a <a href="https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix">Github Actions matrix</a> of:
+* HA setup (3 masters and 0 workers) and a non-HA setup (1 master and 2 workers)
+* Local Gateway Mode and Shared Gateway Mode. See:
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/docs/design/shared_gw_dgp.md">Enable Node-Local Services Access in Shared Gateway Mode</a>
+* IPv4 Only, IPv6 Only and Dualstack
+* Disabled SNAT Multiple Gateways or Enabled SNAT Gateways
+* Single bridge or two bridges</p>
+<p>To reduce the explosion of tests being run in CI, the test cases run are limited
+using an <code>exclude:</code> statement in 
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/.github/workflows/test.yml">ovn-kubernetes/.github/workflows/test.yml</a>.</p>
+<h2 id="running-ci-locally">Running CI Locally<a class="headerlink" href="#running-ci-locally" title="Permanent link">&para;</a></h2>
+<p>This section describes how to run CI tests on a local deployment. This may be
+useful for expanding the CI test coverage or testing a private fix before
+creating a pull request.</p>
+<h3 id="download-and-build-kubernetes-components">Download and Build Kubernetes Components<a class="headerlink" href="#download-and-build-kubernetes-components" title="Permanent link">&para;</a></h3>
+<h4 id="go-version">Go Version<a class="headerlink" href="#go-version" title="Permanent link">&para;</a></h4>
+<p>Older versions of Kubernetes do not build with newer versions of Go,
+specifically Kubernetes v1.16.4 doesn't build with Go version 1.13.x. If this is
+a version of Kubernetes that needs to be tested with, as a workaround, Go
+version 1.12.1 can be downloaded to a local directory and the $PATH variable
+updated only where kubernetes is being built. </p>
+<div class="highlight"><pre><span></span><code>$ go version
+go version go1.13.8 linux/amd64
+
+$ mkdir -p /home/$USER/src/golang/go1-12-1/; cd /home/$USER/src/golang/go1-12-1/
+$ wget https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz
+$ tar -xzf go1.12.1.linux-amd64.tar.gz
+$ PATH=/home/$USER/src/golang/go1-12-1/go/bin:$GOPATH/src/k8s.io/kubernetes/_output/local/bin/linux/amd64:$PATH
+</code></pre></div>
+<h4 id="download-and-build-kubernetes-components-e2e-tests-ginkgo-kubectl">Download and Build Kubernetes Components (E2E Tests, ginkgo, kubectl):<a class="headerlink" href="#download-and-build-kubernetes-components-e2e-tests-ginkgo-kubectl" title="Permanent link">&para;</a></h4>
+<p>Determine which version of Kubernetes is currently used in CI (See
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/.github/workflows/test.yml">ovn-kubernetes/.github/workflows/test.yml</a>)
+and set the environmental variable <code>K8S_VERSION</code> to the same value. Also make sure to export a GOPATH which points to your go directory with <code>export GOPATH=(...)</code>.</p>
+<div class="highlight"><pre><span></span><code>K8S_VERSION=v1.28.0
+git clone --single-branch --branch $K8S_VERSION https://github.com/kubernetes/kubernetes.git $GOPATH/src/k8s.io/kubernetes/
+pushd $GOPATH/src/k8s.io/kubernetes/
+make WHAT=&quot;test/e2e/e2e.test vendor/github.com/onsi/ginkgo/ginkgo cmd/kubectl&quot;
+rm -rf .git
+
+sudo cp _output/local/go/bin/e2e.test /usr/local/bin/.
+sudo cp _output/local/go/bin/kubectl /usr/local/bin/kubectl-$K8S_VERSION
+sudo ln -s /usr/local/bin/kubectl-$K8S_VERSION /usr/local/bin/kubectl
+cp _output/local/go/bin/ginkgo /usr/local/bin/.
+popd
+</code></pre></div>
+<p>If you have any failures during the build, verify $PATH has been updated to
+point to correct GO version. Also may need to change settings on some of the
+generated binaries. For example:</p>
+<div class="highlight"><pre><span></span><code>chmod +x $GOPATH/src/k8s.io/kubernetes/_output/bin/deepcopy-gen
+</code></pre></div>
+<h3 id="export-environment-variables">Export environment variables<a class="headerlink" href="#export-environment-variables" title="Permanent link">&para;</a></h3>
+<p>Before setting up KIND and before running the actual tests, export essential environment variables.</p>
+<p>The environment variables and their values depend on the actual test scenario that you want to run.</p>
+<p>Look at the <code>e2e</code> action (search for <code>name: e2e</code>) in <a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/.github/workflows/test.yml">ovn-kubernetes/.github/workflows/test.yml</a>. Prior to installing kind, set the following environment variables according to your needs:
+<div class="highlight"><pre><span></span><code>export KIND_CLUSTER_NAME=ovn
+export KIND_INSTALL_INGRESS=[true|false]
+export KIND_ALLOW_SYSTEM_WRITES=[true|false]
+export PARALLEL=[true|false]
+export JOB_NAME=(... job name ...)
+export OVN_HYBRID_OVERLAY_ENABLE=[true|false]
+export OVN_MULTICAST_ENABLE=[true|false]
+export OVN_EMPTY_LB_EVENTS=[true|false]
+export OVN_HA=[true|false]
+export OVN_DISABLE_SNAT_MULTIPLE_GWS=[true|false]
+export OVN_GATEWAY_MODE=[&quot;local&quot;|&quot;shared&quot;]
+export KIND_IPV4_SUPPORT=[true|false]
+export KIND_IPV6_SUPPORT=[true|false]
+# not required for the OVN Kind installation script, but export this already for later
+OVN_SECOND_BRIDGE=[true|false]
+</code></pre></div></p>
+<p>You can refer to a recent CI run from any pull request in <a href="https://github.com/ovn-org/ovn-kubernetes/actions">https://github.com/ovn-org/ovn-kubernetes/actions</a> to get a valid set of settings.</p>
+<p>As an example for the <code>control-plane-noHA-local-ipv4-snatGW-1br</code> job, the settings are at time of this writing:
+<div class="highlight"><pre><span></span><code>export KIND_CLUSTER_NAME=ovn
+export KIND_INSTALL_INGRESS=true
+export KIND_ALLOW_SYSTEM_WRITES=true
+export PARALLEL=true
+export JOB_NAME=control-plane-noHA-local-ipv4-snatGW-1br
+export OVN_HYBRID_OVERLAY_ENABLE=true
+export OVN_MULTICAST_ENABLE=true
+export OVN_EMPTY_LB_EVENTS=true
+export OVN_HA=false
+export OVN_DISABLE_SNAT_MULTIPLE_GWS=false
+export OVN_GATEWAY_MODE=&quot;local&quot;
+export KIND_IPV4_SUPPORT=true
+export KIND_IPV6_SUPPORT=false
+# not required for the OVN Kind installation script, but export this already for later
+export OVN_SECOND_BRIDGE=false
+</code></pre></div></p>
+<h3 id="kind">KIND<a class="headerlink" href="#kind" title="Permanent link">&para;</a></h3>
+<p>Kubernetes in Docker (KIND) is used to deploy Kubernetes locally where a docker
+container is created per Kubernetes node. The CI tests run on this Kubernetes
+deployment. Therefore, KIND will need to be installed locally.</p>
+<p>Generic instructions for installing and running OVNKubernetes with KIND can be found at: 
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/docs/kind.md">https://github.com/ovn-org/ovn-kubernetes/blob/master/docs/kind.md</a></p>
+<p>Make sure to set the required environment variables first (see section above). Then, deploy kind:
+<div class="highlight"><pre><span></span><code>$ pushd
+$ ./kind.sh
+$ popd
+</code></pre></div></p>
+<h3 id="run-tests">Run Tests<a class="headerlink" href="#run-tests" title="Permanent link">&para;</a></h3>
+<p>To run the tests locally, run a KIND deployment as described above. The E2E
+tests look for the kube config file in a special location, so make a copy:</p>
+<div class="highlight"><pre><span></span><code>cp ~/ovn.conf ~/.kube/kind-config-kind
+</code></pre></div>
+<p>To run the desired shard, first make sure that the necessary environment variables are exported (see section above). Then, go to the location of your local copy of the <code>ovn-kubernetes</code> repository:
+<div class="highlight"><pre><span></span><code>$ REPO=$GOPATH/src/github.com/ovn-org/ovn-kubernetes
+$ cd $REPO
+</code></pre></div></p>
+<h4 id="running-a-suite-of-shards-or-control-plane-tests">Running a suite of shards or control-plane tests<a class="headerlink" href="#running-a-suite-of-shards-or-control-plane-tests" title="Permanent link">&para;</a></h4>
+<p>Finally, run the the shard that you want to test against (each shard can take 30+ minutes to complete)
+<div class="highlight"><pre><span></span><code>$ pushd test
+# run either
+$ make shard-network
+# or
+$ make shard-conformance
+# or
+$ GITHUB_WORKSPACE=&quot;$REPO&quot; make control-plane
+# or
+$ make conformance
+$ popd
+</code></pre></div></p>
+<h4 id="running-a-single-e2e-test">Running a single E2E test<a class="headerlink" href="#running-a-single-e2e-test" title="Permanent link">&para;</a></h4>
+<p>To run a single E2E test instead, target the shard-test action, as follows:</p>
+<div class="highlight"><pre><span></span><code>$ cd $REPO
+$ pushd test
+$ make shard-test WHAT=&quot;should enforce egress policy allowing traffic to a server in a different namespace based on PodSelector and NamespaceSelector&quot;
+$ popd
+</code></pre></div>
+<p>As a reminder, shards use the <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-testing/e2e-tests.md">E2E framework</a>. The value of <code>WHAT=</code> will be used to modify the <code>--focus</code> parameter. Individual tests can be retrieved from <a href="https://github.com/kubernetes/kubernetes/tree/master/test/e2e">https://github.com/kubernetes/kubernetes/tree/master/test/e2e</a>. For network tests, one could run:
+<div class="highlight"><pre><span></span><code>grep ginkgo.It $GOPATH/src/k8s.io/kubernetes/test/e2e/network/ -Ri
+</code></pre></div></p>
+<p>For example:
+<div class="highlight"><pre><span></span><code># grep ginkgo.It $GOPATH/src/k8s.io/kubernetes/test/e2e/network/ -Ri | head -1
+/root/go/src/k8s.io/kubernetes/test/e2e/network/conntrack.go:   ginkgo.It(&quot;should be able to preserve UDP traffic when server pod cycles for a NodePort service&quot;, func() {
+# make shard-test WHAT=&quot;should enforce policy to allow traffic from pods within server namespace based on PodSelector&quot;
+(...)
++ case &quot;$SHARD&quot; in
+++ echo should be able to preserve UDP traffic when server pod cycles for a NodePort service
+++ sed &#39;s/ /\\s/g&#39;
++ FOCUS=&#39;should\sbe\sable\sto\spreserve\sUDP\straffic\swhen\sserver\spod\scycles\sfor\sa\sNodePort\sservice&#39;
++ export KUBERNETES_CONFORMANCE_TEST=y
++ KUBERNETES_CONFORMANCE_TEST=y
++ export KUBE_CONTAINER_RUNTIME=remote
++ KUBE_CONTAINER_RUNTIME=remote
++ export KUBE_CONTAINER_RUNTIME_ENDPOINT=unix:///run/containerd/containerd.sock
++ KUBE_CONTAINER_RUNTIME_ENDPOINT=unix:///run/containerd/containerd.sock
++ export KUBE_CONTAINER_RUNTIME_NAME=containerd
++ KUBE_CONTAINER_RUNTIME_NAME=containerd
++ export FLAKE_ATTEMPTS=5
++ FLAKE_ATTEMPTS=5
++ export NUM_NODES=20
++ NUM_NODES=20
++ export NUM_WORKER_NODES=3
++ NUM_WORKER_NODES=3
++ ginkgo --nodes=20 &#39;--focus=should\sbe\sable\sto\spreserve\sUDP\straffic\swhen\sserver\spod\scycles\sfor\sa\sNodePort\sservice&#39; &#39;--skip=Networking\sIPerf\sIPv[46]|\[Feature:PerformanceDNS\]|Disruptive|DisruptionController|\[sig-apps\]\sCronJob|\[sig-storage\]|\[Feature:Federation\]|should\shave\sipv4\sand\sipv6\sinternal\snode\sip|should\shave\sipv4\sand\sipv6\snode\spodCIDRs|kube-proxy|should\sset\sTCP\sCLOSE_WAIT\stimeout|should\shave\ssession\saffinity\stimeout\swork|named\sport.+\[Feature:NetworkPolicy\]|\[Feature:SCTP\]|service.kubernetes.io/headless|should\sresolve\sconnection\sreset\sissue\s#74839|sig-api-machinery|\[Feature:NoSNAT\]|Services.+(ESIPP|cleanup\sfinalizer)|configMap\snameserver|ClusterDns\s\[Feature:Example\]|should\sset\sdefault\svalue\son\snew\sIngressClass|should\sprevent\sIngress\screation\sif\smore\sthan\s1\sIngressClass\smarked\sas\sdefault|\[Feature:Networking-IPv6\]|\[Feature:.*DualStack.*\]&#39; --flake-attempts=5 /usr/local/bin/e2e.test -- --kubeconfig=/root/ovn.conf --provider=local --dump-logs-on-failure=false --report-dir=/root/ovn-kubernetes/test/_artifacts --disable-log-dump=true --num-nodes=3
+Running Suite: Kubernetes e2e suite
+(...)
+• [SLOW TEST:28.091 seconds]
+[sig-network] Conntrack
+/root/go/src/k8s.io/kubernetes/_output/local/go/src/k8s.io/kubernetes/test/e2e/network/framework.go:23
+  should be able to preserve UDP traffic when server pod cycles for a NodePort service
+  /root/go/src/k8s.io/kubernetes/_output/local/go/src/k8s.io/kubernetes/test/e2e/network/conntrack.go:128
+------------------------------
+{&quot;msg&quot;:&quot;PASSED [sig-network] Conntrack should be able to preserve UDP traffic when server pod cycles for a NodePort service&quot;,&quot;total&quot;:-1,&quot;completed&quot;:1,&quot;skipped&quot;:229,&quot;failed&quot;:0}
+Aug 17 14:46:42.842: INFO: Running AfterSuite actions on all nodes
+
+
+Aug 17 14:46:15.264: INFO: Running AfterSuite actions on all nodes
+Aug 17 14:46:42.885: INFO: Running AfterSuite actions on node 1
+Aug 17 14:46:42.885: INFO: Skipping dumping logs from cluster
+
+
+Ran 1 of 5667 Specs in 30.921 seconds
+SUCCESS! -- 1 Passed | 0 Failed | 0 Flaked | 0 Pending | 5666 Skipped
+
+
+Ginkgo ran 1 suite in 38.489055861s
+Test Suite Passed
+</code></pre></div></p>
+<h4 id="running-a-control-plane-test">Running a control-plane test<a class="headerlink" href="#running-a-control-plane-test" title="Permanent link">&para;</a></h4>
+<p>All local tests are defined as <code>control-plane</code> tests. To run a single <code>control-plane</code> test, target the <code>control-plane</code> action and append the <code>WHAT=&lt;test name&gt;</code> parameter, as follows:</p>
+<div class="highlight"><pre><span></span><code>$ cd $REPO
+$ pushd test
+$ make control-plane WHAT=&quot;should be able to send multicast UDP traffic between nodes&quot;
+$ popd
+</code></pre></div>
+<p>The value of <code>WHAT=</code> will be used to modify the <code>-ginkgo.focus</code> parameter. Individual tests can be retrieved from this repository under <a href="https://github.com/ovn-org/ovn-kubernetes/tree/master/test/e2e">test/e2e</a>. To see a list of individual tests, one could run:
+<div class="highlight"><pre><span></span><code>grep -R ginkgo.It test/
+</code></pre></div></p>
+<p>For example:
+<div class="highlight"><pre><span></span><code># grep -R ginkgo.It . | head -1
+./e2e/multicast.go: ginkgo.It(&quot;should be able to send multicast UDP traffic between nodes&quot;, func() {
+# make control-plane WHAT=&quot;should be able to send multicast UDP traffic between nodes&quot;
+(...)
++ go test -timeout=0 -v . -ginkgo.v -ginkgo.focus &#39;should\sbe\sable\sto\ssend\smulticast\sUDP\straffic\sbetween\snodes&#39; -ginkgo.flakeAttempts 2 &#39;-ginkgo.skip=recovering from deleting db files while maintain connectivity|Should validate connectivity before and after deleting all the db-pods at once in HA mode|Should be allowed to node local cluster-networked endpoints by nodeport services with externalTrafficPolicy=local|e2e ingress to host-networked pods traffic validation|host to host-networked pods traffic validation&#39; -provider skeleton -kubeconfig /root/ovn.conf --num-nodes=2 --report-dir=/root/ovn-kubernetes/test/_artifacts --report-prefix=control-plane_
+I0817 15:26:21.762483 1197731 test_context.go:457] Tolerating taints &quot;node-role.kubernetes.io/control-plane&quot; when considering if nodes are ready
+=== RUN   TestE2e
+I0817 15:26:21.762635 1197731 e2e_suite_test.go:67] Saving reports to /root/ovn-kubernetes/test/_artifacts
+Running Suite: E2e Suite
+(...)
+• [SLOW TEST:12.332 seconds]
+Multicast
+/root/ovn-kubernetes/test/e2e/multicast.go:25
+  should be able to send multicast UDP traffic between nodes
+  /root/ovn-kubernetes/test/e2e/multicast.go:75
+------------------------------
+SSSSSSSSSSSS
+JUnit report was created: /root/ovn-kubernetes/test/_artifacts/junit_control-plane_01.xml
+
+Ran 1 of 60 Specs in 12.333 seconds
+SUCCESS! -- 1 Passed | 0 Failed | 0 Flaked | 0 Pending | 59 Skipped
+--- PASS: TestE2e (12.34s)
+PASS
+ok      github.com/ovn-org/ovn-kubernetes/test/e2e  12.371s
++ popd
+~/ovn-kubernetes/test
+</code></pre></div></p>
+<h3 id="ipv6-tests">IPv6 tests<a class="headerlink" href="#ipv6-tests" title="Permanent link">&para;</a></h3>
+<p>To skip the IPv4 only tests (in a IPv6 only deployment), pass the
+<code>KIND_IPV6_SUPPORT=true</code> environmental variable to <code>make</code>:</p>
+<div class="highlight"><pre><span></span><code>$ cd $GOPATH/src/github.com/ovn-org/ovn-kubernetes
+
+$ pushd test
+$ KIND_IPV6_SUPPORT=true make shard-conformance
+$ popd
+</code></pre></div>
+<p>Github CI doesn´t offer IPv6 connectivity, so IPv6 only tests are always
+skipped. To run those tests locally, comment out the following line from
+<a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/test/scripts/e2e-kind.sh">ovn-kubernetes/test/scripts/e2e-kind.sh</a></p>
+<div class="highlight"><pre><span></span><code># Github CI doesn´t offer IPv6 connectivity, so always skip IPv6 only tests.
+SKIPPED_TESTS=$SKIPPED_TESTS$IPV6_ONLY_TESTS
+</code></pre></div>
+<h1 id="conformance-tests">Conformance Tests<a class="headerlink" href="#conformance-tests" title="Permanent link">&para;</a></h1>
+<p>We have a conformance test suit that can be invoked using the <code>make conformance</code> command.
+Currently we run the <code>TestNetworkPolicyV2Conformance</code> tests there. The actual tests are
+defined in https://github.com/kubernetes-sigs/network-policy-api/tree/master/conformance
+and then invoked from this repo. Any changes to the tests first have to be submitted
+upstream to <code>network-policy-api</code> repo and then brought downstream into the ovn-kubernetes repo
+through version bump.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

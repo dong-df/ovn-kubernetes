@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/multi-homing/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Multi-homing - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#multi-homing" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Multi-homing
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2188,6 +2179,143 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-secondary-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring secondary networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring secondary networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routed-layer-3-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Routed - layer 3 - topology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Routed - layer 3 - topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-configuration-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Configuration reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switched-layer-2-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switched - layer 2 - topology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Switched - layer 2 - topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-configuration-reference_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Configuration reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switched-localnet-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switched - localnet - topology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Switched - localnet - topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-configuration-reference_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Configuration reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pod configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pod configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-static-ip-addresses-on-a-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting static IP addresses on a pod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-network-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-network Policies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2323,298 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="multi-homing">Multi-homing<a class="headerlink" href="#multi-homing" title="Permanent link">&para;</a></h1>
+<p>A K8s pod with more than one network interface is said to be multi-homed. The
+<a href="https://github.com/k8snetworkplumbingwg/multi-net-spec">Network Plumbing Working Group</a>
+has put forward a <a href="https://github.com/k8snetworkplumbingwg/multi-net-spec">standard</a>
+describing how to specify the configurations for additional network interfaces.</p>
+<p>There are several delegating plugins or meta-plugins (Multus, Genie)
+implementing this standard.</p>
+<p>After a pod is scheduled on a particular Kubernetes node, kubelet will invoke
+the delegating plugin to prepare the pod for networking. This meta-plugin will
+then invoke the CNI responsible for setting up the pod's default cluster
+network, and afterwards it iterates the list of additional attachments on the
+pod, invoking the corresponding delegate CNI implementing the logic to attach
+the pod to that particular network.</p>
+<h2 id="configuring-secondary-networks">Configuring secondary networks<a class="headerlink" href="#configuring-secondary-networks" title="Permanent link">&para;</a></h2>
+<p>To allow pods to have multiple network interfaces, the user must provide the
+configurations specifying how to connect to these networks; these
+configurations are defined in a CRD named <code>NetworkAttachmentDefinition</code>.</p>
+<p>Below you will find example attachment configurations for each of the current
+topologies OVN-K allows for secondary networks.</p>
+<p><strong>NOTE</strong>:
+- networks are <strong>not</strong> namespaced - i.e. creating multiple
+  <code>network-attachment-definition</code>s with different configurations pointing at the
+  same network (same <code>NetConf.Name</code> attribute) is <strong>not</strong> supported.</p>
+<h3 id="routed-layer-3-topology">Routed - layer 3 - topology<a class="headerlink" href="#routed-layer-3-topology" title="Permanent link">&para;</a></h3>
+<p>This topology is a simplification of the topology for the cluster default
+network - but without egress.</p>
+<p>There is a logical switch per node - each with a different subnet - and a
+router interconnecting all the logical switches.</p>
+<p>The following net-attach-def configures the attachment to a routed secondary
+network.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.cni.cncf.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkAttachmentDefinition</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l3-network</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|2</span>
+<span class="w">    </span><span class="no">{</span>
+<span class="w">            </span><span class="no">&quot;cniVersion&quot;: &quot;0.3.1&quot;,</span>
+<span class="w">            </span><span class="no">&quot;name&quot;: &quot;l3-network&quot;,</span>
+<span class="w">            </span><span class="no">&quot;type&quot;: &quot;ovn-k8s-cni-overlay&quot;,</span>
+<span class="w">            </span><span class="no">&quot;topology&quot;:&quot;layer3&quot;,</span>
+<span class="w">            </span><span class="no">&quot;subnets&quot;: &quot;10.128.0.0/16/24&quot;,</span>
+<span class="w">            </span><span class="no">&quot;mtu&quot;: 1300,</span>
+<span class="w">            </span><span class="no">&quot;netAttachDefName&quot;: &quot;ns1/l3-network&quot;</span>
+<span class="w">    </span><span class="no">}</span>
+</code></pre></div>
+<h4 id="network-configuration-reference">Network Configuration reference<a class="headerlink" href="#network-configuration-reference" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>name</code> (string, required): the name of the network. This attribute is <strong>not</strong> namespaced.</li>
+<li><code>type</code> (string, required): "ovn-k8s-cni-overlay".</li>
+<li><code>topology</code> (string, required): "layer3".</li>
+<li><code>subnets</code> (string, required): a comma separated list of subnets. When multiple subnets
+  are provided, the user will get an IP from each subnet.</li>
+<li><code>mtu</code> (integer, optional): explicitly set MTU to the specified value. Defaults to the value chosen by the kernel.</li>
+<li><code>netAttachDefName</code> (string, required): must match <code>&lt;namespace&gt;/&lt;net-attach-def name&gt;</code>
+  of the surrounding object.</li>
+</ul>
+<p><strong>NOTE</strong>
+- the <code>subnets</code> attribute indicates both the subnet across the cluster, and per node.
+  The example above means you have a /16 subnet for the network, but each <strong>node</strong> has
+  a /24 subnet.
+- routed - layer3 - topology networks <strong>only</strong> allow for east/west traffic.</p>
+<h3 id="switched-layer-2-topology">Switched - layer 2 - topology<a class="headerlink" href="#switched-layer-2-topology" title="Permanent link">&para;</a></h3>
+<p>This topology interconnects the workloads via a cluster-wide logical switch.</p>
+<p>The following net-attach-def configures the attachment to a layer 2 secondary
+network.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.cni.cncf.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkAttachmentDefinition</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l2-network</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|2</span>
+<span class="w">    </span><span class="no">{</span>
+<span class="w">            </span><span class="no">&quot;cniVersion&quot;: &quot;0.3.1&quot;,</span>
+<span class="w">            </span><span class="no">&quot;name&quot;: &quot;l2-network&quot;,</span>
+<span class="w">            </span><span class="no">&quot;type&quot;: &quot;ovn-k8s-cni-overlay&quot;,</span>
+<span class="w">            </span><span class="no">&quot;topology&quot;:&quot;layer2&quot;,</span>
+<span class="w">            </span><span class="no">&quot;subnets&quot;: &quot;10.100.200.0/24&quot;,</span>
+<span class="w">            </span><span class="no">&quot;mtu&quot;: 1300,</span>
+<span class="w">            </span><span class="no">&quot;netAttachDefName&quot;: &quot;ns1/l2-network&quot;,</span>
+<span class="w">            </span><span class="no">&quot;excludeSubnets&quot;: &quot;10.100.200.0/29&quot;</span>
+<span class="w">    </span><span class="no">}</span>
+</code></pre></div>
+<h4 id="network-configuration-reference_1">Network Configuration reference<a class="headerlink" href="#network-configuration-reference_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>name</code> (string, required): the name of the network. This attribute is <strong>not</strong> namespaced.</li>
+<li><code>type</code> (string, required): "ovn-k8s-cni-overlay".</li>
+<li><code>topology</code> (string, required): "layer2".</li>
+<li><code>subnets</code> (string, optional): a comma separated list of subnets. When multiple subnets
+  are provided, the user will get an IP from each subnet.</li>
+<li><code>mtu</code> (integer, optional): explicitly set MTU to the specified value. Defaults to the value chosen by the kernel.</li>
+<li><code>netAttachDefName</code> (string, required): must match <code>&lt;namespace&gt;/&lt;net-attach-def name&gt;</code>
+  of the surrounding object.</li>
+<li><code>excludeSubnets</code> (string, optional): a comma separated list of CIDRs / IPs.
+  These IPs will be removed from the assignable IP pool, and never handed over
+  to the pods.</li>
+</ul>
+<p><strong>NOTE</strong>
+- when the subnets attribute is omitted, the logical switch implementing the
+  network will only provide layer 2 communication, and the users must configure
+  IPs for the pods. Port security will only prevent MAC spoofing.
+- switched - layer2 - secondary networks <strong>only</strong> allow for east/west traffic.</p>
+<h3 id="switched-localnet-topology">Switched - localnet - topology<a class="headerlink" href="#switched-localnet-topology" title="Permanent link">&para;</a></h3>
+<p>This topology interconnects the workloads via a cluster-wide logical switch to
+a physical network.</p>
+<p>The following net-attach-def configures the attachment to a localnet secondary
+network.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.cni.cncf.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkAttachmentDefinition</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localnet-network</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|2</span>
+<span class="w">    </span><span class="no">{</span>
+<span class="w">            </span><span class="no">&quot;cniVersion&quot;: &quot;0.3.1&quot;,</span>
+<span class="w">            </span><span class="no">&quot;name&quot;: &quot;localnet-network&quot;,</span>
+<span class="w">            </span><span class="no">&quot;type&quot;: &quot;ovn-k8s-cni-overlay&quot;,</span>
+<span class="w">            </span><span class="no">&quot;topology&quot;:&quot;localnet&quot;,</span>
+<span class="w">            </span><span class="no">&quot;subnets&quot;: &quot;202.10.130.112/28&quot;,</span>
+<span class="w">            </span><span class="no">&quot;vlanID&quot;: 33,</span>
+<span class="w">            </span><span class="no">&quot;mtu&quot;: 1500,</span>
+<span class="w">            </span><span class="no">&quot;netAttachDefName&quot;: &quot;ns1/localnet-network&quot;</span>
+<span class="w">    </span><span class="no">}</span>
+</code></pre></div>
+<p>Note that in order to connect to the physical network, it is expected that
+ovn-bridge-mappings is configured appropriately on the chassis for this
+localnet network.</p>
+<h4 id="network-configuration-reference_2">Network Configuration reference<a class="headerlink" href="#network-configuration-reference_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>name</code> (string, required): the name of the network.</li>
+<li><code>type</code> (string, required): "ovn-k8s-cni-overlay".</li>
+<li><code>topology</code> (string, required): "localnet".</li>
+<li><code>subnets</code> (string, optional): a comma separated list of subnets. When multiple subnets
+  are provided, the user will get an IP from each subnet.</li>
+<li><code>mtu</code> (integer, optional): explicitly set MTU to the specified value. Defaults to the value chosen by the kernel.</li>
+<li><code>netAttachDefName</code> (string, required): must match <code>&lt;namespace&gt;/&lt;net-attach-def name&gt;</code>
+  of the surrounding object.</li>
+<li><code>excludeSubnets</code> (string, optional): a comma separated list of CIDRs / IPs.
+  These IPs will be removed from the assignable IP pool, and never handed over
+  to the pods.</li>
+<li><code>vlanID</code> (integer, optional): assign VLAN tag. Defaults to none.</li>
+</ul>
+<p><strong>NOTE</strong>
+- when the subnets attribute is omitted, the logical switch implementing the
+  network will only provide layer 2 communication, and the users must configure
+  IPs for the pods. Port security will only prevent MAC spoofing.</p>
+<h2 id="pod-configuration">Pod configuration<a class="headerlink" href="#pod-configuration" title="Permanent link">&para;</a></h2>
+<p>The user must specify the secondary network attachments via the
+<code>k8s.v1.cni.cncf.io/networks</code> annotation.</p>
+<p>The following example provisions a pod with two secondary attachments, one for
+each of the attachment configurations presented in
+<a href="#configuring-secondary-networks">Configuring secondary networks</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">k8s.v1.cni.cncf.io/networks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l3-network,l2-network</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tinypod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pause</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io/e2e-test-images/agnhost:2.36</span>
+<span class="w">    </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agnhost-container</span>
+</code></pre></div>
+<h3 id="setting-static-ip-addresses-on-a-pod">Setting static IP addresses on a pod<a class="headerlink" href="#setting-static-ip-addresses-on-a-pod" title="Permanent link">&para;</a></h3>
+<p>The user can specify attachment parameters via
+<a href="https://github.com/k8snetworkplumbingwg/network-attachment-definition-client/blob/63033d5c63d1cf56f924a5454c8f2ac444b6736d/pkg/apis/k8s.cni.cncf.io/v1/types.go#L137">network-selection-elements</a>
+, namely IP, MAC, and interface name.</p>
+<p>Refer to the following yaml for an example on how to request a static IP for a
+pod, a MAC address, and specify the pod interface name.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">k8s.v1.cni.cncf.io/networks</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[</span>
+<span class="w">      </span><span class="s">{</span>
+<span class="w">        </span><span class="s">&quot;name&quot;:</span><span class="nv"> </span><span class="s">&quot;l2-network&quot;,</span>
+<span class="w">        </span><span class="s">&quot;mac&quot;:</span><span class="nv"> </span><span class="s">&quot;02:03:04:05:06:07&quot;,</span>
+<span class="w">        </span><span class="s">&quot;interface&quot;:</span><span class="nv"> </span><span class="s">&quot;myiface1&quot;,</span>
+<span class="w">        </span><span class="s">&quot;ips&quot;:</span><span class="nv"> </span><span class="s">[</span>
+<span class="w">          </span><span class="s">&quot;192.0.2.20/24&quot;</span>
+<span class="w">        </span><span class="s">]</span>
+<span class="w">      </span><span class="s">}</span>
+<span class="w">    </span><span class="s">]&#39;</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tinypod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pause</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io/e2e-test-images/agnhost:2.36</span>
+<span class="w">    </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agnhost-container</span>
+</code></pre></div>
+<p><strong>NOTE:</strong>
+- the user can specify the IP address for a pod's secondary attachment
+  <strong>only</strong> for an L2 or localnet attachment.
+- specifying a static IP address for the pod is only possible when the
+  attachment configuration does <strong>not</strong> feature subnets.</p>
+<h2 id="multi-network-policies">Multi-network Policies<a class="headerlink" href="#multi-network-policies" title="Permanent link">&para;</a></h2>
+<p>OVN-Kubernetes implements native support for
+<a href="https://github.com/k8snetworkplumbingwg/multi-networkpolicy">multi-networkpolicy</a>,
+an API providing
+<a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">network policy</a>
+features for secondary networks.</p>
+<p>To configure pod isolation, the user must:
+- provision a <code>network-attachment-definition</code>.
+- provision a <code>MultiNetworkPolicy</code> indicating to which secondary networks it
+  applies via the
+  <a href="https://github.com/k8snetworkplumbingwg/multi-networkpolicy#policy-for-annotation">policy-for</a>
+  annotation.</p>
+<p><strong>NOTE:</strong> the <code>OVN_MULTI_NETWORK_ENABLE</code> config flag must be enabled.</p>
+<p>Please refer to the following example:
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.cni.cncf.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkAttachmentDefinition</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-blue</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{</span>
+<span class="w">        </span><span class="s">&quot;cniVersion&quot;:</span><span class="nv"> </span><span class="s">&quot;0.4.0&quot;,</span>
+<span class="w">        </span><span class="s">&quot;name&quot;:</span><span class="nv"> </span><span class="s">&quot;tenant-blue&quot;,</span>
+<span class="w">        </span><span class="s">&quot;netAttachDefName&quot;:</span><span class="nv"> </span><span class="s">&quot;default/tenant-blue&quot;,</span>
+<span class="w">        </span><span class="s">&quot;topology&quot;:</span><span class="nv"> </span><span class="s">&quot;layer2&quot;,</span>
+<span class="w">        </span><span class="s">&quot;type&quot;:</span><span class="nv"> </span><span class="s">&quot;ovn-k8s-cni-overlay&quot;,</span>
+<span class="w">        </span><span class="s">&quot;subnets&quot;:</span><span class="nv"> </span><span class="s">&quot;192.168.100.0/24&quot;</span>
+<span class="w">    </span><span class="s">}&#39;</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.cni.cncf.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MultiNetworkPolicy</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">k8s.v1.cni.cncf.io/policy-for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default/tenant-blue</span><span class="w"> </span><span class="c1"># indicates the net-attach-defs this policy applies to</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow-ports-same-ns</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">podSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stuff-doer</span><span class="w"> </span><span class="c1"># the policy will **apply** to all pods with this label</span>
+<span class="w">  </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">    </span><span class="nt">from</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trusted</span><span class="w"> </span><span class="c1"># only pods on namespaces with this label will be allowed on port 9000</span>
+<span class="w">  </span><span class="nt">policyTypes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+</code></pre></div></p>
+<p>Please note the <code>MultiNetworkPolicy</code> has the <strong>exact same</strong> API of the native
+<code>networking.k8s.io/v1</code> <code>NetworkPolicy</code>object; check its documentation for more
+information.</p>
+<p><strong>Note:</strong> <code>net-attach-def</code>s referred to by the <code>k8s.v1.cni.cncf.io/policy-for</code>
+annotation without the subnet attribute defined are possible if the policy
+<strong>only features</strong> <code>ipBlock</code> peers. If the <code>net-attach-def</code> features the
+<code>subnet</code> attribute, it can also feature <code>namespaceSelectors</code> and <code>podSelectors</code>.</p>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<p>OVN-K currently does <strong>not</strong> support:
+- the same attachment configured multiple times in the same pod - i.e.
+  <code>k8s.v1.cni.cncf.io/networks: l3-network,l3-network</code> is invalid.
+- updates to the network selection elements lists - i.e. <code>k8s.v1.cni.cncf.io/networks</code> annotation</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/metrics/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Metrics - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#metrics" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Metrics
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2188,6 +2179,80 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ovn-kubernetes-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN-Kubernetes master
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OVN-Kubernetes master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-duration-recorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration duration recorder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration duration recorder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-level-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-level description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change log
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2260,122 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h1>
+<h2 id="ovn-kubernetes-master">OVN-Kubernetes master<a class="headerlink" href="#ovn-kubernetes-master" title="Permanent link">&para;</a></h2>
+<p>This includes a description of a selective set of metrics and to explore the exhausted set, see <code>go-controller/pkg/metrics/master.go</code></p>
+<h3 id="configuration-duration-recorder">Configuration duration recorder<a class="headerlink" href="#configuration-duration-recorder" title="Permanent link">&para;</a></h3>
+<h4 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h4>
+<p>Enabled by default with the <code>kind.sh</code> (in directory <code>$ROOT/contrib</code>) <a href="https://kind.sigs.k8s.io/">Kind</a> setup script.
+Disabled by default for binary ovnkube-master and enabled with flag <code>--metrics-enable-config-duration</code>.</p>
+<h4 id="high-level-description">High-level description<a class="headerlink" href="#high-level-description" title="Permanent link">&para;</a></h4>
+<p>This set of metrics gives a result for the upper bound duration which means, it has taken at most this amount of seconds to apply the configuration to all nodes. It does not represent the exact accurate time to apply only this configuration.
+Measurement accuracy can be impacted by other parallel processing that might be occurring while the measurement is in progress therefore, the accuracy of the measurements should only indicate upper bound duration to roll out configuration changes.</p>
+<h4 id="metrics_1">Metrics<a class="headerlink" href="#metrics_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Prometheus type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ovnkube_master_network_programming_duration_seconds</td>
+<td>Histogram</td>
+<td>The duration to apply network configuration for a kind (e.g. pod, service, networkpolicy). Configuration includes add, update and delete events for kinds. This includes OVN-Kubernetes master and OVN duration.</td>
+</tr>
+<tr>
+<td>ovnkube_master_network_programming_ovn_duration_seconds</td>
+<td>Histogram</td>
+<td>The duration for OVN to apply network configuration for a kind (e.g. pod, service, networkpolicy).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="change-log">Change log<a class="headerlink" href="#change-log" title="Permanent link">&para;</a></h2>
+<p>This list is to help notify if there are additions, changes or removals to metrics. Latest changes are at the top of this list.</p>
+<ul>
+<li>Add metrics to track logfile size for ovnkube processes - ovnkube_node_logfile_size_bytes and ovnkube_controller_logfile_size_bytes</li>
+<li>Remove ovnkube_controller_ovn_cli_latency_seconds metrics since we have moved most of the OVN DB operations to libovsdb.</li>
+<li>Effect of OVN IC architecture:</li>
+<li>Move all the metrics from subsystem "ovnkube-master" to subsystem "ovnkube-controller". The non-IC and IC deployments will each continue to have their ovnkube-master and ovnkube-controller containers running inside the ovnkube-master and ovnkube-controller pods. The metrics scraping should work seemlessly. See https://github.com/ovn-org/ovn-kubernetes/pull/3723 for details</li>
+<li>Move the following metrics from subsystem "master" to subsystem "clustermanager". Therefore, the follow metrics are renamed.<ul>
+<li><code>ovnkube_master_num_v4_host_subnets</code> -&gt; <code>ovnkube_clustermanager_num_v4_host_subnets</code></li>
+<li><code>ovnkube_master_num_v6_host_subnets</code> -&gt; <code>ovnkube_clustermanager_num_v6_host_subnets</code></li>
+<li><code>ovnkube_master_allocated_v4_host_subnets</code> -&gt; <code>ovnkube_clustermanager_allocated_v4_host_subnets</code></li>
+<li><code>ovnkube_master_allocated_v6_host_subnets</code> -&gt; <code>ovnkube_clustermanager_allocated_v6_host_subnets</code></li>
+<li><code>ovnkube_master_num_egress_ips</code> -&gt; <code>ovnkube_clustermanager_num_egress_ips</code></li>
+<li><code>ovnkube_master_egress_ips_node_unreachable_total</code> -&gt; <code>ovnkube_clustermanager_egress_ips_node_unreachable_total</code></li>
+<li><code>ovnkube_master_egress_ips_rebalance_total</code> -&gt; <code>ovnkube_clustermanager_egress_ips_rebalance_total</code></li>
+</ul>
+</li>
+<li>Update description of ovnkube_master_pod_creation_latency_seconds</li>
+<li>Add libovsdb metrics - ovnkube_master_libovsdb_disconnects_total and ovnkube_master_libovsdb_monitors.</li>
+<li>Add ovn_controller_southbound_database_connected metric (https://github.com/ovn-org/ovn-kubernetes/pull/3117).</li>
+<li>Stopwatch metrics now report in seconds instead of milliseconds.</li>
+<li>Rename (https://github.com/ovn-org/ovn-kubernetes/pull/3022):</li>
+<li><code>ovs_vswitchd_interface_link_resets</code> -&gt; <code>ovs_vswitchd_interface_resets_total</code></li>
+<li><code>ovs_vswitchd_interface_rx_dropped</code> -&gt; <code>ovs_vswitchd_interface_rx_dropped_total</code></li>
+<li><code>ovs_vswitchd_interface_tx_dropped</code> -&gt; <code>ovs_vswitchd_interface_tx_dropped_total</code></li>
+<li><code>ovs_vswitchd_interface_rx_errors</code> -&gt; <code>ovs_vswitchd_interface_rx_errors_total</code></li>
+<li><code>ovs_vswitchd_interface_tx_errors</code> -&gt; <code>ovs_vswitchd_interface_tx_errors_total</code></li>
+<li><code>ovs_vswitchd_interface_collisions</code> -&gt; <code>ovs_vswitchd_interface_collisions_total</code></li>
+<li>Remove (https://github.com/ovn-org/ovn-kubernetes/pull/3022):</li>
+<li><code>ovs_vswitchd_dp_if</code></li>
+<li><code>ovs_vswitchd_interface_driver_name</code></li>
+<li><code>ovs_vswitchd_interface_driver_version</code></li>
+<li><code>ovs_vswitchd_interface_firmware_version</code></li>
+<li><code>ovs_vswitchd_interface_rx_packets</code></li>
+<li><code>ovs_vswitchd_interface_tx_packets</code></li>
+<li><code>ovs_vswitchd_interface_rx_bytes</code></li>
+<li><code>ovs_vswitchd_interface_tx_bytes</code></li>
+<li><code>ovs_vswitchd_interface_rx_frame_err</code></li>
+<li><code>ovs_vswitchd_interface_rx_over_err</code></li>
+<li><code>ovs_vswitchd_interface_rx_crc_err</code></li>
+<li><code>ovs_vswitchd_interface_name</code></li>
+<li><code>ovs_vswitchd_interface_duplex</code></li>
+<li><code>ovs_vswitchd_interface_type</code></li>
+<li><code>ovs_vswitchd_interface_admin_state</code></li>
+<li><code>ovs_vswitchd_interface_link_state</code></li>
+<li><code>ovs_vswitchd_interface_ifindex</code></li>
+<li><code>ovs_vswitchd_interface_link_speed</code></li>
+<li><code>ovs_vswitchd_interface_mtu</code></li>
+<li><code>ovs_vswitchd_interface_ofport</code></li>
+<li><code>ovs_vswitchd_interface_ingress_policing_burst</code></li>
+<li><code>ovs_vswitchd_interface_ingress_policing_rate</code></li>
+<li>Add <code>ovnkube_master_network_programming_duration_seconds</code> and <code>ovnkube_master_network_programming_ovn_duration_seconds</code> (https://github.com/ovn-org/ovn-kubernetes/pull/2878)</li>
+<li>Remove <code>ovnkube_master_skipped_nbctl_daemon_total</code> (https://github.com/ovn-org/ovn-kubernetes/pull/2707)</li>
+<li>Add <code>ovnkube_master_egress_routing_via_host</code> (https://github.com/ovn-org/ovn-kubernetes/pull/2833)</li>
+<li>Add <code>ovnkube_resource_retry_failures_total</code> (https://github.com/ovn-org/ovn-kubernetes/pull/3314)</li>
+<li>Add <code>ovs_vswitchd_interfaces_total</code> and <code>ovs_vswitchd_interface_up_wait_seconds_total</code> (https://github.com/ovn-org/ovn-kubernetes/pull/3391)</li>
+<li>Add <code>ovnkube_controller_admin_network_policies</code> and <code>ovnkube_controller_baseline_admin_network_policies</code> (https://github.com/ovn-org/ovn-kubernetes/pull/4239)</li>
+<li>Add <code>ovnkube_controller_admin_network_policies_db_objects</code> and <code>ovnkube_controller_baseline_admin_network_policies_db_objects</code> (https://github.com/ovn-org/ovn-kubernetes/pull/4254)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>

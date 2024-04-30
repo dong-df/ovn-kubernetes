@@ -8,10 +8,8 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/mocks-ut-faq/">
       
-      
-        <link rel="prev" href="..">
       
       
       
@@ -20,7 +18,7 @@
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Mocks ut faq - OVN Kubernetes</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#how-are-the-mock-files-for-unit-tests-organized" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Mocks ut faq
             
           </span>
         </div>
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../blog/" class="md-tabs__link">
           
   
     
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2185,8 +2176,50 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-are-the-mock-files-for-unit-tests-organized" class="md-nav__link">
+    <span class="md-ellipsis">
+      How are the mock files for unit tests organized?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-are-the-mocks-for-interfaces-to-be-consumed-by-unit-tests-currently-generated" class="md-nav__link">
+    <span class="md-ellipsis">
+      How are the mocks for interfaces to be consumed by unit tests currently generated?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-regenerate-all-existing-mocks-when-interfaces-locally-defined-or-in-vendor-libraries-are-updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to regenerate all existing mocks when interfaces (locally defined or in vendor libraries) are updated?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-links-that-explain-how-to-use-mocks-with-testify" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference links that explain how to use mocks with testify
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2195,16 +2228,122 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+  <h1>Mocks ut faq</h1>
+
+<h3 id="how-are-the-mock-files-for-unit-tests-organized">How are the mock files for unit tests organized?<a class="headerlink" href="#how-are-the-mock-files-for-unit-tests-organized" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>The name of the mock file generated will be the same as the name of the <code>interface</code> definition.</p>
+</li>
+<li>
+<p>Mock files for <code>interfaces</code> defined in the <code>go-controller/vendor</code> directories are located in the 
+<code>go-controller/pkg/testing/mocks</code> directory. The directory structure in the <code>go-controller/pkg/testing/mocks/</code> closely 
+mimic the directory structure of  <code>go-controller/vendor/</code>.</p>
+<p>e.g; a) The <code>Cmd</code> interface defined in the <code>go-controller/vendor/k8s.io/utils/exec.go</code> file has its mock generated 
+in <code>go-controller/pkg/testing/mocks/k8s.io/utils/exec/Cmd.go</code> file</p>
+<p>e.g; b) The <code>Link</code> interface defined in the <code>go-controller/vendor/github.com/vishvananda/netlink/link.go</code> file has 
+its mock generated in <code>go-controller/pkg/testing/mocks/vishvananda/netlink/Link.go</code> file</p>
+</li>
+<li>
+<p>Mock files for <code>interfaces</code> defined in the non vendor directories of the project are located in the <code>mocks</code> directory 
+of the same package as where the interface is defined.</p>
+<p>e.g; a) The <code>ExecRunner</code> interface defined in <code>go-controller/pkg/util/ovs.go</code> file has the its mock generated in 
+<code>go-controller/pkg/util/mocks/ExecRunner.go</code> file.</p>
+<p>e.g; b) The <code>SriovNetLibOps</code> interface defined in <code>go-controller/pkg/cni/helper_linux.go</code> file has its mock 
+generated in <code>go-controller/pkg/cni/mocks/SriovNetLibOps.go</code> file.</p>
+</li>
+</ul>
+<h3 id="how-are-the-mocks-for-interfaces-to-be-consumed-by-unit-tests-currently-generated">How are the mocks for interfaces to be consumed by unit tests currently generated?<a class="headerlink" href="#how-are-the-mocks-for-interfaces-to-be-consumed-by-unit-tests-currently-generated" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>The vektra/mockery package from https://github.com/vektra/mockery is leveraged to auto generate mocks for defined interfaces.</p>
+</li>
+<li>
+<p>Mocks for interfaces can be generated using vektra/mockery in one of two ways:</p>
+<ul>
+<li>
+<p>Using the binaries at https://github.com/vektra/mockery/releases</p>
+</li>
+<li>
+<p>Using the docker image</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Sample commands to generate mocks when using the <code>binary</code> installed on a linux host.</p>
+<ul>
+<li>
+<p>Mock for interface <code>SriovNetLibOps</code> defined in the <code>go-controller/pkg/cni/helper_linux.go</code> file when executing the
+<code>mockery</code> command from dir <code>go-controller/</code></p>
+<p><code>mockery --name SriovnetLibOps --dir pkg/cni/ --output pkg/cni/mocks</code></p>
+</li>
+<li>
+<p>Mock for all interfaces defined in the vendor folder <code>go-controller/vendor/k8s.io/utils/exec</code> when executing the
+<code>mockery</code> command from dir <code>go-controller/</code></p>
+<p><code>mockery --all --dir vendor/k8s.io/utils/exec --output pkg/testing/mocks/k8s.io/utils/exec</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Sample command to generate mocks when using the <code>docker</code> image</p>
+<ul>
+<li>
+<p>Mock for interface <code>SriovNetLibOps</code> defined in the <code>go-controller/pkg/cni/helper_linux.go</code> file when running the
+<code>docker</code> container from dir <code>go-controller/</code></p>
+<p><code>docker run -v $PWD:/src -w /src vektra/mockery --name SriovNetLibOps --dir pkg/cni/ --output pkg/cni/mocks</code></p>
+</li>
+<li>
+<p>Mock for all interfaces defined in the vendor folder <code>go-controller/vendor/k8s.io/utils/exec</code> when running the
+<code>docker</code> container from dir <code>go-controller/</code></p>
+<p><code>docker run -v $PWD:/src -w /src vektra/mockery --all --dir vendor/k8s.io/utils/exec --output pkg/testing/mocks/k8s.io/utils/exec</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-to-regenerate-all-existing-mocks-when-interfaces-locally-defined-or-in-vendor-libraries-are-updated">How to regenerate all existing mocks when interfaces (locally defined or in vendor libraries) are updated?<a class="headerlink" href="#how-to-regenerate-all-existing-mocks-when-interfaces-locally-defined-or-in-vendor-libraries-are-updated" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>- Execute the ```go-controller/hack/regenerate_vendor_mocks.sh``` in situations where all existing mocks have to be regenerated.
+NOTE: It would take a while(approx 20+ minutes) for all mocks to be regenerated.
+</code></pre></div>
+<h3 id="reference-links-that-explain-how-to-use-mocks-with-testify">Reference links that explain how to use mocks with testify<a class="headerlink" href="#reference-links-that-explain-how-to-use-mocks-with-testify" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>https://tutorialedge.net/golang/improving-your-tests-with-testify-go/ </p>
+</li>
+<li>
+<p>https://techblog.fexcofts.com/2019/09/23/go-and-test-mocking/ </p>
+</li>
+<li>
+<p>https://gowalker.org/github.com/stretchr/testify/mock </p>
+</li>
+<li>
+<p>https://ncona.com/2020/02/using-testify-for-golang-tests/ </p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
