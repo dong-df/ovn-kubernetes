@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/features/network-security-controls/egress-firewall/">
       
       
-        <link rel="prev" href="../observability/metrics/">
+        <link rel="prev" href="../admin-network-policy/">
       
       
+        <link rel="next" href="../../infrastructure-security-controls/node-identity/">
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>EgressFirewall - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#egressfirewall" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              EgressFirewall
             
           </span>
         </div>
@@ -210,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -229,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../design/architecture/" class="md-tabs__link">
+        <a href="../../../design/architecture/" class="md-tabs__link">
           
   
     
@@ -249,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -269,7 +271,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING/" class="md-tabs__link">
+        <a href="../../../governance/CONTRIBUTING/" class="md-tabs__link">
           
   
     
@@ -285,17 +287,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../cluster-egress-controls/egress-ip/" class="md-tabs__link">
           
   
     
@@ -318,7 +324,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging/" class="md-tabs__link">
+        <a href="../../../troubleshooting/debugging/" class="md-tabs__link">
           
   
     
@@ -338,7 +344,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics/" class="md-tabs__link">
+        <a href="../../../observability/metrics/" class="md-tabs__link">
           
   
     
@@ -354,13 +360,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +405,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+      <a href="../../../design/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology/" class="md-nav__link">
+      <a href="../../../design/topology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../../../design/gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../../../design/traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../../../design/pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../../../design/service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy/" class="md-nav__link">
+      <a href="../../../design/service-traffic-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
+      <a href="../../../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
+      <a href="../../../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../../../design/ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/live-migration/" class="md-nav__link">
+      <a href="../../../design/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../../governance/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING/" class="md-nav__link">
+      <a href="../../../governance/REVIEWING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer/" class="md-nav__link">
+      <a href="../../../developer-guide/developer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci/" class="md-nav__link">
+      <a href="../../../ci/ci/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1278,8 +1282,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1302,17 +1308,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1323,7 +1332,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Features
@@ -1385,7 +1394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
+      <a href="../../cluster-egress-controls/egress-ip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service/" class="md-nav__link">
+      <a href="../../cluster-egress-controls/egress-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
+      <a href="../../cluster-egress-controls/egress-qos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1474,8 +1483,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1491,11 +1502,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
         
           
           <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
@@ -1509,7 +1520,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             NetworkSecurityControls
@@ -1523,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy/" class="md-nav__link">
+      <a href="../network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy/" class="md-nav__link">
+      <a href="../admin-network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1562,10 +1573,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    EgressFirewall
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1574,6 +1605,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1636,7 +1705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
+      <a href="../../infrastructure-security-controls/node-identity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing/" class="md-nav__link">
+      <a href="../../multi-homing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast/" class="md-nav__link">
+      <a href="../../multicast/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration/" class="md-nav__link">
+      <a href="../../live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay/" class="md-nav__link">
+      <a href="../../hybrid-overlay/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +1912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload/" class="md-nav__link">
+      <a href="../../hardware-offload/ovs_offload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +2015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging/" class="md-nav__link">
+      <a href="../../../troubleshooting/debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +2036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace/" class="md-nav__link">
+      <a href="../../../troubleshooting/ovnkube-trace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +2057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics/" class="md-nav__link">
+      <a href="../../../observability/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2152,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2166,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2189,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2211,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,6 +2252,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2285,80 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="egressfirewall">EgressFirewall<a class="headerlink" href="#egressfirewall" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>The EgressFirewall feature enables a cluster administrator to
+limit the external hosts that a pod in a project can access.
+The EgressFirewall object rules apply to all pods that share
+the namespace with the egressfirewall object. A namespace only
+supports having one EgressFirewallObject.</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>The yaml  below is an example of a simple egressFirewall object</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EgressFirewall</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.ovn.org/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">egress</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">    </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">dnsName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">www.openvswitch.org</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">    </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cidrSelector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3.0/24</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">    </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cidrSelector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.5.6.0/24</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UDP</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">55</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deny</span>
+<span class="w">    </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cidrSelector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span>
+</code></pre></div>
+<p>This example allows Pods in the default namespace to connect to
+the host(s) that www.openvswitch.org translates to, any external
+host within the range 1.2.3.0 to 1.2.3.255, and in addtion allows
+traffic to 4.5.6.0 to 4.5.6.255 only for the UDP protocol on port
+number 55 and denies traffic to all other external hosts. The ports 
+section is optional and allows the user to specify specific ports 
+to and protocols to allow or deny traffic.</p>
+<p>The priority of a rule is determined by its placement in the egress
+array. An earlier rule is processed before a later rule. In the 
+previous example, if the rules are reversed, all traffic is denied,
+including any traffic to hosts in the 1.2.3.0/24 CIDR block.</p>
+<p>Using the DNS feature assumes that the nodes and masters are located
+in a similar location as the DNS entries that are added to the ovn
+database are generated by the master.</p>
+<p>NOTE: use Caution when using DNS names in deny rules. The DNS interceptor
+will never work flawlessly and could allow access to a denied host if the
+DNS resolution on the node is different then in the master.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2389,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/features/network-security-controls/admin-network-policy/">
       
       
-        <link rel="prev" href="../observability/metrics/">
+        <link rel="prev" href="../network-policy/">
       
       
+        <link rel="next" href="../egress-firewall/">
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>AdminNetworkPolicy - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#adminnetworkpolicy" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              AdminNetworkPolicy
             
           </span>
         </div>
@@ -210,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -229,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../design/architecture/" class="md-tabs__link">
+        <a href="../../../design/architecture/" class="md-tabs__link">
           
   
     
@@ -249,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -269,7 +271,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING/" class="md-tabs__link">
+        <a href="../../../governance/CONTRIBUTING/" class="md-tabs__link">
           
   
     
@@ -285,17 +287,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../cluster-egress-controls/egress-ip/" class="md-tabs__link">
           
   
     
@@ -318,7 +324,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging/" class="md-tabs__link">
+        <a href="../../../troubleshooting/debugging/" class="md-tabs__link">
           
   
     
@@ -338,7 +344,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics/" class="md-tabs__link">
+        <a href="../../../observability/metrics/" class="md-tabs__link">
           
   
     
@@ -354,13 +360,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +405,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+      <a href="../../../design/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology/" class="md-nav__link">
+      <a href="../../../design/topology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../../../design/gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../../../design/traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../../../design/pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../../../design/service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy/" class="md-nav__link">
+      <a href="../../../design/service-traffic-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
+      <a href="../../../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
+      <a href="../../../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../../../design/ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/live-migration/" class="md-nav__link">
+      <a href="../../../design/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../../governance/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING/" class="md-nav__link">
+      <a href="../../../governance/REVIEWING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer/" class="md-nav__link">
+      <a href="../../../developer-guide/developer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci/" class="md-nav__link">
+      <a href="../../../ci/ci/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1278,8 +1282,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1302,17 +1308,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1323,7 +1332,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Features
@@ -1385,7 +1394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
+      <a href="../../cluster-egress-controls/egress-ip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service/" class="md-nav__link">
+      <a href="../../cluster-egress-controls/egress-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
+      <a href="../../cluster-egress-controls/egress-qos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1474,8 +1483,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1491,11 +1502,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
         
           
           <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
@@ -1509,7 +1520,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             NetworkSecurityControls
@@ -1523,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy/" class="md-nav__link">
+      <a href="../network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1541,10 +1552,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1553,6 +1573,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1565,7 +1586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall/" class="md-nav__link">
+      <a href="../egress-firewall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
+      <a href="../../infrastructure-security-controls/node-identity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing/" class="md-nav__link">
+      <a href="../../multi-homing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast/" class="md-nav__link">
+      <a href="../../multicast/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration/" class="md-nav__link">
+      <a href="../../live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay/" class="md-nav__link">
+      <a href="../../hybrid-overlay/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +1864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload/" class="md-nav__link">
+      <a href="../../hardware-offload/ovs_offload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +1967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging/" class="md-nav__link">
+      <a href="../../../troubleshooting/debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +1988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace/" class="md-nav__link">
+      <a href="../../../troubleshooting/ovnkube-trace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +2009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics/" class="md-nav__link">
+      <a href="../../../observability/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2104,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2118,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2141,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2163,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2195,16 +2211,298 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="adminnetworkpolicy">AdminNetworkPolicy<a class="headerlink" href="#adminnetworkpolicy" title="Permanent link">&para;</a></h1>
+<p>Kubernetes AdminNetworkPolicy documentation: https://network-policy-api.sigs.k8s.io/</p>
+<p>Kubernetes AdminNetworkPolicy API reference: https://github.com/kubernetes-sigs/network-policy-api/blob/429a9e6ae89d411f89d5a16aba38a5d920c969ee/apis/v1alpha1/adminnetworkpolicy_types.go</p>
+<p>NOTE: This documentation focuses on OVNK's implementation of ANP and is more for developers than for users.</p>
+<p>NetworkPolicy API was designed mainly for namespace owners or application developers. They are thus namespace scoped. NetworkPolicy API is not suitable for administrators/network-administrators/security-operators of the cluster because of two main reasons:</p>
+<ul>
+<li>They are not cluster-scoped and hence its hard to define a network of policies that spawns across namespaces</li>
+<li>They cannot be created before the namespace is created (kapi server expects the namespace to be created first); thus they cannot satisfy the requirements where admins may want policies in the cluster to be in place before the workloads are even created.</li>
+<li>The design of NetworkPolicy API is implicit which means the deny is already set in place when we create a policy and then we are expected to do an allowList of rules in the policy. Network administrators prefer to have the power of defining what exactly to deny and allow instead of this implicit model.</li>
+</ul>
+<p>Sample API:</p>
+<div class="highlight"><pre><span></span><code>apiVersion: policy.networking.k8s.io/v1alpha1
+kind: AdminNetworkPolicy
+metadata:
+  name: pass-example
+spec:
+  priority: 10
+  subject:
+    namespaces:
+      matchLabels:
+          conformance-house: gryffindor
+  ingress:
+  - name: &quot;deny-all-ingress-from-slytherin&quot;
+    action: &quot;Deny&quot;
+    from:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+  egress:
+  - name: &quot;deny-all-egress-to-slytherin&quot;
+    action: &quot;Deny&quot;
+    to:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+</code></pre></div>
+<p><strong>OVN-Implementation:</strong></p>
+<ul>
+<li>Each AdminNetworkPolicy CRD will have a <code>.spec.priority</code> field. The lower the number the higher the precedence. Thus 0 is the highest priority and 1000 (the largest number supported by upstream sig-network-policy-api) is the lowest priority. However the number of admin policies in a cluster are usually expected to be of a maximum of say 30-50 and not more than that based on use cases for which this API was defined for. OVNK plugin will support 100 policies max in a cluster. If anyone creates more than 100, it will not work properly. Thus supported priority values in OVNK are from 0 to 99.</li>
+<li>Each AdminNetworkPolicy CRD can have upto 100 ingress rules and 100 egress rules, thus 200 rules in total. The ordering of each rule is important. If the rule is at the top of the list then it has the highest precedence and if the rule is at the bottom it has the lowest prededence. Each rule translates to one ACL.</li>
+<li>Since we can have upto 100 policies and each one can have upto 100 gress rules (100*100), we have blocked out the range: 30,000 - 20,000 priority range for the OVN nbdb.ACL table in the <code>Tier1</code> block for ANP's implementation.</li>
+<li>Each AdminNetworkPolicy CRD will have a subject on which the policy is applied on - this is translated to one PortGroup on which the ACLs of each rules are attached on.</li>
+<li>Each gress rule can have upto 100 peers. Each rule will also create an nbdb.AddressSet which will contain the IPs of all the pods that are selected by the peer selector across all the peers of that given rule.</li>
+</ul>
+<p>The PortGroup for the above AdminNetworkPolicy is:</p>
+<div class="highlight"><pre><span></span><code>_uuid               : a10e3675-5260-4e28-9462-b705b9dac862
+acls                : [120082fa-5a70-4c72-9211-529766078278, 2e0f811f-e0db-41ad-b12b-4a0cf1c621ae]
+external_ids        : {AdminNetworkPolicy=pass-example}
+name                : a3052488126344707991
+ports               : [a22a4c3a-bb65-4b22-8bc1-13e1e8899a7b, c7e4ffe3-73df-4db5-a3bc-a9649394d549]
+</code></pre></div>
+<p>The ACLs for the above AdminNetworkPolicy are:</p>
+<div class="highlight"><pre><span></span><code>_uuid               : 2e0f811f-e0db-41ad-b12b-4a0cf1c621ae
+action              : drop
+direction           : to-lport
+external_ids        : {direction=ANPIngress, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPIngress:29000&quot;, &quot;k8s.ovn.org/name&quot;=pass-example, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=AdminNetworkPolicy, priority=&quot;29000&quot;}
+label               : 0
+log                 : false
+match               : &quot;((ip4.src == $a10282262890368313763)) &amp;&amp; (outport == @a3052488126344707991)&quot;
+meter               : acl-logging
+name                : pass-example_ANPIngress_29000
+options             : {}
+priority            : 29000
+severity            : debug
+tier                : 1
+===
+_uuid               : 120082fa-5a70-4c72-9211-529766078278
+action              : drop
+direction           : from-lport
+external_ids        : {direction=ANPEgress, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPEgress:29000&quot;, &quot;k8s.ovn.org/name&quot;=pass-example, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=AdminNetworkPolicy, priority=&quot;29000&quot;}
+label               : 0
+log                 : false
+match               : &quot;((ip4.dst == $a16426961577074298037)) &amp;&amp; (inport == @a3052488126344707991)&quot;
+meter               : acl-logging
+name                : pass-example_ANPEgress_29000
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 29000
+severity            : debug
+tier                : 1
+</code></pre></div>
+<p>The Address-Sets for the above AdminNetworkPolicy are:</p>
+<div class="highlight"><pre><span></span><code>_uuid               : df47aab4-ab2c-4530-bb08-2a90476af9a7
+addresses           : [&quot;10.244.0.5&quot;, &quot;10.244.1.6&quot;]
+external_ids        : {direction=ANPIngress, ip-family=v4, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPIngress:29000:v4&quot;, &quot;k8s.ovn.org/name&quot;=pass-example, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=AdminNetworkPolicy, priority=&quot;29000&quot;}
+name                : a10282262890368313763
+===
+_uuid               : d797804a-9401-446e-8295-1f2eebcfa80b
+addresses           : [&quot;10.244.0.5&quot;, &quot;10.244.1.6&quot;]
+external_ids        : {direction=ANPEgress, ip-family=v4, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPEgress:29000:v4&quot;, &quot;k8s.ovn.org/name&quot;=pass-example, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=AdminNetworkPolicy, priority=&quot;29000&quot;}
+name                : a16426961577074298037
+</code></pre></div>
+<p>NOTE: Since priority is 10, it is 29000 in the ACL world. If we had a second rule, that rule would get 28999 as its priority. There are no default deny policies for a given ANP unlike NP.</p>
+<p><strong><em>Pass Action:</em></strong></p>
+<p>In addition to setting <code>Deny</code> and <code>Allow</code> actions on ANP API rules, one can also use the <code>Pass</code> action for a rule. What this means is ANP controller defers the decision of packets that match the pass action rule to either the NetworkPolicy OR to the BaselineAdminNetworkPolicy defined in the cluster (if either of them match the same set of pods, then they will take effect and if not, the result will be an <code>Allow</code>). Order of precedence: AdminNetworkPolicy (Tier1) &gt; NetworkPolicy(Tier2) &gt; BaselineAdminNetworkPolicy (Tier3).</p>
+<p>Sample Pass ACTION API:</p>
+<div class="highlight"><pre><span></span><code>apiVersion: policy.networking.k8s.io/v1alpha1
+kind: AdminNetworkPolicy
+metadata:
+  name: pass-example
+spec:
+  priority: 10
+  subject:
+    namespaces:
+      matchLabels:
+          conformance-house: gryffindor
+  ingress:
+  - name: &quot;pass-all-ingress-from-slytherin&quot;
+    action: &quot;Pass&quot;
+    from:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+  egress:
+  - name: &quot;pass-all-egress-to-slytherin&quot;
+    action: &quot;Pass&quot;
+    to:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+</code></pre></div>
+<p>Corresponding ACLs:</p>
+<div class="highlight"><pre><span></span><code>_uuid               : 2e0f811f-e0db-41ad-b12b-4a0cf1c621ae
+action              : pass
+direction           : to-lport
+external_ids        : {direction=ANPIngress, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPIngress:29000&quot;, &quot;k8s.ovn.org/name&quot;=pass-example, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=AdminNetworkPolicy, priority=&quot;29000&quot;}
+label               : 0
+log                 : false
+match               : &quot;((ip4.src == $a10282262890368313763)) &amp;&amp; (outport == @a3052488126344707991)&quot;
+meter               : acl-logging
+name                : pass-example_ANPIngress_29000
+options             : {}
+priority            : 29000
+severity            : debug
+tier                : 1
+===
+_uuid               : 120082fa-5a70-4c72-9211-529766078278
+action              : pass
+direction           : from-lport
+external_ids        : {direction=ANPEgress, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:AdminNetworkPolicy:pass-example:ANPEgress:29000&quot;, &quot;k8s.ovn.org/name&quot;=pass-example, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=AdminNetworkPolicy, priority=&quot;29000&quot;}
+label               : 0
+log                 : false
+match               : &quot;((ip4.dst == $a16426961577074298037)) &amp;&amp; (inport == @a3052488126344707991)&quot;
+meter               : acl-logging
+name                : pass-example_ANPEgress_29000
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 29000
+severity            : debug
+tier                : 1
+</code></pre></div>
+<p>If we now define a networkpolicy that matches the same set of subjects as our pass-example admin-network-policy, that network-policy will take effect. This is how administrators can delegate a decision making to the namespace owners in a cluster.</p>
+<h1 id="baselineadminnetworkpolicy">BaselineAdminNetworkPolicy<a class="headerlink" href="#baselineadminnetworkpolicy" title="Permanent link">&para;</a></h1>
+<p>Kubernetes AdminNetworkPolicy API reference: https://github.com/kubernetes-sigs/network-policy-api/blob/429a9e6ae89d411f89d5a16aba38a5d920c969ee/apis/v1alpha1/baseline_adminnetworkpolicy_types.go</p>
+<p>Since we can delegate decisions from administrators to namespace owners, what if namespace owners don't have policies in place for the same set of subjects? Admins in such cases might want to keep a default set of guardrails in the cluster. Thus we allow one BANP to be created in the cluster with the name <code>default</code>. The rules in <code>default</code> BANP are created in Tier3.</p>
+<p>Sample API:</p>
+<div class="highlight"><pre><span></span><code>apiVersion: policy.networking.k8s.io/v1alpha1
+kind: BaselineAdminNetworkPolicy
+metadata:
+  name: default
+spec:
+  subject:
+    namespaces:
+      matchLabels:
+          conformance-house: gryffindor
+  ingress:
+  - name: &quot;deny-all-ingress-from-slytherin&quot;
+    action: &quot;Deny&quot;
+    from:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+  egress:
+  - name: &quot;deny-all-egress-to-slytherin&quot;
+    action: &quot;Deny&quot;
+    to:
+    - namespaces:
+        namespaceSelector:
+          matchLabels:
+            conformance-house: slytherin
+</code></pre></div>
+<ul>
+<li>BANP doesn't have any priority field, since we can have only one in the cluster</li>
+<li>We keep nbdb.ACL's priority range 1750 - 1649 range reserved for BANP rules in the cluster.</li>
+<li>Rest of the implementation details for ANP is applicable to BANP as well.</li>
+</ul>
+<p>Corresponding ACLs:</p>
+<div class="highlight"><pre><span></span><code>_uuid               : 436b5a0f-9616-42b5-865d-489ec1d42666
+action              : drop
+direction           : to-lport
+external_ids        : {direction=BANPIngress, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:BaselineAdminNetworkPolicy:default:BANPIngress:1750&quot;, &quot;k8s.ovn.org/name&quot;=default, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=BaselineAdminNetworkPolicy, priority=&quot;1750&quot;}
+label               : 0
+log                 : false
+match               : &quot;((ip4.src == $a2535546904205657311)) &amp;&amp; (outport == @a16982411286042166782)&quot;
+meter               : acl-logging
+name                : default_BANPIngress_1750
+options             : {}
+priority            : 1750
+severity            : debug
+tier                : 3
+===
+_uuid               : d42cb240-fac1-4429-a1bc-02efddda69cf
+action              : drop
+direction           : from-lport
+external_ids        : {direction=BANPEgress, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:BaselineAdminNetworkPolicy:default:BANPEgress:1750&quot;, &quot;k8s.ovn.org/name&quot;=default, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=BaselineAdminNetworkPolicy, priority=&quot;1750&quot;}
+label               : 0
+log                 : false
+match               : &quot;((ip4.dst == $a6430502402203365)) &amp;&amp; (inport == @a16982411286042166782)&quot;
+meter               : acl-logging
+name                : default_BANPEgress_1750
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 1750
+severity            : debug
+tier                : 3
+</code></pre></div>
+<p>The Address-Set for the above BaselineAdminNetworkPolicy is:</p>
+<div class="highlight"><pre><span></span><code>_uuid               : a3ac7d6b-9185-4099-84f8-92d28460b4c3
+addresses           : [&quot;10.244.0.5&quot;, &quot;10.244.1.6&quot;]
+external_ids        : {direction=BANPIngress, ip-family=v4, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:BaselineAdminNetworkPolicy:default:BANPIngress:1750:v4&quot;, &quot;k8s.ovn.org/name&quot;=default, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=BaselineAdminNetworkPolicy, priority=&quot;1750&quot;}
+name                : a2535546904205657311
+===
+_uuid               : b3e08332-e6bb-4f4e-bbc4-c36f717f149a
+addresses           : [&quot;10.244.0.5&quot;, &quot;10.244.1.6&quot;]
+external_ids        : {direction=BANPEgress, ip-family=v4, &quot;k8s.ovn.org/id&quot;=&quot;admin-network-policy-controller:BaselineAdminNetworkPolicy:default:BANPEgress:1750:v4&quot;, &quot;k8s.ovn.org/name&quot;=default, &quot;k8s.ovn.org/owner-controller&quot;=admin-network-policy-controller, &quot;k8s.ovn.org/owner-type&quot;=BaselineAdminNetworkPolicy, priority=&quot;1750&quot;}
+name                : a6430502402203365
+</code></pre></div>
+<p>The PortGroup for the above AdminNetworkPolicy is:</p>
+<div class="highlight"><pre><span></span><code>_uuid               : 9ec16567-6f51-49fb-aedb-40c477ad470d
+acls                : [436b5a0f-9616-42b5-865d-489ec1d42666, d42cb240-fac1-4429-a1bc-02efddda69cf]
+external_ids        : {BaselineAdminNetworkPolicy=default}
+name                : a16982411286042166782
+ports               : [a22a4c3a-bb65-4b22-8bc1-13e1e8899a7b, c7e4ffe3-73df-4db5-a3bc-a9649394d549]
+</code></pre></div>
+<h1 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h1>
+<p>This section tracks the remaining work (some of these items are work-in-progress already and will be merged in future PRs) that are future items and outside the scope of the initial PR (https://github.com/ovn-org/ovn-kubernetes/pull/3659)</p>
+<ul>
+<li>Adding Northbound Support for ANP: https://github.com/kubernetes-sigs/network-policy-api/pull/117</li>
+<li>Adding support for sameLabels/notSameLabels: https://github.com/kubernetes-sigs/network-policy-api/pull/123</li>
+<li>Adding support for Named Ports: https://github.com/ovn-org/ovn-kubernetes/pull/3641 (Once the final design here is done will rebase)</li>
+<li>Adding support for Logging: (PR in progress locally, did not push till these main changes land)<ul>
+<li>Change to using ovn.acl package for bulding ACLs instead of libovsdb.ACL package: per comment https://github.com/ovn-org/ovn-kubernetes/pull/3659#discussion_r1257988920 if needed (although tssurya thinks using the libovsdbops function causes lesser abstracted and more straightforwardness)</li>
+</ul>
+</li>
+<li>Scale improvements (We will only have max 100 ANP's in a cluster, so we could get away by not doing any scale changes; depends on how pod/namespace add/updates perform.)<ul>
+<li>Reducing ACLs on L4 (Max ACL Count: 100x200 = 20K without ports) - with ports this can go upto 100x200x100 = 200K ACLs: https://github.com/ovn-org/ovn-kubernetes/pull/3582</li>
+<li>Investigating better locking (if needed after scale runs)</li>
+<li>Adding support for sharing address-sets with namespaces (depends on use cases as ANPs
+  are created before namespaces most of times and the adiquate support on the namespace
+  controller side needs to be added) - similar to what's done for NPs</li>
+<li>Adding support for sharing port-groups (depends on use cases as ANPs span
+  across namespaces maybe we can combine per namespace ones with an || expression
+  but need to see if its worth the effort): https://github.com/ovn-org/ovn-kubernetes/pull/2740</li>
+</ul>
+</li>
+</ul>
+<h1 id="constraints">Constraints<a class="headerlink" href="#constraints" title="Permanent link">&para;</a></h1>
+<ul>
+<li>The v1alpha1 CRDs upstream support upto 1000 priorities (<code>.Spec.Priority</code>) but OVNK only allows users to have maximum 100 ANPs in a cluster.
+  This means you can create an ANP with priority between 0 and 99 - we do not support creating ANPs with higher priorities in OVNK.
+  Since each ANP can have 100 ingress and egress rules, administrators must be able to express relations using 30-50 policies max from our assumptions.
+  Changing this to support beyond 200 will need OVN RFEs</li>
+<li>It is for the best if two ANPs are not created with the same priority. The outcome is nondeterministic and this is a case we do not support. So ensure
+  your policies have unique priorities</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2533,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

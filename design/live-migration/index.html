@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/design/live-migration/">
       
       
-        <link rel="prev" href="../observability/metrics/">
+        <link rel="prev" href="../external-ip-and-loadbalancer-ingress/">
       
       
+        <link rel="next" href="../../governance/CONTRIBUTING/">
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Kubevirt VM Live Migration - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#kubevirt-virtual-machine-bridge-binding-pod-network-seamless-live-migration" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Kubevirt VM Live Migration
             
           </span>
         </div>
@@ -210,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -225,11 +227,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../design/architecture/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../architecture/" class="md-tabs__link">
           
   
     
@@ -249,7 +253,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -269,7 +273,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING/" class="md-tabs__link">
+        <a href="../../governance/CONTRIBUTING/" class="md-tabs__link">
           
   
     
@@ -295,7 +299,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
+        <a href="../../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
           
   
     
@@ -318,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging/" class="md-tabs__link">
+        <a href="../../troubleshooting/debugging/" class="md-tabs__link">
           
   
     
@@ -338,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics/" class="md-tabs__link">
+        <a href="../../observability/metrics/" class="md-tabs__link">
           
   
     
@@ -354,13 +358,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +403,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -447,8 +449,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -477,17 +481,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -498,7 +505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Overview
@@ -512,7 +519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+      <a href="../architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology/" class="md-nav__link">
+      <a href="../topology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy/" class="md-nav__link">
+      <a href="../service-traffic-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
+      <a href="../host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
+      <a href="../external-ip-and-loadbalancer-ingress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -719,10 +726,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../design/live-migration/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Kubevirt VM Live Migration
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -731,6 +758,68 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipam" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPAM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detecting-migratable-vms-and-changing-point-to-point-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting migratable VMs and changing point to point routes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -808,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +1044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +1065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../governance/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING/" class="md-nav__link">
+      <a href="../../governance/REVIEWING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer/" class="md-nav__link">
+      <a href="../../developer-guide/developer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci/" class="md-nav__link">
+      <a href="../../ci/ci/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1385,7 +1474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/admin-network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall/" class="md-nav__link">
+      <a href="../../features/network-security-controls/egress-firewall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
+      <a href="../../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing/" class="md-nav__link">
+      <a href="../../features/multi-homing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast/" class="md-nav__link">
+      <a href="../../features/multicast/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration/" class="md-nav__link">
+      <a href="../../features/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay/" class="md-nav__link">
+      <a href="../../features/hybrid-overlay/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +1932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload/" class="md-nav__link">
+      <a href="../../features/hardware-offload/ovs_offload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +2035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging/" class="md-nav__link">
+      <a href="../../troubleshooting/debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +2056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace/" class="md-nav__link">
+      <a href="../../troubleshooting/ovnkube-trace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +2077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics/" class="md-nav__link">
+      <a href="../../observability/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2172,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2186,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2209,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2231,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,6 +2272,56 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipam" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPAM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detecting-migratable-vms-and-changing-point-to-point-routes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detecting migratable VMs and changing point to point routes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2329,173 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="kubevirt-virtual-machine-bridge-binding-pod-network-seamless-live-migration">KubeVirt virtual machine bridge binding pod network seamless live migration<a class="headerlink" href="#kubevirt-virtual-machine-bridge-binding-pod-network-seamless-live-migration" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>At kubevirt every VM is executed inside a "virt-launcher" pod; how the "virt-launcher" pod net interface is "bound" to the VM is specified by the network binding at the VM spec, ovn-kubernetes support live migration of the KubeVirt network bridge binding. </p>
+<p>The KubeVirt bridge binding adds  a bridge and a tap device and connects the existing pod interface as a port of the aforementioned bridge. When IPAM is configured on the pod interface, a DHCP server is started to advertise the pod's IP to DHCP aware VMs.</p>
+<p>KubeVirt doesn't replace anything. It adds a bridge and a tap device, and connects the existing pod interface as a port of the aforementioned bridge.</p>
+<p>Benefit of the bridge binding is that is able to expose the pod IP to the VM as expected by most users also pod network bridge binding live migration is implemented by ovn-kubernetes by doing the following:
+- Do IP assignemnt with ovn-k but skip the CNI part that configure it at pod's netns veth.
+- Do not expect the IP to be on the pod netns.
+- Add the ability at ovn-k controllers to migrate pod's IP from node to node.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<p>To implement live migration ovn-kubernetes do the following:
+- Send DHCP replies advertising the allocated IP address to the guest VM (via OVN-Kubernetes DHCP options configured for the logical switch ports).
+- A point to point routing is used so one node's subnet IP can be routed from different node
+- The VM's gateway IP and MAC are independent of the node they are running on using proxy arp</p>
+<p><strong>Point to point routing:</strong></p>
+<p>When the VM is running at a node that does not "own" it's IP address - e.g. after a live migration - 
+after a live migration, do point to point routing with a policy for non 
+interconnect and a cluster wide static route for interconnected zones, it will
+route outbound traffic and a static route to route inboud.
+By doing this, the VM can live migrate to different node and keep previous 
+addresses (IP / MAC), thus preserving n/s and e/w communication, and ensuring traffic
+goes over the node where the VM is running. The latter reduces inter node communication.</p>
+<p>If the VM is going back to the node that "owns" the ip, those static routes and 
+policies should be reconciled (deleted).</p>
+<div class="highlight"><pre><span></span><code>       ┌───────────────────────────┐
+       │     ovn_cluster_router    │
+┌───────────────────────────┐   ┌────────────────────────────┐
+│ static route (ingress all)│───│ policy  (egress n/s)       │
+│ prefix: 10.244.0.8        │   │ match: ip4.src==10.244.0.8 │
+│ nexthop: 10.244.0.8       │   │ action: reroute            │
+│ output-port: rtos-node1   │   │ nexthop: 10.64.0.2         │
+│ policy: dst-ip            │   │                            │  
+└───────────────────────────┘   └────────────────────────────┘ 
+- static route: ingress traffic to VM&#39;s IP via VM&#39;s node port
+- policy: egress n/s traffic from VM&#39;s IP via gateway router ip
+</code></pre></div>
+<p>When ovn-kubernetes is deployed with multiple ovn zones interconected 
+an extra static route is added to the local zone (zone where vm is running) to
+route egress n/s traffic to the gw router. Note that for interconnect the
+previous policy is not needed, at remote zones a static route is address to 
+enroute VM egress traffic over the transit switch port address.</p>
+<p>If the transit switch port address is 10.64.0.3 and gw router is 10.64.0.2, 
+those below are the static route added to the topology when running with 
+multiple zones:</p>
+<div class="highlight"><pre><span></span><code>Local zone:
+       ┌───────────────────────────┐
+       │     ovn_cluster_router    │
+┌───────────────────────────┐   ┌───────────────────────────┐
+│ static route (egress n/s) │───│ static route (ingress all)│
+│ prefix: 10.244.0.0/16     │   │ prefix: 10.244.0.8        │
+│ nexthop: 10.64.0.2        │   │ nexthop: 10.244.0.8       │
+│ policy: src-ip            │   │ output-port: rtos-node1   │
+└───────────────────────────┘   │ policy: dst-ip            │
+                                └───────────────────────────┘
+Remote zone:
+       ┌───────────────────────────┐
+       │     ovn_cluster_router    │
+┌───────────────────────────┐      │
+│ static route (ingress all)│──────┘
+│ prefix: 10.244.0.8        │
+│ nexthop: 10.64.0.3        │
+│ policy: dst-ip            │
+└───────────────────────────┘
+</code></pre></div>
+<p><strong>Nodes logical switch ports:</strong></p>
+<p>To have a consistent gateway at VMs (keep ip and mac after live migration) 
+the "arp_proxy" feature is used and it need to be activated at 
+the logical switch port of type router connects node's logical switch to 
+ovn_cluster_router logical router.</p>
+<p>The "arp_proxy" LSP option will include the MAC to answer ARPs with, and the
+link local ipv4 and ipv6 to answer for and the cluster wide pod CIDR to answer
+to pod subnets when the node switch do not have the live migrated ip. The
+flows from arp_proxy has less priority than the ones from the node logical 
+switch so ARP flows are not overriden.</p>
+<div class="highlight"><pre><span></span><code>    ┌────────────────────┐   ┌────────────────────┐
+    │logical switch node1│   │logical switch node2│
+    └────────────────────┘   └────────────────────┘
+┌────────────────────┐  │     │   ┌─────────────────────┐
+│ lsp stor-node1     │──┘     └───│ lsp stor-node2      │
+│ options:           │            │ options:            │
+│  arp_proxy:        │            │   arp_proxy:        │
+│   0a:58:0a:f3:00:00│            │    0a:58:0a:f3:00:00│
+│   169.254.1.1      │            │    169.254.1.1      │
+│   10.244.0.0/16    │            │    10.244.0.0/16    │
+└────────────────────┘            └─────────────────────┘
+</code></pre></div>
+<p><strong>VMs logical switch ports:</strong></p>
+<p>The logical switch port for new VMs will use ovn-k ipam to reserve an IP address,
+and when live-migrating the VM, the LSP address will be re-used.</p>
+<p>CNI must avoid setting the IP address on the migration destination pod, but ovn-k controllers should 
+preserve the IP allocation, that is done when ovn-k detects that the pod is
+live migratable.</p>
+<p>Also the DHCP options will be configured to deliver the address to the VMs</p>
+<div class="highlight"><pre><span></span><code>    ┌──────────────────────┐   ┌────────────────────┐
+    │logical switch node1  │   │logical switch node2│
+    └──────────────────────┘   └────────────────────┘
+┌──────────────────────┐  │     │   ┌──────────────────────┐      
+│ lsp ns-virt-launcher1│──┘     └───│ lsp ns-virt-launcher2│     
+│ dhcpv4_options: 1234 │            │ dhcpv4_options: 1234 │
+│ address:             │            │ address:             │    
+│  0a:58:0a:f4:00:01   │            │  0a:58:0a:f4:00:01   │
+│  10.244.0.8          │            │  10.244.0.8          │
+└──────────────────────┘            └──────────────────────┘
+
+┌─────────────────────────────────┐
+│ dhcp-options 1234               │
+│   lease_time: 3500              │
+│   router: 169.254.1.1           │
+│   dns_server: [kubedns]         │
+│   server_id: 169.254.1.1        │
+│   server_mac: c0:ff:ee:00:00:01 │
+└─────────────────────────────────┘
+</code></pre></div>
+<p><strong>Virt-launcher pod address:</strong>
+The CNI will not set an address at virt-launcher pod netns, that address is
+assigned to the VM with the DHCP options from the LSP, this allows to use 
+kubevirt bridge binding with pod networking and still do live migration.</p>
+<h4 id="ipam">IPAM<a class="headerlink" href="#ipam" title="Permanent link">&para;</a></h4>
+<p>The point to point routing feature allows an address to be running at a node different from
+the one "owning" the subnet the address is coming from. This will happen
+after VM live migration.</p>
+<p>One scenario for live migration is to shut down the node the VMs were migrated
+from, this means that the IPAM node subnet should go back to the pool but since
+the migrated VMs contains IPs from it those IPs should reserved in case the 
+subnet is assigned to a new node.</p>
+<p>On that case before assigning the subnet to the node the VMs ips need to be 
+reserved so they don't get assigned to new pods</p>
+<p>Another scenario is ovn-kubernetes pods restarting after live migration, on 
+that case ovnkube-master should discover to what IP pool the VM belongs.</p>
+<h4 id="detecting-migratable-vms-and-changing-point-to-point-routes">Detecting migratable VMs and changing point to point routes<a class="headerlink" href="#detecting-migratable-vms-and-changing-point-to-point-routes" title="Permanent link">&para;</a></h4>
+<p>To detect that a pod is migratable KubevirtVm the annotation <code>kubevirt.io/allow-pod-bridge-network-live-migration</code>
+has to be present and also the label <code>vm.kubevirt.io/name=vm1</code>, on that case
+the point to point routes will be created after live migration and also a 
+DHCPOptions will be configured to serve the ip configuration to the VM</p>
+<p>During live migration there are two virt-launcher pods with different names for the same VM (source and target). The ovn-k pod controller uses <code>CreationTimestamp</code> and <code>kubevirt.io/vm=vm1</code>
+to differentiate between them; it then watches the target pod <code>kubevirt.io/nodeName</code> and <code>kubevirt.io/migration-target-start-timestamp</code> annotation and label, with the following intent:
+- The <code>kubevirt.io/nodeName</code> is set after the VM finishes live migrating or when it becomes ready.
+- The <code>kubevirt.io/migration-target-start-timestamp</code> is set when live migration has not finished but migration-target pod is ready to receive traffic (this happens at post-copy live migration, where migration is taking too long).</p>
+<p>The point to point routing cleanup (remove of static routes and policies) will be done at this cases:
+- VM is deleted, all the routing related to the VM is removed at all the ovn zones.
+- VM is live migrated back to the node that owns its IP, all the routing related to the VM is removed at all the ovn zones.
+- ovn-kubernetes controllers are restarted, stale routing is removed.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2526,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

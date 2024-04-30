@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/governance/CONTRIBUTING/">
       
       
-        <link rel="prev" href="../observability/metrics/">
+        <link rel="prev" href="../../design/live-migration/">
       
       
+        <link rel="next" href="../REVIEWING/">
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Contributing Guide - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#contributing-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Contributing Guide
             
           </span>
         </div>
@@ -210,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -229,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../design/architecture/" class="md-tabs__link">
+        <a href="../../design/architecture/" class="md-tabs__link">
           
   
     
@@ -249,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -265,11 +267,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
     
@@ -295,7 +299,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
+        <a href="../../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
           
   
     
@@ -318,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging/" class="md-tabs__link">
+        <a href="../../troubleshooting/debugging/" class="md-tabs__link">
           
   
     
@@ -338,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics/" class="md-tabs__link">
+        <a href="../../observability/metrics/" class="md-tabs__link">
           
   
     
@@ -354,13 +358,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +403,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+      <a href="../../design/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology/" class="md-nav__link">
+      <a href="../../design/topology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../../design/gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../../design/traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../../design/pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../../design/service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy/" class="md-nav__link">
+      <a href="../../design/service-traffic-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
+      <a href="../../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
+      <a href="../../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../../design/ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/live-migration/" class="md-nav__link">
+      <a href="../../design/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1001,8 +1003,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1029,17 +1033,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1050,7 +1057,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Developer Guide
@@ -1061,10 +1068,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Contributing Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1073,6 +1100,137 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-contribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ways to Contribute
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ways to Contribute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#come-to-meetings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Come to Meetings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-an-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Find an Issue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ask-for-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ask for Help
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull Request Lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Environment Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sign-your-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sign Your Commits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sign Your Commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dco" class="md-nav__link">
+    <span class="md-ellipsis">
+      DCO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-grouping-of-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Grouping of Commits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commit-message-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit message guidelines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull Request Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1085,7 +1243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING/" class="md-nav__link">
+      <a href="../REVIEWING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer/" class="md-nav__link">
+      <a href="../../developer-guide/developer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci/" class="md-nav__link">
+      <a href="../../ci/ci/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1385,7 +1543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/admin-network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall/" class="md-nav__link">
+      <a href="../../features/network-security-controls/egress-firewall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
+      <a href="../../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing/" class="md-nav__link">
+      <a href="../../features/multi-homing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast/" class="md-nav__link">
+      <a href="../../features/multicast/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration/" class="md-nav__link">
+      <a href="../../features/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay/" class="md-nav__link">
+      <a href="../../features/hybrid-overlay/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +2001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload/" class="md-nav__link">
+      <a href="../../features/hardware-offload/ovs_offload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +2022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +2104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging/" class="md-nav__link">
+      <a href="../../troubleshooting/debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +2125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace/" class="md-nav__link">
+      <a href="../../troubleshooting/ovnkube-trace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +2146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics/" class="md-nav__link">
+      <a href="../../observability/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2241,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2255,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2278,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2300,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,6 +2341,125 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-contribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ways to Contribute
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ways to Contribute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#come-to-meetings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Come to Meetings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-an-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Find an Issue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ask-for-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ask for Help
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull Request Lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Environment Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sign-your-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sign Your Commits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sign Your Commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dco" class="md-nav__link">
+    <span class="md-ellipsis">
+      DCO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-grouping-of-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Grouping of Commits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commit-message-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit message guidelines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull Request Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2467,209 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="contributing-guide">Contributing Guide<a class="headerlink" href="#contributing-guide" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="#contributing-guide">New Contributor Guide</a></li>
+<li><a href="#ways-to-contribute">Ways to Contribute</a></li>
+<li><a href="#find-an-issue">Find an Issue</a></li>
+<li><a href="#ask-for-help">Ask for Help</a></li>
+<li><a href="#pull-request-lifecycle">Pull Request Lifecycle</a></li>
+<li><a href="#development-environment-setup">Development Environment Setup</a></li>
+<li><a href="#sign-your-commits">Sign Your Commits</a></li>
+<li><a href="#pull-request-checklist">Pull Request Checklist</a></li>
+</ul>
+<p>Welcome! We are glad that you want to contribute to our project! 💖</p>
+<p>As you get started, you are in the best position to give us feedback on areas of
+our project that we need help with including:</p>
+<ul>
+<li>Problems found during setting up a new developer environment</li>
+<li>Gaps in our Quickstart Guide or documentation</li>
+<li>Bugs in our automation scripts</li>
+</ul>
+<p>If anything doesn't make sense, or doesn't work when you run it, please open a
+bug report and let us know!</p>
+<h2 id="ways-to-contribute">Ways to Contribute<a class="headerlink" href="#ways-to-contribute" title="Permanent link">&para;</a></h2>
+<p>We welcome many different types of contributions including:</p>
+<ul>
+<li>New features</li>
+<li>Builds, CI/CD</li>
+<li>Bug fixes</li>
+<li>Documentation</li>
+<li>Issue Triage</li>
+<li>Answering questions on Slack/Mailing List</li>
+<li>Web design</li>
+<li>Communications / Social Media / Blog Posts</li>
+<li>Release management</li>
+</ul>
+<p>Not everything happens through a GitHub pull request. Please come to our
+<a href="../MEETINGS/">meetings</a> or <a href="https://ovn-org.slack.com/archives/C010SQ5FSNL">contact us</a> and let's discuss how we can work
+together. </p>
+<h3 id="come-to-meetings">Come to Meetings<a class="headerlink" href="#come-to-meetings" title="Permanent link">&para;</a></h3>
+<p>Absolutely everyone is welcome to come to any of our meetings. You never need an
+invite to join us. In fact, we want you to join us, even if you don’t have
+anything you feel like you want to contribute. Just being there is enough!</p>
+<p>You can find out more about our meetings <a href="../MEETINGS/">here</a>. You don’t have to turn on
+your video. The first time you come, introducing yourself is more than enough.
+Over time, we hope that you feel comfortable voicing your opinions, giving
+feedback on others’ ideas, and even sharing your own ideas, and experiences.</p>
+<h2 id="find-an-issue">Find an Issue<a class="headerlink" href="#find-an-issue" title="Permanent link">&para;</a></h2>
+<p>We have good first issues for new contributors and help wanted issues suitable
+for any contributor. <a href="https://github.com/ovn-org/ovn-kubernetes/labels/good%20first%20issue">good first issue</a> has extra information to
+help you make your first contribution. <a href="https://github.com/ovn-org/ovn-kubernetes/labels/help%20wanted">help wanted</a> are issues
+suitable for someone who isn't a core maintainer and is good to move onto after
+your first pull request.</p>
+<p>Sometimes there won’t be any issues with these labels. That’s ok! There is
+likely still something for you to work on. If you want to contribute but you
+don’t know where to start or can't find a suitable issue, you can you can reach out to us on <a href="https://ovn-org.slack.com/">Slack</a> and we will be happy to help.</p>
+<p>Once you see an issue that you'd like to work on, please post a comment saying
+that you want to work on it. Something like "I want to work on this" is fine.</p>
+<h2 id="ask-for-help">Ask for Help<a class="headerlink" href="#ask-for-help" title="Permanent link">&para;</a></h2>
+<p>The best way to reach us with a question when contributing is to ask on:</p>
+<ul>
+<li>The original github issue</li>
+<li>The developer mailing list (mailing-list: https://groups.google.com/g/ovn-kubernetes)</li>
+<li>Our Slack channel (workspace: https://ovn-org.slack.com/, channel: #ovn-kubernetes)</li>
+</ul>
+<h2 id="pull-request-lifecycle">Pull Request Lifecycle<a class="headerlink" href="#pull-request-lifecycle" title="Permanent link">&para;</a></h2>
+<ol>
+<li>When you open a PR a maintainer will automatically be assigned for review</li>
+<li>Make sure that your PR is passing CI - if you need help with failing checks please feel free to ask!</li>
+<li>Once it is passing all CI checks, a maintainer will review your PR and you may be asked to make changes.</li>
+<li>When you have received at least one approval from a maintainer, that maintainer will merge your PR.</li>
+</ol>
+<p>In some cases, other changes may conflict with your PR. If this happens, you will get notified by a comment in the issue that your PR requires a rebase, and the <code>needs-rebase</code> label will be applied. Once a rebase has been performed, this label will be automatically removed.</p>
+<h2 id="development-environment-setup">Development Environment Setup<a class="headerlink" href="#development-environment-setup" title="Permanent link">&para;</a></h2>
+<p>You can easily setup a developer environment by following the instructions <a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/docs/kind.md">here</a>.</p>
+<h2 id="sign-your-commits">Sign Your Commits<a class="headerlink" href="#sign-your-commits" title="Permanent link">&para;</a></h2>
+<h3 id="dco">DCO<a class="headerlink" href="#dco" title="Permanent link">&para;</a></h3>
+<p>Licensing is important to open source projects. It provides some assurances that
+the software will continue to be available based under the terms that the
+author(s) desired. We require that contributors sign off on commits submitted to
+our project's repositories. The <a href="https://probot.github.io/apps/dco/">Developer Certificate of Origin
+(DCO)</a> is a way to certify that you wrote and
+have the right to contribute the code you are submitting to the project.</p>
+<p>You sign-off by adding the following to your commit messages. Your sign-off must
+match the git user and email associated with the commit.</p>
+<div class="highlight"><pre><span></span><code>This is my commit message
+
+Signed-off-by: Your Name &lt;your.name@example.com&gt;
+</code></pre></div>
+<p>Git has a <code>-s</code> command line option to do this automatically:</p>
+<div class="highlight"><pre><span></span><code>git commit -s -m &#39;This is my commit message&#39;
+</code></pre></div>
+<p>If you forgot to do this and have not yet pushed your changes to the remote
+repository, you can amend your commit with the sign-off by running </p>
+<div class="highlight"><pre><span></span><code>git commit --amend -s
+</code></pre></div>
+<h2 id="logical-grouping-of-commits">Logical Grouping of Commits<a class="headerlink" href="#logical-grouping-of-commits" title="Permanent link">&para;</a></h2>
+<p>It is a recommended best practice to keep your changes as logically grouped as
+possible within individual commits. If while you're developing you prefer doing
+a number of commits that are "checkpoints" and don't represent a single logical
+change, please squash those together before asking for a review.
+When addressing review comments, please perform an interactive rebase and edit commits directly rather than adding new commits with messages like "Fix review comments".</p>
+<h2 id="commit-message-guidelines">Commit message guidelines<a class="headerlink" href="#commit-message-guidelines" title="Permanent link">&para;</a></h2>
+<p>A good commit message should describe what changed and why.</p>
+<ol>
+<li>
+<p>The first line should:</p>
+</li>
+<li>
+<p>contain a short description of the change (preferably 50 characters or less,
+    and no more than 72 characters)</p>
+</li>
+<li>be entirely in lowercase with the exception of proper nouns, acronyms, and
+    the words that refer to code, like areas/function/variable names</li>
+<li>be prefixed with the name of the sub component being changed</li>
+</ol>
+<p>Examples:</p>
+<ul>
+<li>networkpolicy: validate ipBlock strictly</li>
+<li>egressip: fix frequently rebalancing IPs</li>
+<li>
+<p>services: fix etp=local + session-affnity integration</p>
+</li>
+<li>
+<p>Keep the second line blank.</p>
+</li>
+<li>Wrap all other lines at 72 columns (except for long URLs).</li>
+<li>If your patch fixes an open issue, you can add a reference to it at the end
+   of the log. Use the <code>Fixes: #</code> prefix and the issue number. For other
+   references use <code>Refs: #</code>. <code>Refs</code> may include multiple issues, separated by a
+   comma.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><code>Fixes: #1337</code></li>
+<li><code>Refs: #1234</code></li>
+</ul>
+<p>Sample complete commit message:</p>
+<div class="highlight"><pre><span></span><code>subcomponent: explain the commit in one line
+
+Body of commit message is a few lines of text, explaining things
+in more detail, possibly giving some background about the issue
+being fixed, etc.
+
+The body of the commit message can be several paragraphs, and
+please do proper word-wrap and keep columns shorter than about
+72 characters or so. That way, `git log` will show things
+nicely even when it is indented.
+
+Fixes: #1337
+Refs: #453, #154
+</code></pre></div>
+<h2 id="pull-request-checklist">Pull Request Checklist<a class="headerlink" href="#pull-request-checklist" title="Permanent link">&para;</a></h2>
+<p>When you submit your pull request, or you push new commits to it, our automated
+systems will run some checks on your new code. We require that your pull request
+passes these checks, but we also have more criteria than just that before we can
+accept and merge it. We recommend that you check the following things locally
+before you submit your code:</p>
+<ul>
+<li>Verify that Go code has been formatted and linted</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="go">cd ovn-kubernetes/go-controller/</span>
+<span class="go">make lint</span>
+</code></pre></div>
+<ul>
+<li>If you are introducing new CRDs verify that Yaml files have been formatted (see
+  <a href="https://github.com/ovn-org/ovn-kubernetes/blob/master/docs/developer.md#generating-crd-yamls-using-codegen">codegen generator</a>)</li>
+<li>Verify that unit tests are passing locally</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="go">cd ovn-kubernetes/go-controller/</span>
+<span class="go">make test</span>
+</code></pre></div>
+<ul>
+<li>
+<p>All modular changes must be accompanied by new unit tests if they don't exist already.</p>
+</li>
+<li>
+<p>All functional changes and new features must be accompanied by extensive end-to-end test coverage</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2700,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

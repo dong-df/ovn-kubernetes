@@ -8,26 +8,24 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
-      
-      
-        <link rel="prev" href="../observability/metrics/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/design/acls/">
       
       
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>ACLs - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#acls" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +88,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              ACLs
             
           </span>
         </div>
@@ -210,7 +208,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -229,7 +227,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../design/architecture/" class="md-tabs__link">
+        <a href="../architecture/" class="md-tabs__link">
           
   
     
@@ -249,7 +247,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -269,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING/" class="md-tabs__link">
+        <a href="../../governance/CONTRIBUTING/" class="md-tabs__link">
           
   
     
@@ -295,7 +293,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
+        <a href="../../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
           
   
     
@@ -318,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging/" class="md-tabs__link">
+        <a href="../../troubleshooting/debugging/" class="md-tabs__link">
           
   
     
@@ -338,7 +336,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics/" class="md-tabs__link">
+        <a href="../../observability/metrics/" class="md-tabs__link">
           
   
     
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +397,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+      <a href="../architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology/" class="md-nav__link">
+      <a href="../topology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy/" class="md-nav__link">
+      <a href="../service-traffic-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
+      <a href="../host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
+      <a href="../external-ip-and-loadbalancer-ingress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/live-migration/" class="md-nav__link">
+      <a href="../live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../governance/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING/" class="md-nav__link">
+      <a href="../../governance/REVIEWING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer/" class="md-nav__link">
+      <a href="../../developer-guide/developer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci/" class="md-nav__link">
+      <a href="../../ci/ci/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1385,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/admin-network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall/" class="md-nav__link">
+      <a href="../../features/network-security-controls/egress-firewall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
+      <a href="../../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing/" class="md-nav__link">
+      <a href="../../features/multi-homing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast/" class="md-nav__link">
+      <a href="../../features/multicast/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration/" class="md-nav__link">
+      <a href="../../features/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay/" class="md-nav__link">
+      <a href="../../features/hybrid-overlay/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +1839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload/" class="md-nav__link">
+      <a href="../../features/hardware-offload/ovs_offload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +1942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging/" class="md-nav__link">
+      <a href="../../troubleshooting/debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace/" class="md-nav__link">
+      <a href="../../troubleshooting/ovnkube-trace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +1984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics/" class="md-nav__link">
+      <a href="../../observability/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2138,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,6 +2179,74 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directionfrom-lport-optionsapply-after-lb-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      direction="from-lport", options={"apply-after-lb": "true"}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directionto-lport" class="md-nav__link">
+    <span class="md-ellipsis">
+      direction="to-lport"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#egress-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Egress Firewall
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multicast" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multicast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Policy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2254,466 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="acls">ACLs<a class="headerlink" href="#acls" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>ovn-k uses ACLs to implement multiple features, this doc is intended to list all of them, explaining their IDs, 
+priorities, and dependencies.</p>
+<p>OVN has 3 independent sets of ACLs, based on direction and pipeline stage, which are applied in the following order: 
+1. <code>direction="from-lport"</code> 
+2. <code>direction="from-lport", options={"apply-after-lb": "true"}</code>
+3. <code>direction="to-lport"</code></p>
+<p>The priorities between these stages are independent!</p>
+<p>OVN will apply the <code>from-lport</code> ACLs in two stages. ACLs without <code>apply-after-lb</code> set, will be applied before the 
+load balancer stage, and ACLs with this option set will be applied after the load balancer stage. <code>to-lport</code> are always 
+applied after the load balancer stage.</p>
+<p>For now, ovn-k doesn't use <code>direction="from-lport"</code> ACLs, since most of the time we need to apply ACLs after loadbalancing.
+Here is the current order in which ACLs for different objects are applied (check the rest of the doc for details)</p>
+<h3 id="directionfrom-lport-optionsapply-after-lb-true"><code>direction="from-lport", options={"apply-after-lb": "true"}</code><a class="headerlink" href="#directionfrom-lport-optionsapply-after-lb-true" title="Permanent link">&para;</a></h3>
+<ol>
+<li>egress multicast, allow priority = <code>1012</code>,  deny priority = <code>1011</code></li>
+<li>egress network policy, default deny priority = <code>1000</code>, allow priority = <code>1001</code></li>
+</ol>
+<h3 id="directionto-lport"><code>direction="to-lport"</code><a class="headerlink" href="#directionto-lport" title="Permanent link">&para;</a></h3>
+<ol>
+<li>egress firewall, priorities = <code>2000</code>-<code>10000</code> (egress firewall is applied on this stage to be independently applied
+after egress network policy)</li>
+<li>ingress multicast, allow priority = <code>1012</code>,  deny priority = <code>1011</code></li>
+<li>ingress network policy, default deny priority = <code>1000</code>, allow priority = <code>1001</code></li>
+</ol>
+<h2 id="egress-firewall">Egress Firewall<a class="headerlink" href="#egress-firewall" title="Permanent link">&para;</a></h2>
+<p>Egress Firewall creates 1 ACL for every specified rule, with <code>ExternalIDs["k8s.ovn.org/owner-type"]=EgressFirewall</code>
+e.g. given object:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EgressFirewall</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.ovn.org/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">egress</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">      </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">dnsName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">www.openvswitch.org</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">      </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cidrSelector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3.0/24</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UDP</span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">55</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deny</span>
+<span class="w">      </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cidrSelector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span>
+</code></pre></div>
+<p>will create 3 ACLs:</p>
+<div class="highlight"><pre><span></span><code>action              : allow
+direction           : to-lport
+external_ids        : {
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:EgressFirewall:default:10000&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=EgressFirewall, 
+    rule-idx=&quot;0&quot;
+}
+label               : 0
+log                 : false
+match               : &quot;(ip4.dst == $a5272457940446250407) &amp;&amp; ip4.src == $a4322231855293774466&quot;
+meter               : acl-logging
+name                : &quot;EF:default:10000&quot;
+options             : {}
+priority            : 10000
+severity            : []
+
+action              : allow
+direction           : to-lport
+external_ids        : {
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:EgressFirewall:default:9999&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=EgressFirewall, 
+    rule-idx=&quot;1&quot;
+}
+label               : 0
+log                 : false
+match               : &quot;(ip4.dst == 1.2.3.0/24) &amp;&amp; ip4.src == $a4322231855293774466 &amp;&amp; ((udp &amp;&amp; ( udp.dst == 55 )))&quot;
+meter               : acl-logging
+name                : &quot;EF:default:9999&quot;
+options             : {}
+priority            : 9999
+severity            : []
+
+action              : drop
+direction           : to-lport
+external_ids        : {
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:EgressFirewall:default:9998&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=EgressFirewall, 
+    rule-idx=&quot;2&quot;
+}
+label               : 0
+log                 : false
+match               : &quot;(ip4.dst == 0.0.0.0/0 &amp;&amp; ip4.dst != 10.244.0.0/16) &amp;&amp; ip4.src == $a4322231855293774466&quot;
+meter               : acl-logging
+name                : &quot;EF:default:9998&quot;
+options             : {}
+priority            : 9998
+severity            : []
+</code></pre></div>
+<p>Egress firewall should be applied after egress network policy independently, to make sure that connection that are
+allowed by network policy, but denied by egress firewall will be dropped.</p>
+<h2 id="multicast">Multicast<a class="headerlink" href="#multicast" title="Permanent link">&para;</a></h2>
+<p>For more details about Multicast in ovn see <a href="./multicast.md">Multicast docs</a>
+Multicast creates 2 types of ACLs: global default ACLs with <code>ExternalIDs["k8s.ovn.org/owner-type"]=MulticastCluster</code>
+and per-namespace ACLs with <code>ExternalIDs["owner_object_type"]="MulticastNS"</code>. </p>
+<p>When multicast is enabled for ovn-k, you will find 4 default global ACLs:
+- 2 ACLs (ingress/egress) dropping all multicast traffic - on all switches (via clusterPortGroup)
+- 2 ACLs (ingress/egress) allowing all multicast traffic - on clusterRouterPortGroup
+  (that allows multicast between pods that reside on different nodes, see
+  https://github.com/ovn-org/ovn-kubernetes/commit/3864f2b6463392ae2d80c18d06bd46ec44e639f9 for more details)</p>
+<div class="highlight"><pre><span></span><code>action              : allow
+direction           : from-lport
+external_ids        : {
+  direction=Egress, 
+  &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:MulticastCluster:AllowInterNode:Ingress&quot;, 
+  &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+  &quot;k8s.ovn.org/owner-type&quot;=MulticastCluster, 
+  type=AllowInterNode
+}
+label               : 0
+log                 : false
+match               : &quot;inport == @clusterRtrPortGroup &amp;&amp; (ip4.mcast || mldv1 || mldv2 || (ip6.dst[120..127] == 0xff &amp;&amp; ip6.dst[116] == 1))&quot;
+meter               : acl-logging
+name                : []
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 1012
+severity            : []
+
+action              : allow
+direction           : to-lport
+external_ids        : {
+  direction=Ingress, 
+  &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:MulticastCluster:AllowInterNode:Ingress&quot;, 
+  &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+  &quot;k8s.ovn.org/owner-type&quot;=MulticastCluster, 
+  type=AllowInterNode
+}
+label               : 0
+log                 : false
+match               : &quot;outport == @clusterRtrPortGroup &amp;&amp; (ip4.mcast || mldv1 || mldv2 || (ip6.dst[120..127] == 0xff &amp;&amp; ip6.dst[116] == 1))&quot;
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1012
+severity            : []
+
+action              : drop
+direction           : from-lport
+external_ids        : {
+  direction=Egress, 
+  &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:MulticastCluster:DefaultDeny:Egress&quot;, 
+  &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+  &quot;k8s.ovn.org/owner-type&quot;=MulticastCluster, 
+  type=DefaultDeny
+}
+label               : 0
+log                 : false
+match               : &quot;(ip4.mcast || mldv1 || mldv2 || (ip6.dst[120..127] == 0xff &amp;&amp; ip6.dst[116] == 1))&quot;
+meter               : acl-logging
+name                : []
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 1011
+severity            : []
+
+action              : drop
+direction           : to-lport
+external_ids        : {
+  direction=Ingress, 
+  &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:MulticastCluster:DefaultDeny:Egress&quot;, 
+  &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+  &quot;k8s.ovn.org/owner-type&quot;=MulticastCluster, 
+  type=DefaultDeny
+}
+label               : 0
+log                 : false
+match               : &quot;(ip4.mcast || mldv1 || mldv2 || (ip6.dst[120..127] == 0xff &amp;&amp; ip6.dst[116] == 1))&quot;
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1011
+severity            : []
+</code></pre></div>
+<p>For every namespace with enabled multicast, there are 2 more ACLs, e.g. for default namespace:
+<div class="highlight"><pre><span></span><code>action              : allow
+direction           : to-lport
+external_ids        : {
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:MulticastNS:default:Allow_Ingress&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=MulticastNS, 
+    direction=Ingress
+}
+label               : 0
+log                 : false
+match               : &quot;outport == @a16982411286042166782 &amp;&amp; (igmp || (ip4.src == $a4322231855293774466 &amp;&amp; ip4.mcast))&quot;
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1012
+severity            : []
+
+action              : allow
+direction           : from-lport
+external_ids        : {
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:MulticastNS:default:Allow_Egress&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=MulticastNS, 
+    tdirection=Egress
+}
+label               : 0
+log                 : false
+match               : &quot;inport == @a16982411286042166782 &amp;&amp; ip4.mcast&quot;
+meter               : acl-logging
+name                : []
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 1012
+severity            : []
+</code></pre></div></p>
+<h2 id="network-policy">Network Policy<a class="headerlink" href="#network-policy" title="Permanent link">&para;</a></h2>
+<p>Every node has 1 ACL to allow traffic from that node's management port IP with <code>ExternalIDs["k8s.ovn.org/owner-type"]=NetpolNode</code>, like</p>
+<div class="highlight"><pre><span></span><code>action              : allow-related
+direction           : to-lport
+external_ids        : {
+    ip=&quot;10.244.2.2&quot;, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetpolNode:ovn-worker:10.244.2.2&quot;, 
+    &quot;k8s.ovn.org/name&quot;=ovn-worker, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetpolNode
+}
+label               : 0
+log                 : false
+match               : &quot;ip4.src==10.244.2.2&quot;
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1001
+severity            : []
+</code></pre></div>
+<p>There are also 2 Default Allow ACLs for the hairpinned traffic (pod-&gt;svc-&gt;same pod) with <code>ExternalIDs["k8s.ovn.org/owner-type"]=NetpolDefault</code>,
+which match on the special V4OVNServiceHairpinMasqueradeIP and V6OVNServiceHairpinMasqueradeIP addresses.
+These IPs are assigned as src IP to the hairpinned packets.</p>
+<div class="highlight"><pre><span></span><code>action              : allow-related
+direction           : to-lport
+external_ids        : {
+    direction=Ingress, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetpolDefault:allow-hairpinning:Ingress&quot;, 
+    &quot;k8s.ovn.org/name&quot;=allow-hairpinning, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetpolDefault
+}
+label               : 0
+log                 : false
+match               : &quot;ip4.src == 169.254.169.5&quot;
+meter               : acl-logging
+name                : []
+options             : {}
+priority            : 1001
+severity            : []
+
+action              : allow-related
+direction           : from-lport
+external_ids        : {
+    direction=Egress, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetpolDefault:allow-hairpinning:Egress&quot;, 
+    &quot;k8s.ovn.org/name&quot;=allow-hairpinning, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetpolDefault
+}
+label               : 0
+log                 : false
+match               : &quot;ip4.src == 169.254.169.5&quot;
+meter               : acl-logging
+name                : []
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 1001
+severity            : []
+</code></pre></div>
+<p>Network Policy creates default deny ACLs for every namespace that has at least 1 network policy with 
+<code>ExternalIDs["k8s.ovn.org/owner-type"]=NetpolNamespace</code>.
+There are 2 ACL types (<code>defaultDeny</code> and <code>arpAllow</code>) for every policy direction (Ingress/Egress) e.g. for <code>default</code> namespace,</p>
+<p>Egress:
+<div class="highlight"><pre><span></span><code>action              : allow
+direction           : from-lport
+external_ids        : {
+    direction=Egress, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetpolNamespace:default:Egress:arpAllow&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetpolNamespace, 
+    type=arpAllow
+}
+label               : 0
+log                 : false
+match               : &quot;inport == @a16982411286042166782_egressDefaultDeny &amp;&amp; (arp || nd)&quot;
+meter               : acl-logging
+name                : &quot;NP:default:Egress&quot;
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 1001
+severity            : []
+
+action              : drop
+direction           : from-lport
+external_ids        : {
+    direction=Egress, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetpolNamespace:default:Egress:defaultDeny&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetpolNamespace, 
+    type=defaultDeny
+}
+label               : 0
+log                 : false
+match               : &quot;inport == @a16982411286042166782_egressDefaultDeny&quot;
+meter               : acl-logging
+name                : &quot;NP:default:Egress&quot;
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 1000
+severity            : []
+</code></pre></div></p>
+<p>Ingress:
+<div class="highlight"><pre><span></span><code>_uuid               : a6ffa9d4-e811-4aaf-9505-87cc0b2f442a
+action              : allow
+direction           : to-lport
+external_ids        : {
+    direction=Ingress, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetpolNamespace:default:Ingress:arpAllow&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetpolNamespace, 
+    type=arpAllow
+}
+label               : 0
+log                 : false
+match               : &quot;outport == @a16982411286042166782_ingressDefaultDeny &amp;&amp; (arp || nd)&quot;
+meter               : acl-logging
+name                : &quot;NP:default:Ingress&quot;
+options             : {}
+priority            : 1001
+severity            : []
+
+action              : drop
+direction           : to-lport
+external_ids        : {
+    direction=Ingress, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetpolNamespace:default:Ingress:defaultDeny&quot;, 
+    &quot;k8s.ovn.org/name&quot;=default, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetpolNamespace, 
+    type=defaultDeny
+}
+label               : 0
+log                 : false
+match               : &quot;outport == @a16982411286042166782_ingressDefaultDeny&quot;
+meter               : acl-logging
+name                : &quot;NP:default:Ingress&quot;
+options             : {}
+priority            : 1000
+severity            : []
+</code></pre></div></p>
+<p>There are also ACLs owned by every network policy object with <code>ExternalIDs["k8s.ovn.org/owner-type"]=NetworkPolicy</code>, e.g.
+for the following object</p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+ name: test-policy
+ namespace: default
+spec:
+ podSelector: {}
+ policyTypes:
+ - Ingress
+ - Egress
+ ingress:
+ - from:
+   - namespaceSelector:
+       matchLabels:
+         kubernetes.io/metadata.name: default
+     podSelector:
+       matchLabels:
+         app: demo
+ egress:
+  - to:
+    - ipBlock:
+        cidr: 10.244.1.5/32
+</code></pre></div>
+<p>2 ACLs will be created:</p>
+<div class="highlight"><pre><span></span><code>action              : allow-related
+direction           : from-lport
+external_ids        : {
+    direction=egress, 
+    gress-index=&quot;0&quot;, 
+    ip-block-index=&quot;0&quot;, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetworkPolicy:default:test-policy:egress:0:-1:0&quot;, 
+    &quot;k8s.ovn.org/name&quot;=&quot;default:test-policy&quot;, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetworkPolicy, 
+    port-policy-index=&quot;-1&quot;
+}
+label               : 0
+log                 : false
+match               : &quot;ip4.dst == 10.244.1.5/32 &amp;&amp; inport == @a2653181086423119552&quot;
+meter               : acl-logging
+name                : &quot;NP:default:test-policy:egress:0:-1:0&quot;
+options             : {apply-after-lb=&quot;true&quot;}
+priority            : 1001
+severity            : []
+
+action              : allow-related
+direction           : to-lport
+external_ids        : {
+    direction=ingress, 
+    gress-index=&quot;0&quot;, 
+    ip-block-index=&quot;-1&quot;, 
+    &quot;k8s.ovn.org/id&quot;=&quot;default-network-controller:NetworkPolicy:default:test-policy:ingress:0:-1:-1&quot;, 
+    &quot;k8s.ovn.org/name&quot;=&quot;default:test-policy&quot;, 
+    &quot;k8s.ovn.org/owner-controller&quot;=default-network-controller, 
+    &quot;k8s.ovn.org/owner-type&quot;=NetworkPolicy, 
+    port-policy-index=&quot;-1&quot;
+}
+label               : 0
+log                 : false
+match               : &quot;(ip4.src == {$a3733136965153973077} || (ip4.src == 169.254.169.5 &amp;&amp; ip4.dst == {$a3733136965153973077})) &amp;&amp; outport == @a2653181086423119552&quot;
+meter               : acl-logging
+name                : &quot;NP:default:test-policy:ingress:0:-1:-1&quot;
+options             : {}
+priority            : 1001
+severity            : []
+</code></pre></div>
+<p><code>"k8s.ovn.org/name"</code> is the <code>&lt;namespace&gt;:&lt;name&gt;</code> of network policy object, <code>gress-index</code> is the index of gress policy in
+the <code>NetworkPolicy.Spec.[In/E]gress</code>, check <code>gress_policy.go:getNetpolACLDbIDs</code> for more details on the rest of the fields.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2744,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

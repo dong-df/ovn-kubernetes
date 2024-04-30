@@ -8,26 +8,24 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
-      
-      
-        <link rel="prev" href="../observability/metrics/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/installation/ha/">
       
       
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>OVN central database High-availability - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#ovn-central-database-high-availability" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +88,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              OVN central database High-availability
             
           </span>
         </div>
@@ -210,7 +208,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -229,7 +227,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../design/architecture/" class="md-tabs__link">
+        <a href="../../design/architecture/" class="md-tabs__link">
           
   
     
@@ -249,7 +247,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -269,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING/" class="md-tabs__link">
+        <a href="../../governance/CONTRIBUTING/" class="md-tabs__link">
           
   
     
@@ -295,7 +293,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
+        <a href="../../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
           
   
     
@@ -318,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging/" class="md-tabs__link">
+        <a href="../../troubleshooting/debugging/" class="md-tabs__link">
           
   
     
@@ -338,7 +336,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics/" class="md-tabs__link">
+        <a href="../../observability/metrics/" class="md-tabs__link">
           
   
     
@@ -354,13 +352,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +397,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+      <a href="../../design/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology/" class="md-nav__link">
+      <a href="../../design/topology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../../design/gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../../design/traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../../design/pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../../design/service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy/" class="md-nav__link">
+      <a href="../../design/service-traffic-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
+      <a href="../../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
+      <a href="../../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../../design/ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/live-migration/" class="md-nav__link">
+      <a href="../../design/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../governance/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING/" class="md-nav__link">
+      <a href="../../governance/REVIEWING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer/" class="md-nav__link">
+      <a href="../../developer-guide/developer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci/" class="md-nav__link">
+      <a href="../../ci/ci/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1385,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/admin-network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall/" class="md-nav__link">
+      <a href="../../features/network-security-controls/egress-firewall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
+      <a href="../../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing/" class="md-nav__link">
+      <a href="../../features/multi-homing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast/" class="md-nav__link">
+      <a href="../../features/multicast/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration/" class="md-nav__link">
+      <a href="../../features/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay/" class="md-nav__link">
+      <a href="../../features/hybrid-overlay/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +1839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload/" class="md-nav__link">
+      <a href="../../features/hardware-offload/ovs_offload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +1942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging/" class="md-nav__link">
+      <a href="../../troubleshooting/debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace/" class="md-nav__link">
+      <a href="../../troubleshooting/ovnkube-trace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +1984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics/" class="md-nav__link">
+      <a href="../../observability/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2079,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2116,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2138,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,6 +2179,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#master1-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master1 initialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#master2-master3-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master2, Master3... initialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ovnkube-master-ha-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      ovnkube master HA setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-ovn-northd" class="md-nav__link">
+    <span class="md-ellipsis">
+      start ovn-northd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-ovn-kube-init-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start 'ovn-kube -init-node'
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2239,178 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="ovn-central-database-high-availability">OVN central database High-availability<a class="headerlink" href="#ovn-central-database-high-availability" title="Permanent link">&para;</a></h1>
+<p>OVN architecture has two central databases that can be clustered.
+The databases are OVN_Northbound and OVN_Southbound.  This document
+explains how to cluster them and start various daemons for the
+ovn-kubernetes integration.  You will ideally need at least 3 masters
+for a HA cluster. (You will need a miniumum of OVS/OVN 2.9.2
+for clustering.)</p>
+<h2 id="master1-initialization">Master1 initialization<a class="headerlink" href="#master1-initialization" title="Permanent link">&para;</a></h2>
+<p>To bootstrap your cluster, you need to start on one master.
+For a lack of better name, let's call it MASTER1 with an IP
+address of $MASTER1</p>
+<p>On MASTER1, delete any stale OVN databases and stop any
+ovn-northd running. e.g:</p>
+<div class="highlight"><pre><span></span><code>sudo /usr/share/openvswitch/scripts/ovn-ctl stop_nb_ovsdb
+sudo /usr/share/openvswitch/scripts/ovn-ctl stop_sb_ovsdb
+sudo rm /etc/openvswitch/ovn*.db
+sudo /usr/share/openvswitch/scripts/ovn-ctl stop_northd
+</code></pre></div>
+<p>Start the two databases on that host with:</p>
+<div class="highlight"><pre><span></span><code>LOCAL_IP=$MASTER1
+sudo /usr/share/openvswitch/scripts/ovn-ctl \
+    --db-nb-cluster-local-addr=$LOCAL_IP start_nb_ovsdb
+
+sudo /usr/share/openvswitch/scripts/ovn-ctl \
+    --db-sb-cluster-local-addr=$LOCAL_IP start_sb_ovsdb
+</code></pre></div>
+<h2 id="master2-master3-initialization">Master2, Master3... initialization<a class="headerlink" href="#master2-master3-initialization" title="Permanent link">&para;</a></h2>
+<p>Delete any stale databases and stop any running ovn-northd
+daemons. e.g:</p>
+<div class="highlight"><pre><span></span><code>sudo /usr/share/openvswitch/scripts/ovn-ctl stop_nb_ovsdb
+sudo /usr/share/openvswitch/scripts/ovn-ctl stop_sb_ovsdb
+sudo rm /etc/openvswitch/ovn*.db
+sudo /usr/share/openvswitch/scripts/ovn-ctl stop_northd
+</code></pre></div>
+<p>On master with a IP of $LOCAL_IP, start the databases and ask it to
+join $MASTER1</p>
+<div class="highlight"><pre><span></span><code>LOCAL_IP=$LOCAL_IP
+MASTER_IP=$MASTER1
+
+sudo /usr/share/openvswitch/scripts/ovn-ctl  \
+    --db-nb-cluster-local-addr=$LOCAL_IP \
+    --db-nb-cluster-remote-addr=$MASTER_IP start_nb_ovsdb
+
+sudo /usr/share/openvswitch/scripts/ovn-ctl  \
+    --db-sb-cluster-local-addr=$LOCAL_IP \
+    --db-sb-cluster-remote-addr=$MASTER_IP start_sb_ovsdb
+</code></pre></div>
+<p>This should get your cluster up and running. You can verify the
+status of your cluster with:</p>
+<div class="highlight"><pre><span></span><code>sudo ovs-appctl -t /var/run/openvswitch/ovnnb_db.ctl \
+    cluster/status OVN_Northbound
+
+sudo ovs-appctl -t /var/run/openvswitch/ovnsb_db.ctl \
+    cluster/status OVN_Southbound
+</code></pre></div>
+<h2 id="ovnkube-master-ha-setup">ovnkube master HA setup<a class="headerlink" href="#ovnkube-master-ha-setup" title="Permanent link">&para;</a></h2>
+<p>ovnkube master has 2 main components - cluster-manager and ovnkube-controller.</p>
+<p>Starting ovnkube with '-init-master', runs both the components.  It is also possible
+to run these components individually by starting 2 ovnkube's one with '-init-cluster-manager'
+and the other with '-init-ovnkube-controller'.</p>
+<p>On the master nodes, we can either
+   * start ovnkube with '-init-master'
+     This should be a deployment running on master nodes. Eg.</p>
+<p>IP1="$MASTER1"
+IP2="$MASTER2"
+IP3="$MASTER3"</p>
+<p>ovn_nb="tcp:$IP1:6641,tcp:$IP2:6641,tcp:$IP3:6641"
+ovn_sb="tcp:$IP1:6642,tcp:$IP2:6642,tcp:$IP3:6642"</p>
+<p>nohup sudo ovnkube -k8s-kubeconfig kubeconfig.yaml \
+ -loglevel=4 \
+ -k8s-apiserver="http://$K8S_APISERVER_IP:8080" \
+ -logfile="/var/log/openvswitch/ovnkube.log" \
+ -init-master="$NODENAME" -cluster-subnets="$CLUSTER_IP_SUBNET" \
+ -init-node="$NODENAME" \
+ -k8s-service-cidr="$SERVICE_IP_SUBNET" \
+ -k8s-token="$TOKEN" \
+ -nodeport \
+ -nb-address="${ovn_nb}" \
+ -sb-address="${ovn_sb}"  2&gt;&amp;1 &amp;</p>
+<ul>
+<li>start 'ovnkube -init-cluster-manager' and 'ovnkube -init-ovnkube-controller'
+   This should be a deployment with these 2 as containers</li>
+</ul>
+<p>Eg.</p>
+<p>ovnkube master supports running in 3 modes.
+init-master mode, init-cluster-manager mode or init-ovnkube-controller
+mode.  If ovnkube is run with "-init-master" mode, then there is
+no need to run the other modes because master mode enables both cluster-manager
+and ovnkube-controller.  If the user desires to run cluster-manager
+and ovnkube-controller separately, then it is possible to do
+so by running </p>
+<p>nohup sudo ovnkube -k8s-kubeconfig kubeconfig.yaml \
+ -loglevel=4 \
+ -k8s-apiserver="http://$K8S_APISERVER_IP:8080" \
+ -logfile="/var/log/openvswitch/ovnkube.log" \
+ -init-ovnkube-controller="$NODENAME" -cluster-subnets="$CLUSTER_IP_SUBNET" \
+ -init-node="$NODENAME" \
+ -k8s-service-cidr="$SERVICE_IP_SUBNET" \
+ -k8s-token="$TOKEN" \
+ -nodeport \
+ -nb-address="${ovn_nb}" \
+ -sb-address="${ovn_sb}"  2&gt;&amp;1 &amp;</p>
+<p>nohup sudo ovnkube -k8s-kubeconfig kubeconfig.yaml \
+ -loglevel=4 \
+ -k8s-apiserver="http://$K8S_APISERVER_IP:8080" \
+ -logfile="/var/log/openvswitch/ovnkube.log" \
+ -init-cluster-manager="$NODENAME" -cluster-subnets="$CLUSTER_IP_SUBNET" \
+ -init-node="$NODENAME" \
+ -k8s-service-cidr="$SERVICE_IP_SUBNET" \
+ -k8s-token="$TOKEN" \
+ -nodeport  2&gt;&amp;1 &amp;</p>
+<h2 id="start-ovn-northd">start ovn-northd<a class="headerlink" href="#start-ovn-northd" title="Permanent link">&para;</a></h2>
+<p>On any one of the masters (ideally via a daemonset with replica count as 1),
+start ovn-northd. Let the 3 master IPs be $IP1, $IP2 and $IP3.</p>
+<div class="highlight"><pre><span></span><code>IP1=&quot;$MASTER1&quot;
+IP2=&quot;$MASTER2&quot;
+IP3=&quot;$MASTER3&quot;
+
+export ovn_nb=&quot;tcp:$IP1:6641,tcp:$IP2:6641,tcp:$IP3:6641&quot;
+export ovn_sb=&quot;tcp:$IP1:6642,tcp:$IP2:6642,tcp:$IP3:6642&quot;
+
+sudo ovn-northd -vconsole:emer -vsyslog:err -vfile:info \
+    --ovnnb-db=&quot;$ovn_nb&quot; --ovnsb-db=&quot;$ovn_sb&quot; --no-chdir \
+    --log-file=/var/log/openvswitch/ovn-northd.log \
+    --pidfile=/var/run/openvswitch/ovn-northd.pid --detach --monitor
+</code></pre></div>
+<h2 id="start-ovn-kube-init-node">Start 'ovn-kube -init-node'<a class="headerlink" href="#start-ovn-kube-init-node" title="Permanent link">&para;</a></h2>
+<p>On all nodes (and if needed on other masters), start ovnkube with
+'-init-node'. For e.g:</p>
+<div class="highlight"><pre><span></span><code>IP1=&quot;$MASTER1&quot;
+IP2=&quot;$MASTER2&quot;
+IP3=&quot;$MASTER3&quot;
+
+ovn_nb=&quot;tcp:$IP1:6641,tcp:$IP2:6641,tcp:$IP3:6641&quot;
+ovn_sb=&quot;tcp:$IP1:6642,tcp:$IP2:6642,tcp:$IP3:6642&quot;
+
+nohup sudo ovnkube -k8s-kubeconfig $HOME/kubeconfig.yaml -loglevel=4 \
+    -logfile=&quot;/var/log/openvswitch/ovnkube.log&quot; \
+    -k8s-apiserver=&quot;http://$K8S_APISERVER_IP:8080&quot; \
+    -init-node=&quot;$NODE_NAME&quot;  \
+    -nb-address=&quot;${ovn_nb}&quot; \
+    -sb-address=&quot;${ovn_sb}&quot; \
+    -k8s-token=&quot;$TOKEN&quot; \
+    -init-gateways \
+    -k8s-service-cidr= \
+    -cluster-subnets=&quot;$SERVICE_IP_SUBNET&quot; 2&gt;&amp;1 &amp;
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2441,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

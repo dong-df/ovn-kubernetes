@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/blog/">
+        <link rel="canonical" href="https://www.ovn.org/ovn-kubernetes/design/architecture/">
       
       
-        <link rel="prev" href="../observability/metrics/">
+        <link rel="prev" href="../..">
       
       
+        <link rel="next" href="../topology/">
       
-      <link rel="icon" href="../images/ovn-inside-k8s.png">
+      
+      <link rel="icon" href="../../images/ovn-inside-k8s.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
-        <title>Blog - OVN Kubernetes</title>
+        <title>Architecture - OVN Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#ovn-kubernetes-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -90,9 +92,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-header__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Architecture
             
           </span>
         </div>
@@ -210,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -225,11 +227,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../design/architecture/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
     
@@ -249,7 +253,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../getting-started/overview.md" class="md-tabs__link">
+        <a href="../../getting-started/overview.md" class="md-tabs__link">
           
   
     
@@ -269,7 +273,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../governance/CONTRIBUTING/" class="md-tabs__link">
+        <a href="../../governance/CONTRIBUTING/" class="md-tabs__link">
           
   
     
@@ -295,7 +299,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
+        <a href="../../features/cluster-egress-controls/egress-ip/" class="md-tabs__link">
           
   
     
@@ -318,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../troubleshooting/debugging/" class="md-tabs__link">
+        <a href="../../troubleshooting/debugging/" class="md-tabs__link">
           
   
     
@@ -338,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/metrics/" class="md-tabs__link">
+        <a href="../../observability/metrics/" class="md-tabs__link">
           
   
     
@@ -354,13 +358,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
           
   
     
@@ -401,9 +403,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
+    <a href="../.." title="OVN Kubernetes" class="md-nav__button md-logo" aria-label="OVN Kubernetes" data-md-component="logo">
       
-  <img src="../images/ovn-inside-k8s.png" alt="logo">
+  <img src="../../images/ovn-inside-k8s.png" alt="logo">
 
     </a>
     OVN Kubernetes
@@ -430,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -447,8 +449,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -477,17 +481,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -498,7 +505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Overview
@@ -509,10 +516,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../design/architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -521,6 +548,146 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ovn-kubernetes-components-default-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN Kubernetes Components - Default Mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-mode-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Mode Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Mode Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane Nodes:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker Nodes:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ovn-kubernetes-components-interconnect-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN Kubernetes Components - Interconnect mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interconnect-mode-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnect Mode Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interconnect Mode Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-interconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Interconnect?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adopting-ovn-interconnect-into-ovn-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adopting OVN-Interconnect into OVN-Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-nodes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane Nodes:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-nodes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker Nodes:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-do-we-need-interconnect-mode-in-ovn-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why do we need Interconnect mode in OVN-Kubernetes?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-mode-versus-interconnect-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Mode versus Interconnect Mode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -533,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/topology/" class="md-nav__link">
+      <a href="../topology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/gateway-modes.md" class="md-nav__link">
+      <a href="../gateway-modes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/traffic-flows.md" class="md-nav__link">
+      <a href="../traffic-flows.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/pod-creation-workflow.md" class="md-nav__link">
+      <a href="../pod-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-creation-workflow.md" class="md-nav__link">
+      <a href="../service-creation-workflow.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/service-traffic-policy/" class="md-nav__link">
+      <a href="../service-traffic-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
+      <a href="../host-to-node-port-hairpin-trafficflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/external-ip-and-loadbalancer-ingress/" class="md-nav__link">
+      <a href="../external-ip-and-loadbalancer-ingress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/ovn-kubernetes-subnets.md" class="md-nav__link">
+      <a href="../ovn-kubernetes-subnets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../design/live-migration/" class="md-nav__link">
+      <a href="../live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/overview.md" class="md-nav__link">
+      <a href="../../getting-started/overview.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/launching-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-pod-creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-pod-creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/example-service creation.md" class="md-nav__link">
+      <a href="../../getting-started/example-service creation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +1059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
+      <a href="../../getting-started/building-ovn-kubernetes.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +1080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-release.md" class="md-nav__link">
+      <a href="../../getting-started/running-release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +1101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/running-rpm.md" class="md-nav__link">
+      <a href="../../getting-started/running-rpm.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/cli-guide.md" class="md-nav__link">
+      <a href="../../getting-started/cli-guide.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +1143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/configuration.md" class="md-nav__link">
+      <a href="../../developer-guide/configuration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../governance/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance/REVIEWING/" class="md-nav__link">
+      <a href="../../governance/REVIEWING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/developer/" class="md-nav__link">
+      <a href="../../developer-guide/developer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1127,7 +1294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/api-spec.md" class="md-nav__link">
+      <a href="../../developer-guide/api-spec.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/image-build.md" class="md-nav__link">
+      <a href="../../developer-guide/image-build.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/documentation.md" class="md-nav__link">
+      <a href="../../developer-guide/documentation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/testing.md" class="md-nav__link">
+      <a href="../../developer-guide/testing.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1211,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ci/ci/" class="md-nav__link">
+      <a href="../../ci/ci/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1232,7 +1399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/debugging.md" class="md-nav__link">
+      <a href="../../developer-guide/debugging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1253,7 +1420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../developer-guide/release.md" class="md-nav__link">
+      <a href="../../developer-guide/release.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1385,7 +1552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-ip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-service/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-qos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
+      <a href="../../features/cluster-egress-controls/egress-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/admin-network-policy/" class="md-nav__link">
+      <a href="../../features/network-security-controls/admin-network-policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/network-security-controls/egress-firewall/" class="md-nav__link">
+      <a href="../../features/network-security-controls/egress-firewall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
+      <a href="../../features/infrastructure-security-controls/node-identity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multi-homing/" class="md-nav__link">
+      <a href="../../features/multi-homing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/multicast/" class="md-nav__link">
+      <a href="../../features/multicast/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/live-migration/" class="md-nav__link">
+      <a href="../../features/live-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1778,7 +1945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hybrid-overlay/" class="md-nav__link">
+      <a href="../../features/hybrid-overlay/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1843,7 +2010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/ovs_offload/" class="md-nav__link">
+      <a href="../../features/hardware-offload/ovs_offload/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +2031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
+      <a href="../../features/hardware-offload/dpu-acceleration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +2113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/debugging/" class="md-nav__link">
+      <a href="../../troubleshooting/debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +2134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/ovnkube-trace/" class="md-nav__link">
+      <a href="../../troubleshooting/ovnkube-trace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +2155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/logging.md" class="md-nav__link">
+      <a href="../../troubleshooting/logging.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/metrics/" class="md-nav__link">
+      <a href="../../observability/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,8 +2250,6 @@
       
   
   
-    
-  
   
   
     
@@ -2099,22 +2264,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2125,13 +2287,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Blog
@@ -2147,7 +2309,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,6 +2350,134 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ovn-kubernetes-components-default-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN Kubernetes Components - Default Mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-mode-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Mode Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Mode Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane Nodes:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker Nodes:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ovn-kubernetes-components-interconnect-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      OVN Kubernetes Components - Interconnect mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interconnect-mode-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnect Mode Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interconnect Mode Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-interconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Interconnect?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adopting-ovn-interconnect-into-ovn-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adopting OVN-Interconnect into OVN-Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-nodes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane Nodes:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-nodes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker Nodes:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-do-we-need-interconnect-mode-in-ovn-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why do we need Interconnect mode in OVN-Kubernetes?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-mode-versus-interconnect-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Mode versus Interconnect Mode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2195,16 +2485,264 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  
+  
+
+
+<h1 id="ovn-kubernetes-architecture">OVN Kubernetes Architecture<a class="headerlink" href="#ovn-kubernetes-architecture" title="Permanent link">&para;</a></h1>
+<p>There are two deployment modes for ovn kubernetes depending on
+which the architecture is drastically different:</p>
+<ul>
+<li>default mode (centralized control plane architecture)</li>
+<li>interconnect mode (distributed control plane architecture)</li>
+</ul>
+<p>End users can pick either of these modes depending on their use
+cases and what suits them well. Let's look at both these modes
+in depth so that you are empowered to make your choice between
+these two modes of deployment.</p>
+<h2 id="ovn-kubernetes-components-default-mode">OVN Kubernetes Components - Default Mode<a class="headerlink" href="#ovn-kubernetes-components-default-mode" title="Permanent link">&para;</a></h2>
+<p align="center">
+  <img src=/../images/ovnkube-centralized-components.png alt="ovn-kubernetes-centralized-components"/>
+</p>
+
+<p>The control plane has the <code>ovnkube-master</code> pod in the <code>ovn-kubernetes</code> namespace
+which are running only on the control plane nodes in your cluster:</p>
+<ul>
+<li>ovnkube-master pod<ul>
+<li>ovnkube-master container:<ul>
+<li>OVN-Kubernetes component</li>
+<li>Watches K8s API for objects - namespaces, pods, services, endpoints,
+network policies, CRs</li>
+<li>Translates K8s objects into OVN logical entities</li>
+<li>Stores OVN entities in NorthBound Database (NBDB)</li>
+<li>Manages pod subnet allocation to nodes (pod IPAM)</li>
+</ul>
+</li>
+<li>nbdb container:<ul>
+<li>Native OVN component</li>
+<li>Runs the OVN NBDB database</li>
+<li>Stores the logical elements created by ovnkube-master</li>
+<li>3 replicas across control plane nodes running using RAFT leadership
+algorithm in HA mode</li>
+</ul>
+</li>
+<li>northd container:<ul>
+<li>Native OVN component</li>
+<li>Converts the OVN logical elements from NBDB to OVN logical flows in SBDB</li>
+</ul>
+</li>
+<li>sbdb container:<ul>
+<li>Native OVN component</li>
+<li>Stores the logical flows created by northd</li>
+<li>3 replicas across control plane nodes running using RAFT leadership algorithm
+in HA mode</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The data plane includes the <code>ovnkube-node</code> and <code>ovs-node</code> pods in the <code>ovn-kubernetes</code>
+namespace which are running on all your nodes in the cluster.</p>
+<ul>
+<li>ovnkube-node pod<ul>
+<li>ovnkube-node container:<ul>
+<li>OVN Kubernetes component</li>
+<li>Runs the CNI executable (CNI ADD/DEL)</li>
+<li>Digests the IPAM annotation set on pod by ovnkube-master</li>
+<li>Creates the veth pair for the pod</li>
+<li>Creates the ovs port on bridge</li>
+<li>Programs the necessary iptables and gateway service flows on a per node basis.</li>
+</ul>
+</li>
+<li>ovn-controller container:<ul>
+<li>Native OVN component</li>
+<li>Connects to SBDB running in control plane using TLS</li>
+<li>Converts SBDB logical flows into openflows</li>
+<li>Write them to OVS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ovs-node pod<ul>
+<li>ovs-daemons container:<ul>
+<li>OVS Native component</li>
+<li>OVS daemon and database running as a container</li>
+<li>virtual switch that pushes the network plumbing to the edge on the node</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="default-mode-architecture">Default Mode Architecture<a class="headerlink" href="#default-mode-architecture" title="Permanent link">&para;</a></h2>
+<p>Now that we know the pods and components running in the default mode, let's tie up
+loose ends and show how these components run on a standard HA Kubernetes cluster.</p>
+<h3 id="control-plane-nodes">Control Plane Nodes:<a class="headerlink" href="#control-plane-nodes" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <img src=/../images/ovnkube-centralized-arch-cp.png alt="ovn-kubernetes-centralized-components-control-plane"/>
+</p>
+
+<h3 id="worker-nodes">Worker Nodes:<a class="headerlink" href="#worker-nodes" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <img src=/../images/ovnkube-centralized-arch-dp.png alt="ovn-kubernetes-centralized-components-data-plane"/>
+</p>
+
+<h2 id="ovn-kubernetes-components-interconnect-mode">OVN Kubernetes Components - Interconnect mode<a class="headerlink" href="#ovn-kubernetes-components-interconnect-mode" title="Permanent link">&para;</a></h2>
+<p align="center">
+  <img src=/../images/ovnkube-distributed-components.png alt="ovn-kubernetes-distributed-components"/>
+</p>
+
+<p>The control plane has the <code>ovnkube-control-plane</code> pod in the <code>ovn-kubernetes</code> namespace
+which is super light weight and running only on the control plane nodes in your cluster:</p>
+<ul>
+<li>ovnkube-control-plane pod<ul>
+<li>ovnkube-cluster-manager container:<ul>
+<li>OVN-Kubernetes component</li>
+<li>Watches K8s API for objects - nodes mainly</li>
+<li>Allocates pod subnet to each node</li>
+<li>Allocates join subnet IP to each node</li>
+<li>Allocates transit subnet IP to each node</li>
+<li>Consolidates zone statuses across all nodes for features like EgressFirewall
+and EgressQoS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The data plane includes the <code>ovnkube-node</code> and <code>ovs-node</code> pods in the <code>ovn-kubernetes</code>
+namespace running on all your nodes in the cluster making this architecture localized
+and more distributed.</p>
+<ul>
+<li>ovnkube-node pod<ul>
+<li>ovnkube-controller container:<ul>
+<li>OVN-Kubernetes component</li>
+<li>Allocates podIP from the podSubnet to each pod in its zone (IPAM)</li>
+<li>Watches K8s API for objects - nodes, namespaces, pods, services, endpoints,
+network policies, CRs</li>
+<li>Translates K8s objects into OVN logical entities - stores them in OVN databases</li>
+<li>Stores OVN entities in NorthBound Database (NBDB)</li>
+<li>Manages pod subnet allocation to nodes (pod IPAM)</li>
+<li>Runs the CNI executable (CNI ADD/DEL)</li>
+<li>Digests the IPAM annotation set on pod</li>
+<li>Creates the veth pair for the pod</li>
+<li>Creates the ovs port on bridge</li>
+<li>Programs the necessary iptables and gateway service flows on a </li>
+</ul>
+</li>
+<li>nbdb container:<ul>
+<li>Native OVN component</li>
+<li>Runs the OVN NBDB database</li>
+<li>Stores the logical elements created by ovnkube-controller</li>
+<li>runs only 1 replica, contains information local to this node</li>
+</ul>
+</li>
+<li>northd container:<ul>
+<li>Native OVN component</li>
+<li>Converts the OVN logical elements from NBDB to OVN logical flows in SBDB</li>
+</ul>
+</li>
+<li>sbdb container:<ul>
+<li>Native OVN component</li>
+<li>Stores the logical flows created by northd</li>
+<li>runs only 1 replica, contains information local to this node</li>
+</ul>
+</li>
+<li>ovn-controller container:<ul>
+<li>Native OVN component</li>
+<li>Connects to SBDB running in control plane using TLS</li>
+<li>Converts SBDB logical flows into openflows</li>
+<li>Write them to OVS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ovs-node pod<ul>
+<li>ovs-daemons container:<ul>
+<li>OVS Native component</li>
+<li>OVS daemon and database running as a container</li>
+<li>virtual switch that pushes the network plumbing to the edge on the node</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Thus as we can see, the databases, northd and ovn kubernetes controller components
+now run per zone rather than only on the control-plane.</p>
+<h2 id="interconnect-mode-architecture">Interconnect Mode Architecture<a class="headerlink" href="#interconnect-mode-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-interconnect">What is Interconnect?<a class="headerlink" href="#what-is-interconnect" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.ovn.org/en/latest/tutorials/ovn-interconnection.html">OVN Interconnection</a>
+is a feature that allows connecting multiple OVN deployments with OVN managed GENEVE tunnels.
+Native ovn-ic feature allows for an <code>ovn-ic</code>, OVN interconnection controller, that is a
+centralized daemon which communicates with global interaction databases (IC_NB/IC_SB) to
+configure and exchange data with local NB/SB databases for interconnecting with other OVN
+deployments. See <a href="https://man7.org/linux/man-pages/man8/ovn-ic.8.html">this</a> for more details.</p>
+<h3 id="adopting-ovn-interconnect-into-ovn-kubernetes">Adopting OVN-Interconnect into OVN-Kubernetes<a class="headerlink" href="#adopting-ovn-interconnect-into-ovn-kubernetes" title="Permanent link">&para;</a></h3>
+<p>In order to effectively adapt the capabilities of the interconnect feature in the kubernetes
+world, ovn-kubernetes components will replace <code>ovn-ic</code> daemon. Also note that the term <code>zone</code>
+which will be used heavily in these docs just refers to a single OVN deployment. Now that we
+know the pods and components running in the interconnect mode, let's tie up loose ends and
+show how these components run on a standard HA Kubernetes cluster. By default each node in
+the cluster is a <code>zone</code>, so each <code>zone</code> contains 1 node. There is no more RAFT since each
+node has its own database.</p>
+<h3 id="control-plane-nodes_1">Control Plane Nodes:<a class="headerlink" href="#control-plane-nodes_1" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <img src=/../images/ovnkube-distributed-arch-cp.png alt="ovn-kubernetes-distributed-components-control-plane"/>
+</p>
+
+<h3 id="worker-nodes_1">Worker Nodes:<a class="headerlink" href="#worker-nodes_1" title="Permanent link">&para;</a></h3>
+<p align="center">
+  <img src=/../images/ovnkube-distributed-arch-dp.png alt="ovn-kubernetes-distributed-components-data-plane"/>
+</p>
+
+<h3 id="why-do-we-need-interconnect-mode-in-ovn-kubernetes">Why do we need Interconnect mode in OVN-Kubernetes?<a class="headerlink" href="#why-do-we-need-interconnect-mode-in-ovn-kubernetes" title="Permanent link">&para;</a></h3>
+<p>This architecture brings about several improvements:</p>
+<ul>
+<li>Stability: The OVN Northbound and Southbound databases are local to each node. Since
+they are running in the standalone mode, that eliminates the need for RAFT, thus avoiding
+all the “split-brain” issues. If one of the databases goes down, the impact is now isolated
+to only that node. This has led to improved stability of the OVN Kubernetes stack and
+simpler customer escalation resolution.</li>
+<li>Scale: As seen in the above diagram, the ovn-controller container connects to the
+local Southbound database for logical flow information. On large clusters with N nodes,
+this means each Southbound database is handling only one connection from its own local
+ovn-controller. This has removed the scale bottlenecks that were present in the centralized
+model helping us to scale horizontally with node count.</li>
+<li>Performance: The OVN Kubernetes brain is now local to each node in the cluster and it is
+storing and processing changes to only those Kubernetes pods, services, endpoints objects
+that are relevant for that node (note: some features like NetworkPolicies need to process
+pods running on other nodes). This in turn means the OVN stack is also processing less data
+thus leading to improved operational latency. Another benefit is that the control plane
+stack is now lighter-weight.</li>
+<li>Security: Since the infrastructure network traffic between ovn-controller and OVN Southbound
+database is now contained within each node, overall cross-node and cross-cluster
+(HostedControlPlane, ManagedSaaS) chatter is decreased and traffic security can be increased.</li>
+</ul>
+<h2 id="default-mode-versus-interconnect-mode">Default Mode versus Interconnect Mode<a class="headerlink" href="#default-mode-versus-interconnect-mode" title="Permanent link">&para;</a></h2>
+<ul>
+<li>When you want your databases to stay centralized and don't mind much about linear scaling of number of nodes in your cluster, choose the default mode</li>
+<li>Note that there is no different to OVS between the two deployment modes.</li>
+<li>FIXME: This section needs to be written well</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -2235,10 +2773,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.instant.preview"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>
